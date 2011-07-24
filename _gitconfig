@@ -1,8 +1,11 @@
 [alias]
 	st = status
 	ci = commit
+	co = checkout
 [core]
 	editor = vim
+	excludesfile = /Users/jimmy/.gitignore
+	autocrlf = input
 [color]
 	ui = true
 [user]
