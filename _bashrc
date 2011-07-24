@@ -8,8 +8,9 @@ blue="$e[1;34m"
 magenta="$e[1;35m"
 darkcyan="$e[1;36m"
 
-# Path
+# Paths
 export PATH="/usr/local/bin:$PATH"
+export NODE_PATH="/usr/local/lib/node"
 
 # Prompt
 function parse_git_branch {
