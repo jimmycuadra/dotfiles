@@ -1,0 +1,13 @@
+%w[wirble hirb].each do |gem|
+  begin
+    require gem
+    case gem
+    when 'wirble'
+      Wirble.init
+      Wirble.colorize
+    when 'hirb'
+      Hirb.enable
+    end
+  rescue LoadError
+  end
+end
