@@ -26,14 +26,18 @@ export GEMEDITOR=mate
 ## Aliases
 
 # Changing directories
-function s { cd ~/Sites/$1 }
-function c { cd ~/Code/$1 }
+function s { cd ~/Sites/$1; }
+function c { cd ~/Code/$1; }
 
 # File and directory listings
 alias ls="ls -F"
 alias l="ls -lAh"
 alias ll="ls -l"
 alias la="ls -A"
+
+# Completions
+complete -C ~/.bash_complete -o default s
+complete -C ~/.bash_complete -o default c
 
 # Ruby
 alias be="bundle exec"
