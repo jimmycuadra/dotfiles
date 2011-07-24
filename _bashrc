@@ -1,4 +1,27 @@
-export CC=gcc-4.2
+# Colors
+e=`printf "\033"`
+end="$e[0m"
+red="$e[1;31m"
+green="$e[1;32m"
+yellow="$e[1;33m"
+blue="$e[1;34m"
+magenta="$e[1;35m"
+darkcyan="$e[1;36m"
 
+# Path
+export PATH="/usr/local/bin:$PATH"
+
+# Prompt
+function parse_git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "("${ref#refs/heads/}") "
+}
+export PS1="\${red}\][rvm \$(~/.rvm/bin/rvm-prompt v)] \[${green}\]\w\[${darkcyan}\] \$(parse_git_branch)\[${green}\]\$\[${end}\] "
+
+# Miscellaneous
+export CC=gcc-4.2 # required by RVM on Lion
+export EDITOR=vim
+export GEMEDITOR=mate
+
+# RVM - this should always be last
 [[ -s "/Users/jimmy/.rvm/scripts/rvm" ]] && source "/Users/jimmy/.rvm/scripts/rvm"
-
