@@ -23,5 +23,20 @@ export CC=gcc-4.2 # required by RVM on Lion
 export EDITOR=vim
 export GEMEDITOR=mate
 
+## Aliases
+
+# Changing directories
+function s { cd ~/Sites/$1 }
+function c { cd ~/Code/$1 }
+
+# File and directory listings
+alias ls="ls -F"
+alias l="ls -lAh"
+alias ll="ls -l"
+alias la="ls -A"
+
+# Ruby
+alias be="bundle exec"
+
 # RVM - this should always be last
 [[ -s "/Users/jimmy/.rvm/scripts/rvm" ]] && source "/Users/jimmy/.rvm/scripts/rvm"
