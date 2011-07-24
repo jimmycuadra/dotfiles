@@ -1,0 +1,10 @@
+[alias]
+	st = status
+	ci = commit
+[core]
+	editor = vim
+[color]
+	ui = true
+[user]
+	name = Jimmy Cuadra
+	email = jimmy@jimmycuadra.com

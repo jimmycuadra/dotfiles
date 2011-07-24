@@ -1,0 +1,4 @@
+export CC=gcc-4.2
+
+[[ -s "/Users/jimmy/.rvm/scripts/rvm" ]] && source "/Users/jimmy/.rvm/scripts/rvm"
+
