@@ -9,7 +9,7 @@ magenta="$e[1;35m"
 darkcyan="$e[1;36m"
 
 # Paths
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/Users/jimmy/Dropbox/sync_scripts:$PATH"
 export NODE_PATH="/usr/local/lib/node"
 
 # Prompt
@@ -43,6 +43,11 @@ complete -C ~/.bash_complete -o default c
 
 # Ruby
 alias be="bundle exec"
+
+# Local (private) settings
+if [ -f ~/.localrc ]; then
+  source ~/.localrc
+fi
 
 # RVM - this should always be last
 [[ -s "/Users/jimmy/.rvm/scripts/rvm" ]] && source "/Users/jimmy/.rvm/scripts/rvm"
