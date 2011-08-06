@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "./completion"
+
+class CodeCompletion < Completion
+  private
+
+  def collection
+    `ls ~/Code/`.split
+  end
+end
+
+puts CodeCompletion.new(ENV["COMP_LINE"]).matches
+exit 0

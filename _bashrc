@@ -38,8 +38,8 @@ alias ll="ls -l"
 alias la="ls -A"
 
 # Completions
-complete -C ~/.bash_complete -o default s
-complete -C ~/.bash_complete -o default c
+complete -C ~/.bash_completions/sites -o default s
+complete -C ~/.bash_completions/code -o default c
 
 # Ruby
 alias be="bundle exec"

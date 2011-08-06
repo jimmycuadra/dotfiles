@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "./completion"
+
+class SitesCompletion < Completion
+  private
+
+  def collection
+    `ls ~/Sites/`.split
+  end
+end
+
+puts SitesCompletion.new(ENV["COMP_LINE"]).matches
+exit 0
