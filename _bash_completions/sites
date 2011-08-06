@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
-require "./completion"
+$:.unshift(File.expand_path("..", __FILE__))
+require "completion"
 
 class SitesCompletion < Completion
   private
