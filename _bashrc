@@ -25,7 +25,11 @@ export EDITOR=vim
 export GEMEDITOR=mate
 export CLICOLOR=1
 
-## Aliases
+# SVN
+function svndiff { svn diff $@ | colordiff | less -R; } 
+alias svnadd="svn status | grep ^? | sed 's/^.* /svn add /' | bash"
+alias svnrevert="svn revert -R ."
+alias svnclean='for i in $(svn st | grep \? | cut -c 9-); do echo $i && rm -r $i; done'
 
 # Changing directories
 function s { cd ~/Sites/$1; }
