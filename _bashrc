@@ -17,7 +17,7 @@ function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "("${ref#refs/heads/}") "
 }
-export PS1="\${red}\][rvm \$(~/.rvm/bin/rvm-prompt v p g)] \[${green}\]\w\[${darkcyan}\] \$(parse_git_branch)\[${green}\]\$\[${end}\] "
+export PS1="\[\${red}\][rvm \$(~/.rvm/bin/rvm-prompt v p g)] \[${green}\]\w\[${darkcyan}\] \$(parse_git_branch)\[${green}\]\$\[${end}\] "
 
 # Miscellaneous
 export CC=gcc-4.2 # required by RVM on Lion
