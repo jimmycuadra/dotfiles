@@ -46,6 +46,7 @@ complete -C ~/.bash_completions/code -o default c
 
 # Ruby
 alias be="bundle exec"
+function railsapp { rails new $1 --skip-bundle -m ~/.railsapp/template.rb; }
 
 # Local (private) settings
 if [ -f ~/.localrc ]; then
