@@ -48,6 +48,9 @@ complete -C ~/.bash_completions/code -o default c
 alias be="bundle exec"
 function railsapp { rails new $1 --skip-bundle -m ~/.railsapp/template.rb; }
 
+# Node
+function ne { PATH=`npm bin`:$PATH $1; }
+
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 
