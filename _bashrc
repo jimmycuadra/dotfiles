@@ -21,7 +21,7 @@ export PS1="\[${green}\]\w\[${darkcyan}\] \$(parse_git_branch)\[${green}\]\$\[${
 
 # Miscellaneous
 export EDITOR=vim
-export GEMEDITOR=mate
+export GEMEDITOR=subl
 export CLICOLOR=1
 
 # SVN
