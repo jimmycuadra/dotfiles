@@ -19,6 +19,11 @@ function parse_git_branch {
 }
 export PS1="\[${green}\]\w\[${darkcyan}\] \$(parse_git_branch)\[${green}\]\$\[${end}\] "
 
+# Git
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+  source /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
 # Miscellaneous
 export EDITOR=vim
 export GEMEDITOR=subl
