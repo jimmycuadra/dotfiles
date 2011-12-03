@@ -13,16 +13,11 @@ export PATH="/usr/local/bin:/usr/local/Cellar/ruby/1.9.3-p0/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 
 # Prompt
-function parse_git_branch {
+_parse_git_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "("${ref#refs/heads/}") "
 }
-export PS1="\[${green}\]\w\[${darkcyan}\] \$(parse_git_branch)\[${green}\]\$\[${end}\] "
-
-# Git
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-  source /usr/local/etc/bash_completion.d/git-completion.bash
-fi
+export PS1="\[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${green}\]\$\[${end}\] "
 
 # Miscellaneous
 export EDITOR=vim
@@ -30,7 +25,7 @@ export GEMEDITOR=subl
 export CLICOLOR=1
 
 # SVN
-function svndiff { svn diff $@ | colordiff | less -R; }
+svndiff() { svn diff $@ | colordiff | less -R; }
 alias svnadd="svn status | grep ^? | sed 's/^.* /svn add /' | bash"
 alias svnrevert="svn revert -R ."
 alias svnclean='for i in $(svn st | grep \? | cut -c 9-); do echo $i && rm -r $i; done'
@@ -42,10 +37,14 @@ alias ll="ls -l"
 alias la="ls -A"
 
 # Changing directories
-function s { cd ~/Sites/$1; }
-function c { cd ~/Code/$1; }
+s() { cd ~/Sites/$1; }
+c() { cd ~/Code/$1; }
 
 # Completions
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+  source /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
 _c_complete() {
   local cur matches
   cur="${COMP_WORDS[COMP_CWORD]}"
@@ -65,10 +64,10 @@ complete -o default -F _s_complete s
 
 # Ruby
 alias be="bundle exec"
-function railsapp { rails new $1 --skip-bundle -m ~/.railsapp/template.rb; }
+railsapp() { rails new $1 --skip-bundle -m ~/.railsapp/template.rb; }
 
 # Node
-function ne { PATH=`npm bin`:$PATH $1; }
+ne() { PATH=`npm bin`:$PATH $1; }
 
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
