@@ -66,7 +66,10 @@ complete -o default -F _s_complete s
 
 # Ruby
 alias be="bundle exec"
-railsapp() { rails new $1 --skip-bundle -m ~/.railsapp/template.rb; }
+railsapp() {
+  local template=~/Code/railsapp/template.rb
+  [ -e $template ] && rails new $1 --skip-bundle -m $template
+}
 
 # Node
 ne() { PATH=`npm bin`:$PATH $1; }
