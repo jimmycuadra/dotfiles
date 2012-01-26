@@ -19,7 +19,7 @@ _parse_git_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "("${ref#refs/heads/}") "
 }
-export PS1="\[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${green}\]\$\[${end}\] "
+export PS1="\[${red}\][\$(rbenv version-name)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${green}\]\$\[${end}\] "
 
 # Miscellaneous
 export EDITOR=vim
