@@ -11,7 +11,7 @@ magenta="$e[1;35m"
 darkcyan="$e[1;36m"
 
 # Paths
-export PATH="/usr/local/bin:/usr/local/Cellar/ruby/1.9.3-p0/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 
 # Prompt
@@ -69,6 +69,24 @@ alias be="bundle exec"
 railsapp() {
   local template=~/Code/railsapp/template.rb
   [ -e $template ] && rails new $1 --skip-bundle -m $template
+}
+
+# rbenv
+export PATH="/Users/jimmy/.rbenv/shims:${PATH}"
+source "/usr/local/Cellar/rbenv/0.3.0/libexec/../completions/rbenv.bash"
+rbenv rehash 2>/dev/null
+rbenv() {
+  command="$1"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  shell)
+    eval `rbenv "sh-$command" "$@"`;;
+  *)
+    command rbenv "$command" "$@";;
+  esac
 }
 
 # Node
