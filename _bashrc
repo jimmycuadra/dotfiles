@@ -16,7 +16,7 @@ export NODE_PATH="/usr/local/lib/node_modules"
 
 # Prompt
 _parse_git_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  local ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "("${ref#refs/heads/}") "
 }
 export PS1="\[${red}\][\$(rbenv version-name)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${green}\]\$\[${end}\] "
