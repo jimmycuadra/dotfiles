@@ -12,3 +12,7 @@
 [user]
 	name = Jimmy Cuadra
 	email = jimmy@jimmycuadra.com
+[heroku]
+	account = personal
+[branch]
+	autosetuprebase = always
