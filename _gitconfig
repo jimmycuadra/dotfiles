@@ -16,3 +16,5 @@
 	account = personal
 [branch]
 	autosetuprebase = always
+[push]
+	default = upstream
