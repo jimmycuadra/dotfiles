@@ -14,17 +14,52 @@ darkcyan="$e[1;36m"
 export PATH="/usr/local/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 
-# Prompt
-_parse_git_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "("${ref#refs/heads/}") "
-}
-export PS1="\[${red}\][\$(rbenv version-name)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${green}\]\$\[${end}\] "
-
 # Miscellaneous
 export EDITOR=vim
 export GEMEDITOR=subl
 export CLICOLOR=1
+
+# rbenv
+export PATH="/Users/jimmy/.rbenv/shims:${PATH}"
+source "/usr/local/Cellar/rbenv/0.3.0/libexec/../completions/rbenv.bash"
+rbenv rehash 2>/dev/null
+rbenv() {
+  command="$1"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  shell)
+    eval `rbenv "sh-$command" "$@"`;;
+  *)
+    command rbenv "$command" "$@";;
+  esac
+}
+
+# Git
+_parse_git_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "("${ref#refs/heads/}") "
+}
+
+# Hitch
+hitch() {
+  command hitch "$@"
+
+  if [[ -s "$HOME/.hitch_export_authors" ]]; then
+    source "$HOME/.hitch_export_authors"
+  fi
+}
+
+alias unhitch='hitch -u'
+
+hitch 1>/dev/null
+
+_parse_hitch_pair() {
+  in_repo=$(git symbolic-ref HEAD 2> /dev/null) || return
+  [ -n "$GIT_AUTHOR_NAME" ] && echo "<${GIT_AUTHOR_NAME/ and //}> "
+}
 
 # SVN
 svndiff() { svn diff $@ | colordiff | less -R; }
@@ -71,24 +106,6 @@ railsapp() {
   [ -e $template ] && rails new $1 --skip-bundle -m $template
 }
 
-# rbenv
-export PATH="/Users/jimmy/.rbenv/shims:${PATH}"
-source "/usr/local/Cellar/rbenv/0.3.0/libexec/../completions/rbenv.bash"
-rbenv rehash 2>/dev/null
-rbenv() {
-  command="$1"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
-
-  case "$command" in
-  shell)
-    eval `rbenv "sh-$command" "$@"`;;
-  *)
-    command rbenv "$command" "$@";;
-  esac
-}
-
 # Node
 ne() { PATH=`npm bin`:$PATH $1; }
 
@@ -99,3 +116,6 @@ alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
+
+# Prompt
+export PS1="\[${red}\][\$(rbenv version-name)] \[${green}\]\w\[${darkcyan}\] \$(_parse_hitch_pair)\$(_parse_git_branch)\[${green}\]\$\[${end}\] "
