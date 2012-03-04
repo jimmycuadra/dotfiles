@@ -74,7 +74,6 @@ alias ll="ls -l"
 alias la="ls -A"
 
 # Changing directories
-s() { cd ~/Sites/$1; }
 c() { cd ~/Code/$1; }
 
 # Completions
@@ -89,15 +88,7 @@ _c_complete() {
   COMPREPLY=( $(compgen -W "${matches}" -- ${cur}) )
 }
 
-_s_complete() {
-  local cur matches
-  cur="${COMP_WORDS[COMP_CWORD]}"
-  matches=$(basename ~/Sites/*)
-  COMPREPLY=( $(compgen -W "${matches}" -- ${cur}) )
-}
-
 complete -o default -F _c_complete c
-complete -o default -F _s_complete s
 
 # Ruby
 alias be="bundle exec"
