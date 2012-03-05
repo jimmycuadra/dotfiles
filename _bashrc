@@ -93,7 +93,7 @@ complete -o default -F _c_complete c
 alias be="bundle exec"
 railsapp() {
   local template=~/Code/railsapp/template.rb
-  [ -e $template ] && rails new $1 --skip-bundle -m $template
+  [ -e $template ] && rails new $1 --skip-bundle -T -m $template
 }
 
 # Node
