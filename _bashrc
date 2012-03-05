@@ -11,7 +11,7 @@ magenta="$e[1;35m"
 darkcyan="$e[1;36m"
 
 # Paths
-export PATH="/usr/local/bin:$PATH"
+export PATH="/Users/jimmy/.rbenv/shims:/usr/local/bin:/usr/local/share/python:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 
 # Miscellaneous
@@ -20,7 +20,6 @@ export GEMEDITOR=subl
 export CLICOLOR=1
 
 # rbenv
-export PATH="/Users/jimmy/.rbenv/shims:${PATH}"
 source "/usr/local/Cellar/rbenv/0.3.0/libexec/../completions/rbenv.bash"
 rbenv rehash 2>/dev/null
 rbenv() {
