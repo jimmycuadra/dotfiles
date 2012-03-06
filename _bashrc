@@ -80,6 +80,10 @@ if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
   source /usr/local/etc/bash_completion.d/git-completion.bash
 fi
 
+if [ -f /usr/local/etc/bash_completion.d/tmux ]; then
+  source /usr/local/etc/bash_completion.d/tmux
+fi
+
 _c_complete() {
   local cur matches
   cur="${COMP_WORDS[COMP_CWORD]}"
