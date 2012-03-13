@@ -1,13 +1,20 @@
-%w[wirble hirb].each do |gem|
-  begin
-    require gem
-    case gem
-    when 'wirble'
-      Wirble.init
-      Wirble.colorize
-    when 'hirb'
-      Hirb.enable
+begin
+  require 'pry'
+  Pry.start
+  %w[wirble hirb].each do |gem|
+    begin
+      require gem
+      case gem
+      when 'wirble'
+        Wirble.init
+        Wirble.colorize
+      when 'hirb'
+        Hirb.enable
+      end
+    rescue LoadError
     end
-  rescue LoadError
   end
+  exit
+rescue LoadError => e
+  warn "Unable to load pry"
 end
