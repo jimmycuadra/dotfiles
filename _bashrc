@@ -103,9 +103,6 @@ ne() { PATH=`npm bin`:$PATH $1; }
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 
-# SSH
-alias ssh-add="ssh-add $* || echo ssh-add failed!"
-
 # Local (private) settings
 if [ -f ~/.localrc ]; then
   source ~/.localrc
