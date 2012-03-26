@@ -11,7 +11,7 @@ magenta="$e[1;35m"
 darkcyan="$e[1;36m"
 
 # Paths
-export PATH="./bin:/Users/jimmy/.rbenv/shims:/usr/local/share/python:/usr/local/bin:$PATH"
+export PATH="./bundle/bin:/Users/jimmy/.rbenv/shims:/usr/local/share/python:/usr/local/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 
 # Miscellaneous
