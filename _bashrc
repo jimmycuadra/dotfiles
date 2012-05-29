@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Shell options
+shopt -s globstar 2>/dev/null # requires Bash 4
+
 # Colors
 e=`printf "\033"`
 end="$e[0m"
