@@ -2,7 +2,12 @@
 	st = status
 	ci = commit
 	co = checkout
-  glog = log --graph --all --pretty=format:'%Cgreen%h%Cblue%d %C(white)%s %Cblue%an %C(white)[%ar]'
+	di = diff
+	dc = diff --cached
+	aa = add --all
+	amend = commit --amend
+  l = log --graph --pretty=format:'%Cgreen%h%Cblue%d %C(white)%s %Cblue%an %C(white)[%ar]'
+  la = !git l --all
 [core]
 	editor = vim
 	excludesfile = /Users/jimmy/.gitignore
