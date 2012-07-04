@@ -1,12 +1,25 @@
-begin
-  require "wirble"
-  Wirble.init
-  Wirble.colorize
-rescue LoadError
+if defined?(Bundler)
+  Gem.post_reset_hooks.reject! do |hook|
+    hook.source_location.first =~ %r{/bundler/}
+  end
+
+  Gem::Specification.reset
+  load "rubygems/custom_require.rb"
 end
 
-begin
-  require "hirb"
-  Hirb.enable
-rescue LoadError
+%w(
+
+  pry
+  pry-nav
+  pry-coolline
+  pry-doc
+
+).each do |gem|
+  begin
+    require gem
+  rescue LoadError
+    warn "#{gem} is not installed."
+  end
 end
+
+Pry.start if defined?(Pry)
