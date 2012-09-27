@@ -117,15 +117,6 @@ ne() { PATH=`npm bin`:$PATH $1; }
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 
-# Jibsy.me
-jibsyme() {
-  [ $# -lt 1 ] && return
-  local com="curl -i http://localhost:5000 -F 'url=$1'"
-  [ $# -gt 1 ] && com="$com -F 'code=$2'"
-  $com
-  echo
-}
-
 # Local (private) settings
 if [ -f ~/.localrc ]; then
   source ~/.localrc
