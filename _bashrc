@@ -117,6 +117,15 @@ ne() { PATH=`npm bin`:$PATH $1; }
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 
+# Python
+if [ `id -u` != '0' ]; then
+  export VIRTUALENV_USE_DISTRIBUTE=1
+  export WORKON_HOME=$HOME/.virtualenvs
+  source /usr/local/share/python/virtualenvwrapper.sh
+  export PIP_VIRTUALENV_BASE=$WORKON_HOME
+  export PIP_RESPECT_VIRTUALENV=true
+fi
+
 # Local (private) settings
 if [ -f ~/.localrc ]; then
   source ~/.localrc
