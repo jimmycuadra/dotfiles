@@ -42,6 +42,9 @@ set hlsearch
 " Visual bell
 set visualbell
 
+" Vroom
+let g:vroom_use_bundle_exec = 0
+
 " Mappings
 nnoremap <leader><leader> <c-^>
 nnoremap <c-h> <c-w>h
