@@ -14,7 +14,11 @@ magenta="$e[1;35m"
 darkcyan="$e[1;36m"
 
 # Paths
-export PATH="./.bundle/bin:/Users/jimmy/.rbenv/shims:/usr/local/share/python:/usr/local/share/python3:/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH" # Homebrew
+export PATH="/usr/local/share/python:/usr/local/share/python3:$PATH" # Python libs
+export PATH="/usr/local/heroku/bin:$PATH" # Heroku Toolbelt
+export PATH="/Users/jimmy/.rbenv/shims:$PATH" # rbenv
+export PATH="./.bundle/bin:$PATH" # Bundler binstubs
 export NODE_PATH="/usr/local/lib/node_modules"
 
 # Miscellaneous
