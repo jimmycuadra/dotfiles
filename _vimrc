@@ -4,6 +4,9 @@ set nocompatible
 " Syntax highlighting
 syntax on
 
+" Leader
+let mapleader=","
+
 " Tab stops
 set tabstop=2
 set softtabstop=2
