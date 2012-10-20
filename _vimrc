@@ -37,3 +37,7 @@ set hlsearch
 
 " Visual bell
 set visualbell
+
+" Mappings
+nnoremap <leader><leader> <c-^>
+
