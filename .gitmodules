@@ -10,3 +10,6 @@
 [submodule "_vim/bundle/vim-vroom"]
 	path = _vim/bundle/vim-vroom
 	url = https://github.com/skalnik/vim-vroom.git
+[submodule "_vim/bundle/vim-railscasts"]
+	path = _vim/bundle/vim-railscasts
+	url = https://github.com/jgdavey/vim-railscasts.git
