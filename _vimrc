@@ -16,7 +16,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-filetype indent on
+filetype plugin indent on
 
 " Line numbers
 set number
