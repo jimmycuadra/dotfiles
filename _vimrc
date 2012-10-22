@@ -49,10 +49,22 @@ set visualbell
 " Vroom
 let g:vroom_use_bundle_exec = 0
 
+" Strip trailing whitespace on save
+function! <SID>StripTrailingWhitespace()
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+" Autocommands
+autocmd BufWritePre * :call <SID>StripTrailingWhitespace()
+
 " Mappings
 nnoremap <leader><leader> <c-^>
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
-
