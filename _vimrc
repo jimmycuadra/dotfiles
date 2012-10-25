@@ -30,6 +30,16 @@ colorscheme railscasts
 set showcmd
 set showmode
 
+" Status line
+set laststatus=2
+set statusline=%-10.3n\ 
+set statusline+=%f\ 
+set statusline+=%h%m%r%w
+set statusline+=\[%{strlen(&ft)?&ft:'none'}]
+set statusline+=%=
+set statusline+=%-14(%l,%c%V%)
+set statusline+=%<%P
+
 " Buffers
 set hidden
 
