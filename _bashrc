@@ -18,6 +18,7 @@ export PATH="/usr/local/bin:$PATH" # Homebrew
 export PATH="/usr/local/share/python:/usr/local/share/python3:$PATH" # Python libs
 export PATH="/usr/local/heroku/bin:$PATH" # Heroku Toolbelt
 export PATH="/usr/local/share/npm/bin:$PATH" # npm
+export PATH="./node_modules/.bin:$PATH" # Local npm modules
 export PATH="/Users/jimmy/.rbenv/shims:$PATH" # rbenv
 export PATH="./.bundle/bin:$PATH" # Bundler binstubs
 
