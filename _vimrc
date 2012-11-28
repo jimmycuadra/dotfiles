@@ -32,8 +32,8 @@ set showmode
 
 " Status line
 set laststatus=2
-set statusline=%-10.3n\ 
-set statusline+=%f\ 
+set statusline=%-10.3n\
+set statusline+=%f\
 set statusline+=%h%m%r%w
 set statusline+=\[%{strlen(&ft)?&ft:'none'}]
 set statusline+=%=
@@ -71,6 +71,8 @@ endfunction
 
 " Autocommands
 autocmd BufWritePre * :call <SID>StripTrailingWhitespace()
+autocmd BufRead *.md set filetype=md
+autocmd BufNewFile *.md set filetype=md
 
 " Mappings
 nnoremap <leader><leader> <c-^>
