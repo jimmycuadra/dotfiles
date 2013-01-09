@@ -13,24 +13,22 @@ blue="$e[1;34m"
 magenta="$e[1;35m"
 darkcyan="$e[1;36m"
 
-# Paths
-export PATH="/usr/local/bin:$PATH" # Homebrew
-export PATH="/usr/local/share/python:/usr/local/share/python3:$PATH" # Python libs
-export PATH="/usr/local/share/npm/bin:$PATH" # npm
-export PATH="./node_modules/.bin:$PATH" # Local npm modules
-export PATH="/Users/jimmy/.rbenv/shims:$PATH" # rbenv
-export PATH="./.bundle/bin:$PATH" # Bundler binstubs
-
 # Miscellaneous
 export EDITOR=vim
 export GEMEDITOR=subl
 export CLICOLOR=1
 
-# rbenv
+# Paths
+export PATH="/usr/local/bin:$PATH" # Homebrew
+export PATH="/usr/local/share/python:/usr/local/share/python3:$PATH" # Python libs
+export PATH="/usr/local/share/npm/bin:$PATH" # npm
+export PATH="./node_modules/.bin:$PATH" # Local npm modules
+# rbenv (adds to paths)
 export RBENV_ROOT=/usr/local/opt/rbenv
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
+export PATH="./.bundle/bin:$PATH" # Bundler binstubs
 
 # Git
 alias git=hub
