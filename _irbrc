@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 if defined?(Bundler)
   Gem.post_reset_hooks.reject! do |hook|
     hook.source_location.first =~ %r{/bundler/}
@@ -7,20 +9,12 @@ if defined?(Bundler)
   load "rubygems/custom_require.rb"
 end
 
-%w(
-
-  pry
-  pry-nav
-  pry-coolline
-  pry-doc
-
-).each do |gem|
-  begin
-    require gem
-  rescue LoadError
-    warn "#{gem} is not installed."
-  end
+begin
+  require "pry"
+rescue LoadError
 end
 
-Pry.start if defined?(Pry)
-exit
+if defined?(Pry)
+  Pry.start
+  exit
+end
