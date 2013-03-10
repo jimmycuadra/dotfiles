@@ -105,4 +105,4 @@ if [ -f ~/.localrc ]; then
 fi
 
 # Prompt
-export PS1="\033]0;\007\[${red}\][\$(rbenv version-name)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${green}\]\\$\[${end}\] "
+export PS1="\[\033]0;\007\]\[${red}\][\$(rbenv version-name)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${green}\]\\$\[${end}\] "
