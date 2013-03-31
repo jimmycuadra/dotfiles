@@ -4,6 +4,14 @@
   ],
   "dotfiles": {
     "user": "jimmy",
-    "home_path": "/Users/jimmy"
+    "home_path": "/Users/jimmy",
+    "vim_plugin_urls": [
+      "git://github.com/tpope/vim-pathogen.git",
+      "git://github.com/kien/ctrlp.vim.git",
+      "git://github.com/tpope/vim-fugitive.git",
+      "git://github.com/skalnik/vim-vroom.git",
+      "git://github.com/jgdavey/vim-railscasts.git",
+      "git://github.com/kchmck/vim-coffee-script.git"
+    ]
   }
 }

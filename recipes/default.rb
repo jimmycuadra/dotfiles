@@ -36,3 +36,13 @@ directory "#{node[:dotfiles][:home_path]}/.vim/bundle" do
   owner node[:dotfiles][:user]
   group "staff"
 end
+
+node[:dotfiles][:vim_plugin_urls].each do |url|
+  plugin_name = url.split("/").last.sub(/\.git$/, "")
+
+  git "#{node[:dotfiles][:home_path]}/.vim/bundle/#{plugin_name}" do
+    repository url
+    user node[:dotfiles][:user]
+    group "staff"
+  end
+end
