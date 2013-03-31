@@ -8,4 +8,4 @@ if [ "$?" -ne 0 ]; then
 fi
 sudo mkdir -p /var/chef/cookbooks
 sudo cp -R . /var/chef/cookbooks/dotfiles
-sudo chef-solo -c solo.rb -j node.json
+sudo /usr/bin/chef-solo -c solo.rb -j node.json
