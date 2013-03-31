@@ -3,9 +3,7 @@
     "recipe[dotfiles]"
   ],
   "dotfiles": {
-    "local_user": {
-      "name": "jimmy",
-      "home": "/Users/jimmy"
-    }
+    "user": "jimmy",
+    "home_path": "/Users/jimmy"
   }
 }
