@@ -17,7 +17,7 @@ darkcyan="$e[1;36m"
 export EDITOR=vim
 export GEMEDITOR=subl
 export CLICOLOR=1
-export HISTCONTROL="ignoredups:ignorespace"
+export HISTCONTROL="ignoreboth"
 
 # Paths
 export PATH="/usr/local/bin:$PATH" # Homebrew
