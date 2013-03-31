@@ -1,0 +1,11 @@
+{
+  "run_list": [
+    "recipe[dotfiles]"
+  ],
+  "dotfiles": {
+    "local_user": {
+      "name": "jimmy",
+      "home": "/Users/jimmy"
+    }
+  }
+}

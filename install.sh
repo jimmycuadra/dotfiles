@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-for source_file in _*; do
-  source_path="$PWD/$source_file"
-  destination_path=~/.${source_file:1}
-
-  if [ ! -e $destination_path ]; then
-    echo "Linking $source_path to $destination_path"
-    ln -nfs $source_path $destination_path
-  fi
-done
+type chef-solo >/dev/null 2>&1
+if [ "$?" -ne 0 ]; then
+  curl -L https://www.opscode.com/chef/install.sh -o install_chef.sh
+  sudo bash install_chef.sh
+  rm install_chef.sh
+fi
+sudo mkdir -p /var/chef/cookbooks
+sudo cp -R . /var/chef/cookbooks/dotfiles
+sudo chef-solo -c solo.rb -j node.json
