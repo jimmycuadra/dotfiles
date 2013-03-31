@@ -32,7 +32,9 @@ fi
 export PATH="./.bundle/bin:$PATH" # Bundler binstubs
 
 # Git
-alias git=hub
+if which hub > /dev/null; then
+  alias git=hub
+fi
 _parse_git_branch() {
   ref=$(command git symbolic-ref HEAD 2> /dev/null) || return
   echo "("${ref#refs/heads/}") "
