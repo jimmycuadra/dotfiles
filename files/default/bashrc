@@ -23,7 +23,6 @@ export HISTCONTROL="ignoreboth"
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
-export PATH="./.bundle/bin:$PATH" # Bundler binstubs
 
 # Git
 if which hub > /dev/null; then

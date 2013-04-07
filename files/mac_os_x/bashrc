@@ -29,7 +29,6 @@ export RBENV_ROOT=/usr/local/opt/rbenv
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
-export PATH="./.bundle/bin:$PATH" # Bundler binstubs
 
 # Git
 type hub >/dev/null 2>&1
