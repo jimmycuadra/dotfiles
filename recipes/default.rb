@@ -6,6 +6,7 @@
   gitignore
   irbrc
   railsrc
+  rdebugrc
   tmux.conf
   vimrc
 ).each do |filename|
