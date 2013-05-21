@@ -102,6 +102,9 @@ if [ `id -u` != '0' ]; then
   export PIP_RESPECT_VIRTUALENV=true
 fi
 
+# Vagrant
+export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+
 # Local (private) settings
 if [ -f ~/.localrc ]; then
   source ~/.localrc
