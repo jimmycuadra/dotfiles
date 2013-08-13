@@ -64,6 +64,14 @@ if [ -f /usr/local/etc/bash_completion.d/hub.bash_completion.sh ]; then
   source /usr/local/etc/bash_completion.d/hub.bash_completion.sh
 fi
 
+if [ -f /usr/local/etc/bash_completion.d/hub.bash_completion.sh ]; then
+  source /usr/local/etc/bash_completion.d/hub.bash_completion.sh
+fi
+
+if [ -f /usr/local/etc/bash_completion.d/go-completion.bash.sh ]; then
+  source /usr/local/etc/bash_completion.d/go-completion.bash.sh
+fi
+
 _c_complete() {
   local cur matches
   cur="${COMP_WORDS[COMP_CWORD]}"
