@@ -22,6 +22,7 @@ export HISTCONTROL="ignoreboth"
 # Paths
 export PATH="/usr/local/bin:$PATH" # Homebrew
 export PATH="/usr/local/share/python:/usr/local/share/python3:$PATH" # Python libs
+export PATH="$HOME/Code/go/bin:$PATH" # Go
 export PATH="/usr/local/share/npm/bin:$PATH" # npm
 export PATH="./node_modules/.bin:$PATH" # Local npm modules
 # rbenv (adds to paths)
@@ -97,6 +98,9 @@ railsapp() {
 
 # Node
 ne() { PATH=`npm bin`:$PATH $1; }
+
+# Go
+export GOPATH="$HOME/Code/go"
 
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
