@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-chef_solo=$(which chef-solo)
-if [ -z "$chef_solo" ]; then
+# Install Chef
+if [ -z /usr/bin/chef-solo ]; then
   curl -L https://www.opscode.com/chef/install.sh -o install_chef.sh
   sudo bash install_chef.sh
   rm install_chef.sh
-  chef_solo=$(which chef-solo)
 fi
+
+# Copy over the cookbooks
 sudo mkdir -p /var/chef/cookbooks
 sudo cp -R . /var/chef/cookbooks/dotfiles
-sudo $chef_solo -c solo.rb -j node.json
+
+# Run Chef
+sudo /usr/bin/chef-solo -c solo.rb -j node.json
