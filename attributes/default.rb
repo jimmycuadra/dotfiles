@@ -1,15 +1,7 @@
-case node[:platform_family]
-when "mac_os_x"
-  default[:dotfiles] = {
-    user: "jimmy",
-    home_path: "/Users/jimmy"
-  }
-else
-  default[:dotfiles] = {
-    user: "vagrant",
-    home_path: "/home/vagrant"
-  }
-end
+default[:dotfiles] = {
+  user: "jimmy",
+  home_path: "/Users/jimmy"
+}
 
 default[:dotfiles][:vim_plugin_urls] = [
   "git://github.com/tpope/vim-pathogen.git",
