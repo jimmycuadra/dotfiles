@@ -9,6 +9,7 @@ fi
 
 # Copy over the cookbooks
 sudo mkdir -p /var/chef/cookbooks
+sudo rm -rf /var/chef/cookbooks/dotfiles
 sudo cp -R . /var/chef/cookbooks/dotfiles
 
 # Run Chef
