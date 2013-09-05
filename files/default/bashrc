@@ -15,17 +15,25 @@ darkcyan="$e[1;36m"
 
 # Miscellaneous
 export EDITOR=vim
-export GEMEDITOR=vim
+export GEMEDITOR=subl
 export CLICOLOR=1
 export HISTCONTROL="ignoreboth"
 
 # Paths
+export PATH="/usr/local/bin:$PATH" # Homebrew
+export PATH="/usr/local/share/python:/usr/local/share/python3:$PATH" # Python libs
+export PATH="$HOME/Code/go/bin:$PATH" # Go
+export PATH="/usr/local/share/npm/bin:$PATH" # npm
+export PATH="./node_modules/.bin:$PATH" # Local npm modules
+# rbenv (adds to paths)
+export RBENV_ROOT=/usr/local/opt/rbenv
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
 
 # Git
-if which hub > /dev/null; then
+type hub >/dev/null 2>&1
+if [ "$?" -eq 0 ]; then
   alias git=hub
 fi
 _parse_git_branch() {
@@ -45,16 +53,64 @@ alias l="ls -lAh"
 alias ll="ls -l"
 alias la="ls -A"
 
-# Completions
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-  source /usr/local/etc/bash_completion.d/git-completion.bash
-fi
+# Changing directories
+c() { cd ~/Code/$1; }
 
-if [ -f /usr/local/etc/bash_completion.d/hub.bash_completion.sh ]; then
-  source /usr/local/etc/bash_completion.d/hub.bash_completion.sh
-fi
+# Completions
+for completion_file in \
+  git-completion.bash \
+  hub.bash_completion.sh \
+  go-completion.bash.sh
+do
+  full_completion_file="/usr/local/etc/bash_completion.d/$completion_file"
+  if [ -f $full_completion_file ]; then
+    source $full_completion_file
+  fi
+done
+
+_c_complete() {
+  local cur matches
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  matches=$(basename ~/Code/*)
+  COMPREPLY=( $(compgen -W "${matches}" -- ${cur}) )
+}
+
+complete -o default -F _c_complete c
+
+# Ruby
+export RUBY_HEAP_MIN_SLOTS=800000
+export RUBY_HEAP_FREE_MIN=100000
+export RUBY_HEAP_SLOTS_INCREMENT=300000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=79000000
 
 alias be="bundle exec"
+
+railsapp() {
+  local template=~/Code/railsapp/template.rb
+  [ -e $template ] && rails new $1 --skip-bundle -T -m $template
+}
+
+# Node
+ne() { PATH=`npm bin`:$PATH $1; }
+
+# Go
+export GOPATH="$HOME/Code/go"
+
+# C
+alias marvin="gcc -Wall -Wextra -ansi -pedantic"
+
+# Python
+if [ `id -u` != '0' ]; then
+  export VIRTUALENV_USE_DISTRIBUTE=1
+  export WORKON_HOME=$HOME/.virtualenvs
+  source /usr/local/share/python/virtualenvwrapper.sh
+  export PIP_VIRTUALENV_BASE=$WORKON_HOME
+  export PIP_RESPECT_VIRTUALENV=true
+fi
+
+# Vagrant
+export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 # Local (private) settings
 if [ -f ~/.localrc ]; then
