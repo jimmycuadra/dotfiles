@@ -111,6 +111,10 @@ if [ `id -u` != '0' ]; then
   export PIP_RESPECT_VIRTUALENV=true
 fi
 
+if which bpython >/dev/null; then
+  alias python=bpython
+fi
+
 # Vagrant
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
