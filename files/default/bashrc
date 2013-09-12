@@ -21,10 +21,14 @@ export HISTCONTROL="ignoreboth"
 
 # Paths
 export PATH="/usr/local/bin:$PATH" # Homebrew
-export PATH="/usr/local/share/python:/usr/local/share/python3:$PATH" # Python libs
 export PATH="$HOME/Code/go/bin:$PATH" # Go
 export PATH="/usr/local/share/npm/bin:$PATH" # npm
 export PATH="./node_modules/.bin:$PATH" # Local npm modules
+# pyenv (adds to paths)
+export PYENV_ROOT=/usr/local/opt/pyenv
+if which pyenv > /dev/null; then
+  eval "$(pyenv init -)"
+fi
 # rbenv (adds to paths)
 export RBENV_ROOT=/usr/local/opt/rbenv
 if which rbenv > /dev/null; then
