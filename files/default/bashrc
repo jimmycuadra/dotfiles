@@ -105,16 +105,6 @@ export GOPATH="$HOME/Code/go"
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 
 # Python
-if [ `id -u` != '0' ]; then
-  export VIRTUALENV_USE_DISTRIBUTE=1
-  export WORKON_HOME=$HOME/.virtualenvs
-  if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-  fi
-  export PIP_VIRTUALENV_BASE=$WORKON_HOME
-  export PIP_RESPECT_VIRTUALENV=true
-fi
-
 if which bpython >/dev/null; then
   alias python=bpython
 fi
