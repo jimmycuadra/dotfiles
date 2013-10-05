@@ -104,11 +104,6 @@ export GOPATH="$HOME/Code/go"
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 
-# Python
-if which bpython >/dev/null; then
-  alias python=bpython
-fi
-
 # Vagrant
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
