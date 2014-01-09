@@ -100,6 +100,9 @@ railsapp() {
   [ -e $template ] && rails new $1 --skip-bundle -T -m $template
 }
 
+# Python
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages
+
 # Node
 ne() { PATH=`npm bin`:$PATH $1; }
 
