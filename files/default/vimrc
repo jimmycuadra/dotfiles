@@ -14,6 +14,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'elzr/vim-json'
 Bundle 'tpope/vim-surround'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'tpope/vim-markdown'
 filetype plugin indent on
 " END VUNDLE
 
@@ -82,8 +83,6 @@ endfunction
 
 " Autocommands
 autocmd BufWritePre * :call <SID>StripTrailingWhitespace()
-autocmd BufRead *.md set filetype=md
-autocmd BufNewFile *.md set filetype=md
 
 " Mappings
 nnoremap <leader><leader> <c-^>
