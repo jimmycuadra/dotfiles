@@ -13,37 +13,33 @@
   cookbook_file "#{node[:dotfiles][:home_path]}/.#{filename}" do
     source filename
     owner node[:dotfiles][:user]
-    group "staff"
+    group node[:dotfiles][:group]
   end
 end
 
 directory "#{node[:dotfiles][:home_path]}/.bundle" do
   owner node[:dotfiles][:user]
-  group "staff"
+  group node[:dotfiles][:group]
 end
 
 cookbook_file "#{node[:dotfiles][:home_path]}/.bundle/config" do
   source "bundle_config"
   owner node[:dotfiles][:user]
-  group "staff"
+  group node[:dotfiles][:group]
 end
 
 directory "#{node[:dotfiles][:home_path]}/.vim" do
   owner node[:dotfiles][:user]
-  group "staff"
+  group node[:dotfiles][:group]
 end
 
 directory "#{node[:dotfiles][:home_path]}/.vim/bundle" do
   owner node[:dotfiles][:user]
-  group "staff"
+  group node[:dotfiles][:group]
 end
 
-node[:dotfiles][:vim_plugin_urls].each do |url|
-  plugin_name = url.split("/").last.sub(/\.git$/, "")
-
-  git "#{node[:dotfiles][:home_path]}/.vim/bundle/#{plugin_name}" do
-    repository url
-    user node[:dotfiles][:user]
-    group "staff"
-  end
+git "#{node[:dotfiles][:home_path]}/.vim/bundle/vundle" do
+  repository "https://github.com/gmarik/vundle.git"
+  user node[:dotfiles][:user]
+  group node[:dotfiles][:group]
 end
