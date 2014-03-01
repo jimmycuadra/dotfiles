@@ -16,6 +16,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'tpope/vim-markdown'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'wting/rust.vim'
 filetype plugin indent on
 " END VUNDLE
 
