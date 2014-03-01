@@ -110,6 +110,9 @@ alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 # Vagrant
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
+# Vim
+alias jim=vim
+
 # Local (private) settings
 if [ -f ~/.localrc ]; then
   source ~/.localrc
