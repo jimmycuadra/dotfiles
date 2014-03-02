@@ -59,7 +59,7 @@ set hidden
 
 " Command line completion
 set wildmenu
-set wildmode=list:longest
+set wildmode=longest:list
 
 " Searching
 set ignorecase
