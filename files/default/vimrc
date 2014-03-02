@@ -73,6 +73,8 @@ set visualbell
 
 " Vroom
 let g:vroom_use_bundle_exec = 0
+let g:vroom_use_binstubs = 1
+let g:vroom_binstubs_path = '.bundle/bin'
 
 " Strip trailing whitespace on save
 function! <SID>StripTrailingWhitespace()
