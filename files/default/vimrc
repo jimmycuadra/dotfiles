@@ -66,6 +66,7 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+:nnoremap <cr> :nohlsearch<cr>
 
 " Visual bell
 set visualbell
