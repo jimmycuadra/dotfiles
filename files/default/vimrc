@@ -40,6 +40,9 @@ highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE gui
 " Colors
 colorscheme railscasts
 
+" Wrap on word boundaries
+set linebreak
+
 " Info display
 set showcmd
 set showmode
