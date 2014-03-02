@@ -83,9 +83,19 @@ function! <SID>StripTrailingWhitespace()
   let @/=_s
   call cursor(l, c)
 endfunction
-
-" Autocommands
 autocmd BufWritePre * :call <SID>StripTrailingWhitespace()
+
+" Insert literal tab or command complete
+function TabOrComplete()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <tab> <c-r>=TabOrComplete()<cr>
+inoremap <s-tab> <c-n>
 
 " Mappings
 nnoremap <leader><leader> <c-^>
