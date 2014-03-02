@@ -71,6 +71,9 @@ set hlsearch
 " Visual bell
 set visualbell
 
+" System clipboard
+set clipboard=unnamed
+
 " Vroom
 let g:vroom_use_bundle_exec = 0
 let g:vroom_use_binstubs = 1
