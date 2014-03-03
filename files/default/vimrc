@@ -17,6 +17,7 @@ Bundle 'jnwhiteh/vim-golang'
 Bundle 'tpope/vim-markdown'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'wting/rust.vim'
+Bundle 'michaeljsmith/vim-indent-object'
 filetype plugin indent on
 " END VUNDLE
 
