@@ -38,6 +38,11 @@ directory "#{node[:dotfiles][:home_path]}/.vim/bundle" do
   group node[:dotfiles][:group]
 end
 
+directory "#{node[:dotfiles][:home_path]}/.vim/swap" do
+  owner node[:dotfiles][:user]
+  group node[:dotfiles][:group]
+end
+
 git "#{node[:dotfiles][:home_path]}/.vim/bundle/vundle" do
   repository "https://github.com/gmarik/vundle.git"
   user node[:dotfiles][:user]

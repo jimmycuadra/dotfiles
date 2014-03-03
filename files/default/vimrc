@@ -76,6 +76,8 @@ set hlsearch
 " Visual bell
 set visualbell
 
+set directory=$HOME/.vim/swap//
+
 " System clipboard
 set clipboard=unnamed
 
