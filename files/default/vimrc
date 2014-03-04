@@ -22,6 +22,9 @@ Bundle 'tpope/vim-commentary'
 filetype plugin indent on
 " END VUNDLE
 
+" Colors
+colorscheme railscasts
+
 " Syntax highlighting
 syntax on
 
@@ -38,10 +41,10 @@ autocmd FileType python set tabstop=4 softtabstop=4 shiftwidth=4
 " Line numbers
 set number
 set ruler
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
-" Colors
-colorscheme railscasts
+set colorcolumn=101
+set cursorline
+hi LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+hi ColorColumn term=bold cterm=NONE ctermfg=NONE ctermbg=234 gui=NONE guifg=NONE guibg=234
 
 " Wrap on word boundaries
 set linebreak
