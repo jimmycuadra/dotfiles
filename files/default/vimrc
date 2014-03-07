@@ -69,6 +69,7 @@ set hidden
 " Command line completion
 set wildmenu
 set wildmode=longest:list
+set wildignore=.git,*.pyc
 
 " Searching
 set ignorecase
