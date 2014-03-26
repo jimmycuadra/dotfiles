@@ -65,6 +65,8 @@ set statusline+=%<%P
 
 " Buffers
 set hidden
+" Remove file from buffer without losing the window
+nmap <leader>d :b#<bar>bd#<CR>
 
 " Command line completion
 set wildmenu
