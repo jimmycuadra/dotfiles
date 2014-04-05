@@ -122,6 +122,7 @@ inoremap <s-tab> <c-n>
 
 " Mappings
 nnoremap <leader><leader> <c-^>
+nnoremap <leader>t :w<cr>\|:!rspec %<cr>
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
