@@ -68,6 +68,9 @@ set hidden
 " Remove file from buffer without losing the window
 nmap <leader>d :b#<bar>bd#<CR>
 
+" Automatically reload files that change on disk
+set autoread
+
 " Command line completion
 set wildmenu
 set wildmode=longest:list
