@@ -49,6 +49,11 @@ hi ColorColumn term=bold cterm=NONE ctermfg=NONE ctermbg=234 gui=NONE guifg=NONE
 " Wrap on word boundaries
 set linebreak
 
+" Window sizing
+set winwidth=100
+set winminwidth=100
+set winwidth=999
+
 " Info display
 set showcmd
 set showmode
