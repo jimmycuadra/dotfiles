@@ -99,6 +99,8 @@ set clipboard=unnamed
 " Allow backspace to remove line breaks and auto-indentation
 " Why is this necessary???
 set backspace=2
+" Fix slow O inserts
+:set timeout timeoutlen=1000 ttimeoutlen=100
 
 " Vroom
 let g:vroom_use_bundle_exec = 0
