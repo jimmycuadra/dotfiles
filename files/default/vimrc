@@ -19,6 +19,7 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'wting/rust.vim'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'tpope/vim-commentary'
+Bundle 'ekalinin/Dockerfile.vim'
 filetype plugin indent on
 " END VUNDLE
 
