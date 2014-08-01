@@ -55,6 +55,9 @@ set winwidth=96
 set winminwidth=96
 set winwidth=999
 
+" Window splitting
+set splitright
+
 " Info display
 set showcmd
 set showmode
