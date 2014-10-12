@@ -20,6 +20,7 @@ Bundle 'wting/rust.vim'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'tpope/vim-commentary'
 Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'cespare/vim-toml'
 filetype plugin indent on
 " END VUNDLE
 
