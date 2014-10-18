@@ -59,6 +59,7 @@ alias la="ls -A"
 
 # Changing directories
 c() { cd ~/Code/$1; }
+g() { cd ~/Code/go/src/github.com/jimmycuadra/$1; }
 
 # Completions
 for completion_file in \
@@ -80,6 +81,15 @@ _c_complete() {
 }
 
 complete -o default -F _c_complete c
+
+_g_complete() {
+  local cur matches
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  matches=$(basename ~/Code/go/src/github.com/jimmycuadra/*)
+  COMPREPLY=( $(compgen -W "${matches}" -- ${cur}) )
+}
+
+complete -o default -F _g_complete g
 
 # Bash functions
 ports() {
