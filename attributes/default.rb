@@ -1,4 +1,4 @@
-case default[:platform_family]
+case platform
 when "mac_os_x"
   default[:dotfiles] = {
     user: "jimmy",
