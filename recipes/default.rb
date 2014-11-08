@@ -22,12 +22,6 @@ directory "#{node[:dotfiles][:home_path]}/.bundle" do
   group node[:dotfiles][:group]
 end
 
-cookbook_file "#{node[:dotfiles][:home_path]}/.bundle/config" do
-  source "bundle_config"
-  owner node[:dotfiles][:user]
-  group node[:dotfiles][:group]
-end
-
 directory "#{node[:dotfiles][:home_path]}/.vim" do
   owner node[:dotfiles][:user]
   group node[:dotfiles][:group]
