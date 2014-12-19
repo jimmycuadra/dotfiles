@@ -3,24 +3,25 @@ set nocompatible
 
 " BEGIN VUNDLE
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'skalnik/vim-vroom'
-Bundle 'jgdavey/vim-railscasts'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'elzr/vim-json'
-Bundle 'tpope/vim-surround'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'tpope/vim-markdown'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'wting/rust.vim'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'tpope/vim-commentary'
-Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'cespare/vim-toml'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'skalnik/vim-vroom'
+Plugin 'jgdavey/vim-railscasts'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'elzr/vim-json'
+Plugin 'tpope/vim-surround'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'tpope/vim-markdown'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'wting/rust.vim'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'tpope/vim-commentary'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'cespare/vim-toml'
+call vundle#end()
 filetype plugin indent on
 " END VUNDLE
 
