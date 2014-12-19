@@ -37,8 +37,8 @@ directory "#{node[:dotfiles][:home_path]}/.vim/swap" do
   group node[:dotfiles][:group]
 end
 
-git "#{node[:dotfiles][:home_path]}/.vim/bundle/vundle" do
-  repository "https://github.com/gmarik/vundle.git"
+git "#{node[:dotfiles][:home_path]}/.vim/bundle/Vundle.vim" do
+  repository "https://github.com/gmarik/Vundle.vim.git"
   user node[:dotfiles][:user]
   group node[:dotfiles][:group]
 end
