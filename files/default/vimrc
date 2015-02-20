@@ -22,6 +22,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
+Plugin 'tpope/vim-dispatch'
+Plugin 'timonv/vim-cargo-dispatch'
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE
@@ -140,8 +142,11 @@ inoremap <s-tab> <c-n>
 
 " Mappings
 nnoremap <leader><leader> <c-^>
-nnoremap <leader>t :w<cr>\|:!make<cr>
+nnoremap <leader>t :Dispatch<cr>
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
+
+" Dispatch default commands
+autocmd FileType rust let b:dispatch = 'cargo test'
