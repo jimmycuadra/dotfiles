@@ -16,14 +16,12 @@ Plugin 'tpope/vim-surround'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'tpope/vim-markdown'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'wting/rust.vim'
+Plugin 'rust-lang/rust.vim'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'tpope/vim-commentary'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
-Plugin 'tpope/vim-dispatch'
-Plugin 'timonv/vim-cargo-dispatch'
 Plugin 'bkad/vim-terraform'
 call vundle#end()
 filetype plugin indent on
@@ -141,13 +139,14 @@ endfunction
 inoremap <tab> <c-r>=TabOrComplete()<cr>
 inoremap <s-tab> <c-n>
 
+" Compilers
+autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
+
 " Mappings
 nnoremap <leader><leader> <c-^>
-nnoremap <leader>t :Dispatch<cr>
+nnoremap <leader>t :make test<cr>
+nnoremap <leader>b :make build<cr>
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
-
-" Dispatch default commands
-autocmd FileType rust let b:dispatch = 'cargo test'
