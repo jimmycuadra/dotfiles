@@ -24,6 +24,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'tpope/vim-dispatch'
 Plugin 'timonv/vim-cargo-dispatch'
+Plugin 'bkad/vim-terraform'
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE
