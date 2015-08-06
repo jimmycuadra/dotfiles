@@ -23,6 +23,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'bkad/vim-terraform'
+Plugin 'uarun/vim-protobuf'
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE
