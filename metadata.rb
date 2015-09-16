@@ -1,7 +1,0 @@
-name "dotfiles"
-maintainer "Jimmy Cuadra"
-maintainer_email "jimmy@jimmycuadra.com"
-license "MIT"
-description "A collection of dotfiles."
-long_description "See the README for more details."
-version "0.0.1"

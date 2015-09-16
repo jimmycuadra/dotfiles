@@ -1,9 +1,25 @@
 # dotfiles
 
-This is a [Chef](http://www.opscode.com/) cookbook to add my dotfiles to a machine. It also contains a script and some configuration files to allow you to provision the machine you're currently on with the default recipe.
+Various configuration files that are stored in my home directory on OS X.
 
-To set up your own workstation:
+## License
 
-1. Clone or simply download the repository to your computer.
-1. (Optional) Edit `node.json` to override any of the default attributes. The default attributes assume your user is "jimmy" on Mac OS X and "vagrant" on other platforms.
-1. Run `install.sh`.
+Copyright (c) 2015 Jimmy Cuadra
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

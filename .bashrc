@@ -15,14 +15,13 @@ darkcyan="$e[1;36m"
 
 # Miscellaneous
 export EDITOR=vim
-export GEMEDITOR=subl
+export GEMEDITOR=vim
 export CLICOLOR=1
 export HISTCONTROL="ignoreboth"
 
 # Paths
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # Homebrew
 export PATH="/usr/local/share/npm/bin:$PATH" # npm
-export PATH="./node_modules/.bin:$PATH" # Local npm modules
 # pyenv (adds to paths)
 export PYENV_ROOT=/usr/local/opt/pyenv
 if which pyenv > /dev/null; then
@@ -35,10 +34,6 @@ if which rbenv > /dev/null; then
 fi
 
 # Git
-type hub >/dev/null 2>&1
-if [ "$?" -eq 0 ]; then
-  alias git=hub
-fi
 _parse_git_branch() {
   ref=$(command git symbolic-ref HEAD 2> /dev/null) || return
   echo "("${ref#refs/heads/}") "
@@ -61,8 +56,11 @@ c() { cd ~/Code/$1; }
 
 # Completions
 for completion_file in \
+  ag.bashcomp.sh \
+  cargo \
+  docker \
+  docker-compose \
   git-completion.bash \
-  hub.bash_completion.sh \
   go-completion.bash.sh
 do
   full_completion_file="/usr/local/etc/bash_completion.d/$completion_file"
@@ -99,17 +97,8 @@ railsapp() {
   [ -e $template ] && rails new $1 --skip-bundle -T -m $template
 }
 
-# Python
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages
-
-# Node
-ne() { PATH=`npm bin`:$PATH $1; }
-
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
-
-# Vim
-alias jim=vim
 
 # Local (private) settings
 if [ -f ~/.localrc ]; then
@@ -119,6 +108,3 @@ fi
 # Prompt
 export PROMPT_COMMAND='jobsrunning=$(jobs -p)'
 export PS1="\[\033]0;\007\]\[${blue}\][\$(hostname -s)] \[${red}\][\$(rbenv version-name)] \[${darkcyan}\][\$(pyenv version-name)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${yellow}\]\${jobsrunning:+(\j) }\[${green}\]\\$\[${end}\] "
-
-# Direnv
-eval "$(direnv hook $0)"

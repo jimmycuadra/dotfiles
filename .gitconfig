@@ -10,15 +10,13 @@
   la = log --all --graph --pretty=format:'%Cgreen%h%Cblue%d %C(white)%s %Cblue%an %C(white)[%ar]'
 [core]
 	editor = vim
-	excludesfile = /Users/jimmy/.gitignore
+	excludesfile = /Users/jimmy/.gitignore_global
 	autocrlf = input
 [color]
 	ui = true
 [user]
 	name = Jimmy Cuadra
 	email = jimmy@jimmycuadra.com
-[heroku]
-	account = personal
 [branch]
 	autosetuprebase = always
 [push]
