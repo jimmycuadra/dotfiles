@@ -58,7 +58,6 @@ c() { cd ~/Code/$1; }
 for completion_file in \
   ag.bashcomp.sh \
   cargo \
-  docker \
   docker-compose \
   git-completion.bash \
   go-completion.bash.sh
