@@ -113,6 +113,9 @@ set backspace=2
 " Fix slow O inserts
 :set timeout timeoutlen=1000 ttimeoutlen=100
 
+" vim-json
+let g:vim_json_syntax_conceal = 0
+
 " Strip trailing whitespace on save
 function! <SID>StripTrailingWhitespace()
   let _s=@/
