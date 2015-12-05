@@ -24,6 +24,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'bkad/vim-terraform'
 Plugin 'uarun/vim-protobuf'
+Plugin 'nginx/nginx', {'rtp': 'contrib/vim/'}
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE
