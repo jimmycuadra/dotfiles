@@ -23,13 +23,9 @@ export HISTCONTROL="ignoreboth"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # Homebrew
 export PATH="/usr/local/share/npm/bin:$PATH" # npm
 export PATH="$HOME/.cargo/bin:$PATH" # Cargo
-# pyenv (adds to paths)
-export PYENV_ROOT=/usr/local/opt/pyenv
 if which pyenv > /dev/null; then
   eval "$(pyenv init -)"
 fi
-# rbenv (adds to paths)
-export RBENV_ROOT=/usr/local/opt/rbenv
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
