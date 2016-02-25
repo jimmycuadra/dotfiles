@@ -22,7 +22,7 @@ export HISTCONTROL="ignoreboth"
 # Paths
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # Homebrew
 export PATH="/usr/local/share/npm/bin:$PATH" # npm
-export PATH="$HOME/.cargo/bin:$PATH" # Cargo
+export PATH="$HOME/.multirust/bin:$HOME/.multirust/cargo/bin:$PATH" # multirust
 if which pyenv > /dev/null; then
   eval "$(pyenv init -)"
 fi
