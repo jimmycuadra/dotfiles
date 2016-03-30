@@ -17,6 +17,7 @@
 [user]
 	name = Jimmy Cuadra
 	email = jimmy@jimmycuadra.com
+	useconfigonly = true
 [branch]
 	autosetuprebase = always
 [push]
