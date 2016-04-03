@@ -14,6 +14,7 @@ magenta="$e[1;35m"
 darkcyan="$e[1;36m"
 
 # Miscellaneous
+export TERM=xterm-256color
 export EDITOR=vim
 export GEMEDITOR=vim
 export CLICOLOR=1
