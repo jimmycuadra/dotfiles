@@ -18,9 +18,12 @@
 	name = Jimmy Cuadra
 	email = jimmy@jimmycuadra.com
 	useconfigonly = true
+	signingkey = 9BF6B55C
 [branch]
 	autosetuprebase = always
 [push]
 	default = upstream
 [transfer]
 	fsckobjects = true
+[commit]
+	gpgsign = true
