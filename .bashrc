@@ -104,4 +104,4 @@ fi
 
 # Prompt
 export PROMPT_COMMAND='jobsrunning=$(jobs -p)'
-export PS1="\[\033]0;\007\]\[${blue}\][\$(hostname -s)] \[${red}\][\$(rbenv version-name)] \[${darkcyan}\][\$(pyenv version-name)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${yellow}\]\${jobsrunning:+(\j) }\[${green}\]\\$\[${end}\] "
+export PS1="\[\033]0;\007\]\[${blue}\][\$(hostname -s)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${yellow}\]\${jobsrunning:+(\j) }\[${green}\]\\$\[${end}\] "
