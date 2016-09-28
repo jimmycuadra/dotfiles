@@ -30,6 +30,7 @@ fi
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
+export PATH="$HOME/bin:$PATH" # custom stuff
 
 # Git
 _parse_git_branch() {
