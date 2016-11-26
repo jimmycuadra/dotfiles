@@ -25,3 +25,5 @@
 	default = upstream
 [transfer]
 	fsckobjects = true
+[diff]
+  compactionHeuristic = true
