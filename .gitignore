@@ -5,6 +5,7 @@
 !/.gemrc
 !/.gitconfig
 !/.gitignore
+!/.gitignore_global
 !/.irbrc
 !/.railsrc
 !/.rdebugrc
