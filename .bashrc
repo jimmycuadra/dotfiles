@@ -76,6 +76,9 @@ _c_complete() {
 
 complete -o default -F _c_complete c
 
+# Searching
+export FZF_DEFAULT_COMMAND="rg --files --hidden"
+
 # Bash functions
 ports() {
   lsof -iTCP -sTCP:LISTEN -P "$@"

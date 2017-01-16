@@ -30,6 +30,8 @@ call vundle#end()
 filetype plugin indent on
 " END VUNDLE
 
+set rtp+=/usr/local/opt/fzf
+
 " Colors
 colorscheme railscasts
 
