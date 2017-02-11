@@ -61,8 +61,8 @@ hi ColorColumn term=bold cterm=NONE ctermfg=NONE ctermbg=234 gui=NONE guifg=NONE
 set linebreak
 
 " Window sizing
-set winwidth=96
-set winminwidth=96
+set winwidth=100
+set winminwidth=100
 set winwidth=999
 
 " Window splitting
