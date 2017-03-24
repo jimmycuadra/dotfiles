@@ -26,7 +26,7 @@ Plugin 'bkad/vim-terraform'
 Plugin 'uarun/vim-protobuf'
 Plugin 'nginx/nginx', {'rtp': 'contrib/vim/'}
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'lambdatoast/elm.vim'
+Plugin 'ElmCast/elm-vim'
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE
@@ -122,6 +122,9 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 " vim-json
 let g:vim_json_syntax_conceal = 0
+
+" elm-vim
+let g:elm_format_autosave = 1
 
 " Strip trailing whitespace on save
 function! <SID>StripTrailingWhitespace()
