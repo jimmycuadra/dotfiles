@@ -26,6 +26,7 @@ Plugin 'bkad/vim-terraform'
 Plugin 'uarun/vim-protobuf'
 Plugin 'nginx/nginx', {'rtp': 'contrib/vim/'}
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'lambdatoast/elm.vim'
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE
