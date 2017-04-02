@@ -47,9 +47,10 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-autocmd FileType python set tabstop=4 softtabstop=4 shiftwidth=4
-autocmd FileType go set tabstop=4 softtabstop=4 shiftwidth=4
 autocmd FileType elm set tabstop=4 softtabstop=4 shiftwidth=4
+autocmd FileType go set tabstop=4 softtabstop=4 shiftwidth=4
+autocmd FileType haskell set tabstop=4 softtabstop=4 shiftwidth=4
+autocmd FileType python set tabstop=4 softtabstop=4 shiftwidth=4
 
 " Line numbers
 set number
