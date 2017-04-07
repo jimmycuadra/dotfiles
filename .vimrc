@@ -8,16 +8,13 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'skalnik/vim-vroom'
 Plugin 'jgdavey/vim-railscasts'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-surround'
 Plugin 'jnwhiteh/vim-golang'
-Plugin 'tpope/vim-markdown'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rust-lang/rust.vim'
-Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'tpope/vim-commentary'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'cespare/vim-toml'
@@ -51,6 +48,9 @@ autocmd FileType elm set tabstop=4 softtabstop=4 shiftwidth=4
 autocmd FileType go set tabstop=4 softtabstop=4 shiftwidth=4
 autocmd FileType haskell set tabstop=4 softtabstop=4 shiftwidth=4
 autocmd FileType python set tabstop=4 softtabstop=4 shiftwidth=4
+
+" File types
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Line numbers
 set number
@@ -127,6 +127,20 @@ let g:vim_json_syntax_conceal = 0
 
 " elm-vim
 let g:elm_format_autosave = 1
+
+" vim-markdown
+let g:markdown_fenced_languages = [
+\  'bash=sh',
+\  'haskell',
+\  'hcl=terraform',
+\  'html',
+\  'javascript',
+\  'json',
+\  'python',
+\  'ruby',
+\  'rust',
+\  'yaml',
+\]
 
 " Strip trailing whitespace on save
 function! <SID>StripTrailingWhitespace()
