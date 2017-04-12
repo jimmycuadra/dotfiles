@@ -101,11 +101,11 @@ railsapp() {
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 
+# Prompt
+export PROMPT_COMMAND='jobsrunning=$(jobs -p)'
+export PS1="\[\033]0;\007\]\[${blue}\][\$(hostname -s)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${yellow}\]\${jobsrunning:+(\j) }\[${green}\]\\$\[${end}\] "
+
 # Local (private) settings
 if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
-
-# Prompt
-export PROMPT_COMMAND='jobsrunning=$(jobs -p)'
-export PS1="\[\033]0;\007\]\[${blue}\][\$(hostname -s)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${yellow}\]\${jobsrunning:+(\j) }\[${green}\]\\$\[${end}\] "
