@@ -23,6 +23,7 @@ export HISTCONTROL="ignoreboth"
 # Paths
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # Homebrew
 export PATH="/usr/local/share/npm/bin:$PATH" # npm
+export PATH="$HOME/Code/go/bin:$PATH" # go
 export PATH="$HOME/.cargo/bin:$PATH" # rustup
 if which pyenv > /dev/null; then
   eval "$(pyenv init -)"
@@ -31,6 +32,9 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
 export PATH="$HOME/bin:$PATH" # custom stuff
+
+# Go
+export GOPATH="$HOME/Code/go"
 
 # Git
 _parse_git_branch() {
