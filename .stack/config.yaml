@@ -1,0 +1,6 @@
+templates:
+  params:
+   author-name: "Jimmy Cuadra"
+   author-email: "jimmy@jimmycuadra.com"
+   copyright: "Copyright (c) 2017 Jimmy Cuadra"
+   github-username: "jimmycuadra"

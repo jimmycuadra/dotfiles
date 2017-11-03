@@ -9,5 +9,6 @@
 !/.irbrc
 !/.railsrc
 !/.rdebugrc
+!/.stack/config.yaml
 !/.tmux.conf
 !/.vimrc
