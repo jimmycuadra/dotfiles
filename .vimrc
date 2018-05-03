@@ -1,40 +1,33 @@
 " Compatibility mode
 set nocompatible
 
-" BEGIN VUNDLE
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'jgdavey/vim-railscasts'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'elzr/vim-json'
-Plugin 'tpope/vim-surround'
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'rust-lang/rust.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'cespare/vim-toml'
-Plugin 'Matt-Deacalion/vim-systemd-syntax'
-Plugin 'bkad/vim-terraform'
-Plugin 'uarun/vim-protobuf'
-Plugin 'nginx/nginx', {'rtp': 'contrib/vim/'}
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'ElmCast/elm-vim'
-call vundle#end()
-filetype plugin indent on
-" END VUNDLE
+" BEGIN VIM-PLUG
+call plug#begin('~/.vim/plugged')
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'jgdavey/vim-railscasts'
+Plug 'kchmck/vim-coffee-script'
+Plug 'elzr/vim-json'
+Plug 'tpope/vim-surround'
+Plug 'jnwhiteh/vim-golang'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'rust-lang/rust.vim'
+Plug 'tpope/vim-commentary'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'cespare/vim-toml'
+Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'bkad/vim-terraform'
+Plug 'uarun/vim-protobuf'
+Plug 'nginx/nginx', {'rtp': 'contrib/vim/'}
+Plug 'elixir-lang/vim-elixir'
+Plug 'ElmCast/elm-vim'
+call plug#end()
+" END VIM-PLUG
 
 set rtp+=/usr/local/opt/fzf
 
 " Colors
 colorscheme railscasts
-
-" Syntax highlighting
-syntax on
 
 " Leader
 let mapleader=","
