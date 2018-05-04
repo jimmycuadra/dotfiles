@@ -112,6 +112,9 @@ set backspace=2
 " Fix slow O inserts
 :set timeout timeoutlen=1000 ttimeoutlen=100
 
+" Don't redraw the screen during macro execution
+set lazyredraw
+
 " ctrlp.vim
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
