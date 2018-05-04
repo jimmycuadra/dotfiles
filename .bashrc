@@ -80,8 +80,8 @@ _c_complete() {
 
 complete -o default -F _c_complete c
 
-# Searching
-export FZF_DEFAULT_COMMAND="rg --files --hidden"
+# Searching. This affects fzf.vim's `:Files` command in Vim.
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 # Bash functions
 ports() {

@@ -3,7 +3,6 @@ set nocompatible
 
 " BEGIN VIM-PLUG
 call plug#begin('~/.vim/plugged')
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'jgdavey/vim-railscasts'
 Plug 'kchmck/vim-coffee-script'
@@ -115,6 +114,10 @@ set backspace=2
 " Don't redraw the screen during macro execution
 set lazyredraw
 
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+end
+
 " ctrlp.vim
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
@@ -177,6 +180,7 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <c-p> :Files<cr>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<cr>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<cr>
