@@ -19,6 +19,8 @@ Plug 'uarun/vim-protobuf'
 Plug 'nginx/nginx', {'rtp': 'contrib/vim/'}
 Plug 'elixir-lang/vim-elixir'
 Plug 'ElmCast/elm-vim'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 " END VIM-PLUG
 
@@ -136,6 +138,11 @@ let g:markdown_fenced_languages = [
 \  'yaml',
 \]
 
+" LanguageClient-neovim
+let g:LanguageClient_serverCommands = {
+\  'rust': ['rustup', 'run', 'nightly', 'rls'],
+\}
+
 " Strip trailing whitespace on save
 function! <SID>StripTrailingWhitespace()
   let _s=@/
@@ -170,3 +177,6 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
