@@ -18,7 +18,7 @@
 	name = Jimmy Cuadra
 	email = jimmy@jimmycuadra.com
 	useconfigonly = true
-	signingkey = 9BF6B55C
+	signingkey = 0xE228F43A9BF6B55C
 [branch]
 	autosetuprebase = always
 [push]
