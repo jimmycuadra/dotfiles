@@ -60,7 +60,6 @@ c() { cd ~/Code/$1; }
 # Completions
 for completion_file in \
   ag.bashcomp.sh \
-  cargo \
   docker-compose \
   git-completion.bash \
   go-completion.bash.sh
@@ -70,6 +69,7 @@ do
     source $full_completion_file
   fi
 done
+source $(rustc --print sysroot)/etc/bash_completion.d/cargo > /dev/null 2>&1
 
 _c_complete() {
   local cur matches
