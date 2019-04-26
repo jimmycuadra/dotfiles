@@ -59,10 +59,9 @@ c() { cd ~/Code/$1; }
 
 # Completions
 for completion_file in \
-  ag.bashcomp.sh \
-  docker-compose \
   git-completion.bash \
-  go-completion.bash.sh
+  kubectl \
+  rg.bash
 do
   full_completion_file="/usr/local/etc/bash_completion.d/$completion_file"
   if [ -f $full_completion_file ]; then
