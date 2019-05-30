@@ -68,7 +68,8 @@ do
     source $full_completion_file
   fi
 done
-source $(rustc --print sysroot)/etc/bash_completion.d/cargo > /dev/null 2>&1
+cargo_completion=$(rustc --print sysroot)/etc/bash_completion.d/cargo
+[ -f "$cargo_completion" ] && source $cargo_completion
 
 _c_complete() {
   local cur matches
