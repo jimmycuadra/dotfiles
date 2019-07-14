@@ -21,8 +21,10 @@ export CLICOLOR=1
 export HISTCONTROL="ignoreboth"
 
 # Paths
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # Homebrew
-export PATH="/usr/local/share/npm/bin:$PATH" # npm
+if [ "$(uname)" = "Darwin" ]; then
+  export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # Homebrew
+  export PATH="/usr/local/share/npm/bin:$PATH" # npm
+fi
 export PATH="$HOME/Code/go/bin:$PATH" # go
 export PATH="$HOME/.cargo/bin:$PATH" # rustup
 if which pyenv > /dev/null; then
@@ -59,11 +61,16 @@ c() { cd ~/Code/$1; }
 
 # Completions
 for completion_file in \
+  git \
   git-completion.bash \
   kubectl \
   rg.bash
 do
-  full_completion_file="/usr/local/etc/bash_completion.d/$completion_file"
+  if [ "$(uname)" = "Darwin" ]; then
+    full_completion_file="/usr/local/etc/bash_completion.d/$completion_file"
+  else
+    full_completion_file="/usr/share/bash-completion/completions/$completion_file"
+  fi
   if [ -f $full_completion_file ]; then
     source $full_completion_file
   fi
