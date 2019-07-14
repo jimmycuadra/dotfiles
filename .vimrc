@@ -146,7 +146,7 @@ let g:markdown_fenced_languages = [
 
 " LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
-\  'rust': ['rustup', 'run', 'nightly', 'rls'],
+\  'rust': ['~/.cargo/bin/rls'],
 \}
 
 " Strip trailing whitespace on save
@@ -184,6 +184,7 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-p> :Files<cr>
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<cr>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<cr>
