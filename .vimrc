@@ -4,6 +4,7 @@ set nocompatible
 " BEGIN VIM-PLUG
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 Plug 'jgdavey/vim-railscasts'
 Plug 'kchmck/vim-coffee-script'
 Plug 'elzr/vim-json'
