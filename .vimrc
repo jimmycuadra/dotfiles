@@ -92,6 +92,9 @@ nmap <leader>d :b#<bar>bd#<CR>
 " Automatically reload files that change on disk
 set autoread
 
+" Don't insert extra spaces when joining lines.
+set nojoinspaces
+
 " Command line completion
 set wildmenu
 set wildmode=longest:list
