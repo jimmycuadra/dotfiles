@@ -1,6 +1,9 @@
 " Compatibility mode
 set nocompatible
 
+" Use UTF-8 everywhere
+set encoding=utf-8
+
 " BEGIN VIM-PLUG
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
