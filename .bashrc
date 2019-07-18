@@ -81,7 +81,7 @@ cargo_completion=$(rustc --print sysroot)/etc/bash_completion.d/cargo
 _c_complete() {
   local cur matches
   cur="${COMP_WORDS[COMP_CWORD]}"
-  matches=$(basename ~/Code/*)
+  matches=$(basename -a ~/Code/*)
   COMPREPLY=( $(compgen -W "${matches}" -- ${cur}) )
 }
 
