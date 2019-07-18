@@ -63,9 +63,16 @@ hi ColorColumn term=bold cterm=NONE ctermfg=NONE ctermbg=234 gui=NONE guifg=NONE
 set linebreak
 
 " Window sizing
-set winwidth=100
-set winminwidth=100
 set winwidth=999
+autocmd VimEnter * :call SetWinMinWidth()
+function SetWinMinWidth()
+  let min=(&columns / 2) - 1
+  if min < 100
+    let &winminwidth=min
+  else
+    set winminwidth=100
+  end
+endfunction
 
 " Window splitting
 set splitright
