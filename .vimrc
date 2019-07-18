@@ -128,9 +128,6 @@ if executable('rg')
   set grepprg=rg\ --vimgrep
 end
 
-" ctrlp.vim
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
 " vim-json
 let g:vim_json_syntax_conceal = 0
 
