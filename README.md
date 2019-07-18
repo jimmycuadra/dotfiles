@@ -1,10 +1,10 @@
 # dotfiles
 
-Various configuration files that are stored in my home directory on OS X.
+Various configuration files that are stored in my home directory on macOS and Linux systems.
 
 ## License
 
-Copyright (c) 2015-2016 Jimmy Cuadra
+Copyright (c) 2015-2019 Jimmy Cuadra
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
