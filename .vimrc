@@ -157,6 +157,9 @@ let g:markdown_fenced_languages = [
 \  'yaml',
 \]
 
+" deoplete.nvim
+let g:deoplete#enable_at_startup = 1
+
 " LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
 \  'rust': ['~/.cargo/bin/rls'],
