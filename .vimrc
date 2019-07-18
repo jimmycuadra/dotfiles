@@ -159,6 +159,8 @@ let g:markdown_fenced_languages = [
 
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
+" Close the preview window automatically after completion
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 
 " LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
@@ -187,6 +189,9 @@ function TabOrComplete()
 endfunction
 inoremap <tab> <c-r>=TabOrComplete()<cr>
 inoremap <s-tab> <c-n>
+
+" Use tab to scroll through auto completions
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Compilers
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
