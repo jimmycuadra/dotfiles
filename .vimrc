@@ -120,7 +120,7 @@ set visualbell
 set directory=$HOME/.vim/swap//
 
 " System clipboard
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 
 " Allow backspace to remove line breaks and auto-indentation
 " Why is this necessary???
