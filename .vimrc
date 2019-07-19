@@ -66,15 +66,7 @@ set linebreak
 
 " Window sizing
 set winwidth=999
-autocmd VimEnter * :call SetWinMinWidth()
-function SetWinMinWidth()
-  let min=(&columns / 2) - 1
-  if min < 100
-    let &winminwidth=min
-  else
-    set winminwidth=100
-  end
-endfunction
+autocmd VimEnter * let &winminwidth = min([(&columns / 2) - 1, 100])
 
 " Window splitting
 set splitright
