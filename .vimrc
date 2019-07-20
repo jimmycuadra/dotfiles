@@ -23,9 +23,13 @@ Plug 'nginx/nginx', {'rtp': 'contrib/vim/'}
 Plug 'elixir-lang/vim-elixir'
 Plug 'ElmCast/elm-vim'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp' " deoplete.nvim needs this for regular vim
-Plug 'roxma/vim-hug-neovim-rpc' " nvim-yarp needs this for regular vim
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
