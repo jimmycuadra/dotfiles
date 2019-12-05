@@ -196,11 +196,16 @@ autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
 nnoremap <leader><leader> <c-^>
 nnoremap <leader>t :make test<cr>
 nnoremap <leader>b :make build<cr>
+" Copy full file path to clipboard
+nnoremap <leader>ffn :let @*=expand('%:p')<cr>
+" Copy relative file path to clipboard
+nnoremap <leader>fn :let @*=expand('%')<cr>
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-p> :Files<cr>
+" esc-p
 nnoremap p :Buffers<cr>
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<cr>
