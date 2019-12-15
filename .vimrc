@@ -35,6 +35,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'rust-lang/rust.vim'
+
+" Load all layered packages.
+for fpath in split(globpath('~/.vim/layers', '**/packages.vim'), '\n')
+  exe 'source' fpath
+endfor
+
 call plug#end()
 " END VIM-PLUG
 
@@ -212,3 +218,8 @@ nnoremap <silent> K :call LanguageClient#textDocument_hover()<cr>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<cr>
 nnoremap / /\v
+
+" Load all layered configuration.
+for fpath in split(globpath('~/.vim/layers', '**/config.vim'), '\n')
+  exe 'source' fpath
+endfor
