@@ -165,6 +165,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 
 " LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
+\  'python': ['~/.pyenv/shims/pyls'],
 \  'rust': ['~/.cargo/bin/rls'],
 \  'typescript': ['typescript-language-server', '--stdio'],
 \  'typescriptreact': ['typescript-language-server', '--stdio'],
