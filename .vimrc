@@ -33,7 +33,6 @@ endif
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
 Plug 'rust-lang/rust.vim'
 
 " Load all layered packages.
@@ -167,6 +166,8 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 " LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
 \  'rust': ['~/.cargo/bin/rls'],
+\  'typescript': ['typescript-language-server', '--stdio'],
+\  'typescriptreact': ['typescript-language-server', '--stdio'],
 \}
 
 " Strip trailing whitespace on save
