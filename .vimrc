@@ -35,6 +35,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Load all layered packages.
 for fpath in split(globpath('~/.vim/layers', '**/packages.vim'), '\n')
@@ -200,6 +201,20 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Compilers
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
+
+" Syntax for Helm templates (Go templates inside YAML)
+function HelmSyntax()
+  set filetype=yaml
+  unlet b:current_syntax
+  syn include @yamlGoTextTmpl syntax/gotexttmpl.vim
+  let b:current_syntax = "yaml"
+  syn region goTextTmpl start=/{{/ end=/}}/ contains=@gotplLiteral,gotplControl,gotplFunctions,gotplVariable,goTplIdentifier containedin=ALLBUT,goTextTmpl keepend
+  hi def link goTextTmpl PreProc
+endfunction
+augroup helm_syntax
+  autocmd!
+  autocmd BufRead,BufNewFile */templates/*.yaml,*/templates/*.tpl call HelmSyntax()
+augroup END
 
 " Mappings
 nnoremap <leader><leader> <c-^>
