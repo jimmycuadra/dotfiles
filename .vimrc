@@ -174,7 +174,7 @@ let g:LanguageClient_serverCommands = {
 \}
 
 " Strip trailing whitespace on save
-function! <SID>StripTrailingWhitespace()
+function <SID>StripTrailingWhitespace()
   let _s=@/
   let l = line(".")
   let c = col(".")
