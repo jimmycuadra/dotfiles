@@ -36,6 +36,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'yggdroot/indentline'
 
 " Load all layered packages.
 for fpath in split(globpath('~/.vim/layers', '**/packages.vim'), '\n')
