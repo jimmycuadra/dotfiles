@@ -230,8 +230,7 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-p> :Files<cr>
-" esc-p
-nnoremap p :Buffers<cr>
+nnoremap <c-b> :Buffers<cr>
 nnoremap gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
