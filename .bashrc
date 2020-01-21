@@ -77,6 +77,15 @@ do
 done
 cargo_completion=$(rustc --print sysroot)/etc/bash_completion.d/cargo
 [ -f "$cargo_completion" ] && source $cargo_completion
+fzf_base_path="/usr/local/opt/fzf/shell"
+for completion_file in \
+  completion.bash \
+  key-bindings.bash
+do
+  if [ -f "$fzf_base_path/$completion_file" ]; then
+    source "$fzf_base_path/$completion_file"
+  fi
+done
 
 _c_complete() {
   local cur matches

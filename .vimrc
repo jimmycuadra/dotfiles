@@ -31,7 +31,8 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+" install with `brew install fzf`
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
