@@ -30,6 +30,10 @@ else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
+" To find the version of Python Vim is using:
+" :pyx import os
+" :pyx print(os.path.join(os.__file__.split("lib/")[0], "bin", "python3"))
+" Then from the shell, run `absolute_path_to_python3 -m pip install neovim`.
 endif
 " install with `brew install fzf`
 Plug '/usr/local/opt/fzf'
