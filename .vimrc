@@ -173,6 +173,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 
 " LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
+\  'go': ['/usr/bin/env', 'gopls', '-remote', 'auto'],
 \  'python': ['/usr/bin/env', 'pyls'],
 \  'rust': ['/usr/bin/env', 'rls'],
 \  'typescript': ['/usr/bin/env', 'typescript-language-server', '--stdio'],
