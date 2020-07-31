@@ -175,7 +175,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 let g:LanguageClient_serverCommands = {
 \  'go': ['/usr/bin/env', 'gopls', '-remote', 'auto'],
 \  'python': ['/usr/bin/env', 'pyls'],
-\  'rust': ['/usr/bin/env', 'rls'],
+\  'rust': ['/usr/bin/env', 'rust-analyzer'],
 \  'typescript': ['/usr/bin/env', 'typescript-language-server', '--stdio'],
 \  'typescriptreact': ['/usr/bin/env', 'typescript-language-server', '--stdio'],
 \}
