@@ -61,10 +61,14 @@ c() { cd ~/Code/$1; }
 
 # Completions
 for completion_file in \
+  brew \
+  exa \
+  fd.bash \
   git \
   git-completion.bash \
   kubectl \
-  rg.bash
+  rg.bash \
+  sd.bash
 do
   if [ "$(uname)" = "Darwin" ]; then
     full_completion_file="/usr/local/etc/bash_completion.d/$completion_file"
