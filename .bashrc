@@ -60,6 +60,7 @@ alias la="ls -A"
 c() { cd ~/Code/$1; }
 
 # Completions
+[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
 for completion_file in \
   brew \
   exa \
