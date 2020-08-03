@@ -56,6 +56,9 @@ alias l="ls -lAh"
 alias ll="ls -l"
 alias la="ls -A"
 
+# Include custom magic pattern files for file(1)
+alias file="file -m ~/.config/file/magic"
+
 # Changing directories
 c() { cd ~/Code/$1; }
 

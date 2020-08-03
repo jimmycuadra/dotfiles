@@ -1,0 +1,9 @@
+#------------------------------------------------------------------------------
+# $File: age,v 1.1 2020/05/28 16:20:00 aerth Exp $
+# age: file(1) magic for age encryption files
+#
+# format spec: https://age-encryption.org/v1
+
+0   string  -----BEGIN\040AGE\040   age encrypted data (ascii armored)
+0   string age-encryption.org/      age encrypted data
+>&0 string x Version: %s

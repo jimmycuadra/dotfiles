@@ -1,8 +1,14 @@
+# Ignore everything by default.
 /*
+
+# Ignore .config subdirectories by default, but allow individual subdirectories to be included.
+!/.config
+/.config/*
+
 !/.bash_profile
 !/.bashrc
 !/.bundle/config
-!/.config/nvim
+!/.config/file
 !/.gemrc
 !/.gitconfig
 !/.gitignore
