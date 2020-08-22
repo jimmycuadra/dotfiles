@@ -43,6 +43,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'yggdroot/indentline'
 
+runtime macros/matchit.vim
+
 " Load all layered packages.
 for fpath in split(globpath('~/.vim/layers', '**/packages.vim'), '\n')
   exe 'source' fpath
