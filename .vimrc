@@ -71,6 +71,19 @@ autocmd FileType python set tabstop=4 softtabstop=4 shiftwidth=4
 
 " File types
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.tsx runtime! indent/typescript.vim
+
+" leafgarland/typescript-vim doesn't activate on the "typescriptreact"
+" filetype. This augroup can be deleted if
+" https://github.com/leafgarland/typescript-vim/pull/171
+" is merged.
+augroup tsx
+  autocmd!
+  autocmd BufRead,BufNewFile *.tsx runtime! compiler/typescript.vim
+  autocmd BufRead,BufNewFile *.tsx runtime! ftplugin/typescript.vim
+  autocmd BufRead,BufNewFile *.tsx runtime! indent/typescript.vim
+  autocmd BufRead,BufNewFile *.tsx runtime! syntax/typescript.vim
+augroup END
 
 " Line numbers
 set number
