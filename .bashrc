@@ -55,6 +55,7 @@ alias ls="ls -F"
 alias l="ls -lAh"
 alias ll="ls -l"
 alias la="ls -A"
+alias e="exa"
 
 # Include custom magic pattern files for file(1)
 alias file="file -m ~/.config/file/magic"
