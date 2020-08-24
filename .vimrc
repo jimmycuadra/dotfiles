@@ -259,18 +259,18 @@ nnoremap [q :cprevious<cr>zv
 nnoremap ]q :cnext<cr>zv
 nnoremap [Q :cfirst<cr>zv
 nnoremap ]Q :clast<cr>zv
-nnoremap gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-nnoremap K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+nmap gd <Plug>(lcn-definition)
+nmap <leader>ld <Plug>(lcn-definition)
+nmap <leader>le <Plug>(lcn-explain-error)
+nmap <leader>lf <Plug>(lcn-format)
+nmap K <Plug>(lcn-hover)
+nmap <leader>lh <Plug>(lcn-hover)
+nmap <leader>li <Plug>(lcn-implementation)
+nmap <leader>lm <Plug>(lcn-menu)
+nmap <leader>lr <Plug>(lcn-rename)
+nmap <leader>ls <Plug>(lcn-symbols)
+nmap <leader>lt <Plug>(lcn-type-definition)
+nmap <leader>lx <Plug>(lcn-references)
 nnoremap / /\v
 
 " Load all layered configuration.
