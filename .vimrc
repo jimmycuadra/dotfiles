@@ -194,6 +194,8 @@ let g:LanguageClient_serverCommands = {
 \  'typescript': ['/usr/bin/env', 'typescript-language-server', '--stdio'],
 \  'typescriptreact': ['/usr/bin/env', 'typescript-language-server', '--stdio'],
 \}
+" Format visual selection with '='
+set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
 " Strip trailing whitespace on save
 function <SID>StripTrailingWhitespace()
