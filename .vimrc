@@ -194,6 +194,7 @@ let g:LanguageClient_serverCommands = {
 \  'typescript': ['/usr/bin/env', 'typescript-language-server', '--stdio'],
 \  'typescriptreact': ['/usr/bin/env', 'typescript-language-server', '--stdio'],
 \}
+let g:LanguageClient_preferredMarkupKind = ['plaintext', 'markdown']
 " Format visual selection with '='
 set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
