@@ -254,6 +254,10 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-p> :Files<cr>
 nnoremap <c-b> :Buffers<cr>
+nnoremap [q :cprevious<cr>zv
+nnoremap ]q :cnext<cr>zv
+nnoremap [Q :cfirst<cr>zv
+nnoremap ]Q :clast<cr>zv
 nnoremap gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
