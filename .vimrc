@@ -42,6 +42,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'yggdroot/indentline'
+Plug 'tpope/vim-ragtag'
 
 runtime macros/matchit.vim
 
