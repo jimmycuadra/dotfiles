@@ -192,6 +192,7 @@ let g:LanguageClient_serverCommands = {
 \  'go': ['/usr/bin/env', 'gopls', '-remote', 'auto'],
 \  'python': ['/usr/bin/env', 'pyls'],
 \  'rust': ['/usr/bin/env', 'rust-analyzer'],
+\  'javascript': ['/usr/bin/env', 'typescript-language-server', '--stdio'],
 \  'typescript': ['/usr/bin/env', 'typescript-language-server', '--stdio'],
 \  'typescriptreact': ['/usr/bin/env', 'typescript-language-server', '--stdio'],
 \}
