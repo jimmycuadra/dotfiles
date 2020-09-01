@@ -38,7 +38,7 @@ endif
 " install with `brew install fzf`
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'yggdroot/indentline'
@@ -72,19 +72,6 @@ autocmd FileType python set tabstop=4 softtabstop=4 shiftwidth=4
 
 " File types
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufNewFile,BufReadPost *.tsx runtime! indent/typescript.vim
-
-" leafgarland/typescript-vim doesn't activate on the "typescriptreact"
-" filetype. This augroup can be deleted if
-" https://github.com/leafgarland/typescript-vim/pull/171
-" is merged.
-augroup tsx
-  autocmd!
-  autocmd BufRead,BufNewFile *.tsx runtime! compiler/typescript.vim
-  autocmd BufRead,BufNewFile *.tsx runtime! ftplugin/typescript.vim
-  autocmd BufRead,BufNewFile *.tsx runtime! indent/typescript.vim
-  autocmd BufRead,BufNewFile *.tsx runtime! syntax/typescript.vim
-augroup END
 
 " Line numbers
 set number
