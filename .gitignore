@@ -5,6 +5,9 @@
 !/.config
 /.config/*
 
+!/.vim
+/.vim/*
+
 !/.bash_profile
 !/.bashrc
 !/.bundle/config
@@ -18,4 +21,5 @@
 !/.rdebugrc
 !/.stack/config.yaml
 !/.tmux.conf
+!/.vim/layers
 !/.vimrc
