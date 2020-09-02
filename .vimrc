@@ -78,14 +78,20 @@ set showcmd
 set showmode
 
 " Status line
+" fun
 set laststatus=2
-set statusline=%-10.3n\
-set statusline+=%f\
-set statusline+=%h%m%r%w
-set statusline+=\[%{strlen(&ft)?&ft:'none'}]
+set statusline=%#CursorLineNr#
+set statusline+=%-3n
+set statusline+=\ %f
+set statusline+=\ %y
+set statusline+=\ %h%m%r%w
 set statusline+=%=
-set statusline+=%-14(%l,%c%V%)
-set statusline+=%<%P
+set statusline+=%-14(%l/%L,%c%V%)
+set statusline+=%<%-6P
+set statusline+=%2#WarningMsg#
+set statusline+=\ %2{coc#status()}
+set statusline+=\ %2#PmenuSel#
+set statusline+=%{'\ '.FugitiveHead(7).'\ '}
 
 " Buffers
 set hidden
