@@ -23,7 +23,6 @@ export HISTCONTROL="ignoreboth"
 # Paths
 if [ "$(uname)" = "Darwin" ]; then
   export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # Homebrew
-  export PATH="/usr/local/share/npm/bin:$PATH" # npm
 fi
 export PATH="$HOME/Code/go/bin:$PATH" # go
 export PATH="$HOME/.cargo/bin:$PATH" # rustup
