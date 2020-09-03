@@ -130,6 +130,13 @@ railsapp() {
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 
+# Colored man pages
+if which bat >/dev/null; then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+else
+  echo 'Colored man pages are not available. Activate them with `brew install bat`.' >&2
+fi
+
 # Prompt
 export PROMPT_COMMAND='jobsrunning=$(jobs -p)'
 export PS1="\[\033]0;\007\]\[${blue}\][\$(hostname -s)] \[${green}\]\w\[${darkcyan}\] \$(_parse_git_branch)\[${yellow}\]\${jobsrunning:+(\j) }\[${green}\]\\$\[${end}\] "
