@@ -83,8 +83,12 @@ do
     source $full_completion_file
   fi
 done
-cargo_completion=$(rustc --print sysroot)/etc/bash_completion.d/cargo
-[ -f "$cargo_completion" ] && source $cargo_completion
+
+if which rustc >/dev/null; then
+  cargo_completion=$(rustc --print sysroot)/etc/bash_completion.d/cargo
+  [ -f "$cargo_completion" ] && source $cargo_completion
+fi
+
 fzf_base_path="/usr/local/opt/fzf/shell"
 for completion_file in \
   completion.bash \
@@ -105,7 +109,11 @@ _c_complete() {
 complete -o default -F _c_complete c
 
 # Searching. This affects fzf.vim's `:Files` command in Vim.
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+if which rg >/dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+else
+  echo 'fzf default command cannot be set without ripgrep. Run `brew install rg`.' >&2
+fi
 
 # Bash functions
 ports() {
