@@ -167,6 +167,21 @@ nnoremap <c-p> :Files<cr>
 nnoremap <c-b> :Buffers<cr>
 nnoremap / /\v
 
+" Call :Writer to enable settings for word processing
+" z= in normal mode will fix spelling of the word under the cursor
+function! Writer()
+  setlocal spell spelllang=en_us
+  setlocal formatoptions+=t1
+  setlocal textwidth=80
+  setlocal noautoindent
+  set shiftwidth=5
+  set tabstop=5
+  set expandtab
+  " Reformat the buffer for textwidth to take effect.
+  normal! gggqG
+endfunction
+command! Writer call Writer()
+
 " Load all layered configuration.
 for fpath in split(globpath('~/.vim/layers', '**/config.vim'), '\n')
   exe 'source' fpath
