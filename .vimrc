@@ -169,6 +169,7 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-p> :Files<cr>
 nnoremap <c-b> :Buffers<cr>
 nnoremap / /\v
+inoremap jj <esc>
 
 " Call :Writer to enable settings for word processing
 " z= in normal mode will fix spelling of the word under the cursor
