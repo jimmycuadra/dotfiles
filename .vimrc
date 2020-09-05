@@ -133,6 +133,9 @@ set backspace=2
 " Don't redraw the screen during macro execution
 set lazyredraw
 
+" Remove comment leader when joining lines
+set formatoptions+=j
+
 " Turn off 'old regexp engine' as suggested by the yats.vim README
 set re=0
 
