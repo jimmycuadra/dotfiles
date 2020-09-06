@@ -114,7 +114,6 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
-:nnoremap <cr> :nohlsearch<cr>
 
 " Visual bell
 set visualbell
@@ -153,6 +152,14 @@ function <SID>StripTrailingWhitespace()
   call cursor(l, c)
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespace()
+
+" Use <cr> in normal mode to close popup windows and turn off search highlights
+function <SID>ClosePopups()
+  if len(popup_list()) > 0
+    call popup_clear()
+  end
+endfunction
+nnoremap <cr> :call <SID>ClosePopups()<bar>:nohlsearch<cr>
 
 " Mappings
 nnoremap <leader><leader> <c-^>
