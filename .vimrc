@@ -155,8 +155,14 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespace()
 
 " Use <cr> in normal mode to close popup windows and turn off search highlights
 function <SID>ClosePopups()
-  if len(popup_list()) > 0
-    call popup_clear()
+  if has('nvim')
+    if coc#float#has_float()
+      call coc#float#close_auto_hide_wins()
+    end
+  else
+    if len(popup_list()) > 0
+      call popup_clear()
+    end
   end
 endfunction
 nnoremap <cr> :call <SID>ClosePopups()<bar>:nohlsearch<cr>
