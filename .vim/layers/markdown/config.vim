@@ -1,15 +1,26 @@
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" vim-markdown
 let g:markdown_fenced_languages = [
 \  'bash=sh',
 \  'haskell',
 \  'hcl=terraform',
 \  'html',
 \  'javascript',
+\  'javascriptreact',
+\  'js=javascript',
 \  'json',
+\  'jsonc',
+\  'jsx=javascriptreact',
 \  'python',
+\  'rb=ruby',
+\  'rs=rust',
 \  'ruby',
 \  'rust',
+\  'sh',
+\  'ts=typescript',
+\  'tsx=typescriptreact',
+\  'typescript',
+\  'typescriptreact',
 \  'yaml',
+\  'yml=yaml',
 \]
+
+let g:markdown_syntax_conceal = 0
