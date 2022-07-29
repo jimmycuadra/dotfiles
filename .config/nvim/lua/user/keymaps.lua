@@ -1,5 +1,9 @@
 local map = vim.keymap.set
+local unmap = vim.keymap.del
 local silent = { silent = true }
+
+-- Undo Neovim's default mapping for 'Y' so it performs 'yy' like in Vim
+unmap("n", "Y")
 
 -- Swap to the last viewed buffer
 map("n", "<leader><leader>", "<c-^>")
