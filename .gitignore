@@ -21,6 +21,8 @@
 !/.bashrc
 !/.bundle/config
 !/.config/file
+!/.config/nvim/.luarc.json
+!/.config/nvim/init.lua
 !/.config/nvim/init.lua
 !/.config/nvim/lua
 !/.gemrc
