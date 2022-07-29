@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
 local o = vim.opt
 
@@ -33,8 +34,19 @@ local on_attach = function(_, bufnr)
   map("n", "lc", vim.lsp.buf.code_action, buffer_opts)
 end
 
+local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+lspconfig.solargraph.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    diagnostics = false,
+  },
+})
+
 lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
