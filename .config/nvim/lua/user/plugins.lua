@@ -1,4 +1,4 @@
-vim.call("plug#begin", "~/.config/nvim/plugged")
+vim.call("plug#begin")
 
 local Plug = vim.fn["plug#"]
 
