@@ -20,9 +20,6 @@ local options = {
   -- Wrap on word bouna
   linebreak = true,
 
-  -- Window sizing
-  winwidth = 999,
-
   -- Window splitting
   splitright = true,
 
@@ -67,6 +64,16 @@ autocmd BufWritePre * :call StripTrailingWhitespace()
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = "g:StripTrailingWhitespace",
+})
+
+-- Each of two vertical splits have a minimum width (at least 100 columns
+-- and up to half the number of available columns). The active window will
+-- consume as much horizontal space as possible, collapsing the other
+-- vertical split to its minimum width.
+vim.opt.winwidth = 999
+vim.api.nvim_create_autocmd("VimEnter", {
+  pattern = "*",
+  command = "let &winminwidth = min([(&columns / 2) - 1, 100])"
 })
 
 -- Load all layered configuration.
