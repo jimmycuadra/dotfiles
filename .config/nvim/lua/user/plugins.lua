@@ -25,7 +25,7 @@ packer.startup(function(use)
   use "junegunn/fzf.vim"
 
   -- Railscasts color scheme
-  use "jgdavey/vim-railscasts"
+  use "jimmycuadra/vim-railscasts"
 
   -- Multiple cursors
   use "mg979/vim-visual-multi"
