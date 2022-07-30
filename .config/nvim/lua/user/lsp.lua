@@ -1,9 +1,9 @@
-local ok, lspconfig = pcall(require, "lspconfig")
-if not ok then return end
-local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if not ok then return end
-local ok, null_ls = pcall(require, "null-ls")
-if not ok then return end
+local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_ok then return end
+local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if not cmp_nvim_lsp_ok then return end
+local null_ls_ok, null_ls = pcall(require, "null-ls")
+if not null_ls_ok then return end
 
 local o = vim.opt
 
@@ -63,6 +63,12 @@ lspconfig.sumneko_lua.setup({
       },
       diagnostics = {
         globals = { "vim" },
+        disable = {
+          -- The server isn't smart enough to know that if a module is
+          -- required with `pcall` and we return when it isn't successful,
+          -- then the module is not `nil` past that point.
+          "need-check-nil",
+        },
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
@@ -79,10 +85,10 @@ lspconfig.tsserver.setup({
   capabilities = capabilities,
 })
 
-local code_actions = null_ls.builtins.code_actions
-local diagnostics = null_ls.builtins.diagnostics
-local formatting = null_ls.builtins.formatting
-
+local builtins = null_ls.builtins
+local code_actions = builtins.code_actions
+local diagnostics = builtins.diagnostics
+local formatting = builtins.formatting
 
 null_ls.setup({
   sources = {

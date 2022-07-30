@@ -1,7 +1,7 @@
-local ok, cmp = pcall(require, "cmp")
-if not ok then return end
-local ok, luasnip = pcall(require, "luasnip")
-if not ok then return end
+local cmp_ok, cmp = pcall(require, "cmp")
+if not cmp_ok then return end
+local luasnip_ok, luasnip = pcall(require, "luasnip")
+if not luasnip_ok then return end
 
 cmp.setup({
   sources = {
