@@ -30,12 +30,12 @@ cmp.setup({
   }),
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = "[" .. vim_item.kind .. "]"
+      vim_item.kind = "(" .. vim_item.kind .. ")"
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
-        luasnip = "[Snippet]",
-        buffer = "[Buffer]",
-        path = "[Path]",
+        luasnip = "[Snp]",
+        buffer = "[Buf]",
+        path = "[Pth]",
       })[entry.source.name] or entry.source.name
 
       return vim_item
