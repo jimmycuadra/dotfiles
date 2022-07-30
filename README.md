@@ -4,7 +4,7 @@ Various configuration files that are stored in my home directory on macOS and Li
 
 ## License
 
-Copyright (c) 2015-2019 Jimmy Cuadra
+Copyright (c) 2015-present Jimmy Cuadra
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
