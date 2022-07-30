@@ -126,10 +126,12 @@ local formatting = builtins.formatting
 
 null_ls.setup({
   -- brew install black eslint flake8 prettier stylua
+  -- gem install rubocop
   sources = {
     code_actions.eslint,
     diagnostics.eslint,
     diagnostics.flake8,
+    diagnostics.rubocop,
     formatting.black,
     formatting.eslint,
     formatting.prettier,
