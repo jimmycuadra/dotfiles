@@ -27,7 +27,7 @@ local map = vim.keymap.set
 
 local opts = { silent = true }
 
-map('n', '<leader>e', vim.diagnostic.open_float, opts)
+-- Navigate diagnostics
 map('n', '[g', vim.diagnostic.goto_prev, opts)
 map('n', ']g', vim.diagnostic.goto_next, opts)
 map('n', '<leader>q', vim.diagnostic.setloclist, opts)
@@ -45,12 +45,11 @@ local on_attach = function(client, bufnr)
   map("n", "gd", vim.lsp.buf.definition, buffer_opts)
   map("n", "gD", vim.lsp.buf.declaration, buffer_opts)
   map("n", "gr", vim.lsp.buf.references, buffer_opts)
-  map("n", "gt", vim.lsp.buf.type_definition, buffer_opts)
+  map("n", "gy", vim.lsp.buf.type_definition, buffer_opts)
   map("n", "gi", vim.lsp.buf.implementation, buffer_opts)
 
   map("n", "<leader>F", vim.lsp.buf.formatting, buffer_opts)
-
-  map("n", "lc", vim.lsp.buf.code_action, buffer_opts)
+  map("n", "<leader>c", vim.lsp.buf.code_action, buffer_opts)
 end
 
 local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
