@@ -28,14 +28,6 @@ Plug 'tpope/vim-surround'
 Plug 'yggdroot/indentline'
 
 -- Load all layered packages.
-local paths = vim.fn.split(
-  vim.fn.globpath("~/.config/nvim/lua/user", "**/packages.lua"),
-  "\n"
-)
-for _, path in ipairs(paths) do
-  local _, _, mod = string.find(path, "(user/.*/packages)")
-  mod = string.gsub(mod, "/", ".")
-  require(mod)
-end
+vim.cmd("runtime! lua/user/**/packages.lua")
 
 vim.call("plug#end")

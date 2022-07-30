@@ -77,12 +77,4 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 -- Load all layered configuration.
-local paths = vim.fn.split(
-  vim.fn.globpath("~/.config/nvim/lua/user", "**/config.lua"),
-  "\n"
-)
-for _, path in ipairs(paths) do
-  local _, _, mod = string.find(path, "(user/.*/config)")
-  mod = string.gsub(mod, "/", ".")
-  require(mod)
-end
+vim.cmd("runtime! lua/user/**/config.lua")
