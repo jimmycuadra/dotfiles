@@ -13,6 +13,16 @@ o.cmdheight = 2
 -- Display signs over line numbers
 o.signcolumn = "number"
 
+-- Configure diagnostics
+vim.diagnostic.config({
+  -- Only show diagnostics in floating windows
+  virtual_text = false,
+  float = {
+    -- Show which LSP source produced the diagnostic
+    source = true,
+  },
+})
+
 local map = vim.keymap.set
 
 local opts = { silent = true }
