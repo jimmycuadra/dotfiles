@@ -45,6 +45,32 @@ end
 
 local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+-- yarn global add bash-language-server
+lspconfig.bashls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+-- yarn global add dockerfile-language-server-nodejs
+lspconfig.dockerls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+-- brew install pyright
+lspconfig.pyright.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+-- brew install rust-analyzer
+-- rustup component add rust-src
+lspconfig.rust_analyzer.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+-- gem install solargraph
 lspconfig.solargraph.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -53,6 +79,13 @@ lspconfig.solargraph.setup({
   },
 })
 
+-- brew install sqls
+lspconfig.sqls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+-- brew install lua-language-server
 lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -80,6 +113,7 @@ lspconfig.sumneko_lua.setup({
   }
 })
 
+-- yarn global add typescript-language-server
 lspconfig.tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -91,6 +125,7 @@ local diagnostics = builtins.diagnostics
 local formatting = builtins.formatting
 
 null_ls.setup({
+  -- brew install black eslint flake8 prettier stylua
   sources = {
     code_actions.eslint,
     diagnostics.eslint,
