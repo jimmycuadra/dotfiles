@@ -20,3 +20,10 @@ map("n", "<c-l>", "<c-w>l")
 
 -- "Very magic" searches. Regex (), |, and {} don't need to be escaped
 map("n", "/", "/\\v")
+
+-- Bash-style cursor movement in the command line
+map("c", "<c-a>", "<home>")
+map("c", "<c-f>", "<right>")
+map("c", "<c-b>", "<left>")
+map("c", "<esc>b", "<s-left>")
+map("c", "<esc>f", "<s-right>")
