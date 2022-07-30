@@ -1,5 +1,7 @@
-local cmp = require("cmp")
-local luasnip = require("luasnip")
+local ok, cmp = pcall(require, "cmp")
+if not ok then return end
+local ok, luasnip = pcall(require, "luasnip")
+if not ok then return end
 
 cmp.setup({
   sources = {

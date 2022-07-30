@@ -1,33 +1,71 @@
-vim.call("plug#begin")
+local fn = vim.fn
 
-local Plug = vim.fn["plug#"]
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
--- install with `brew install fzf`
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system({
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  })
+  vim.cmd [[packadd packer.nvim]]
+end
 
--- color scheme
-Plug 'jgdavey/vim-railscasts'
+local ok, packer = pcall(require, "packer")
+if not ok then return end
 
--- multiple cursors
-Plug 'mg979/vim-visual-multi'
+packer.startup(function(use)
+  use "wbthomason/packer.nvim"
 
--- comment/uncomment selections
-Plug 'tpope/vim-commentary'
+  -- Install with `brew install fzf`
+  use "/usr/local/opt/fzf"
+  use "junegunn/fzf.vim"
 
--- mappings for navigation
-Plug 'tpope/vim-ragtag'
+  -- Railscasts color scheme
+  use "jgdavey/vim-railscasts"
 
--- repeat things with . that you normally can't
-Plug 'tpope/vim-repeat'
+  -- Multiple cursors
+  use "mg979/vim-visual-multi"
 
--- add, remove, and change things like braces and brackets around objects
-Plug 'tpope/vim-surround'
+  -- Comment/uncomment selections
+  use "tpope/vim-commentary"
 
--- add faint vertical lines to mark levels of indentation
-Plug 'yggdroot/indentline'
+  -- Mappings for navigation
+  use "tpope/vim-ragtag"
 
--- Load all layered packages.
-vim.cmd("runtime! lua/user/**/packages.lua")
+  -- Repeat things with . that you normally can't
+  use "tpope/vim-repeat"
 
-vim.call("plug#end")
+  -- Add, remove, and change things like braces and brackets around objects
+  use "tpope/vim-surround"
+
+  -- Add faint vertical lines to mark levels of indentation
+  use "yggdroot/indentline"
+
+  -- Completion
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lua"
+  use "L3MON4D3/LuaSnip"
+
+  -- LSP
+  use "neovim/nvim-lspconfig"
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+  }
+
+  -- Git
+  use "tpope/vim-fugitive"
+
+  if PACKER_BOOTSTRAP then
+    packer.sync()
+  end
+end)

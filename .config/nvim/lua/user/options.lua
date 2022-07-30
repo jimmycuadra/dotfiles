@@ -1,6 +1,3 @@
--- Colors
-vim.cmd "colorscheme railscasts"
-
 -- Leader
 vim.g.mapleader = ","
 
@@ -75,6 +72,3 @@ vim.api.nvim_create_autocmd("VimEnter", {
   pattern = "*",
   command = "let &winminwidth = min([(&columns / 2) - 1, 100])"
 })
-
--- Load all layered configuration.
-vim.cmd("runtime! lua/user/**/config.lua")

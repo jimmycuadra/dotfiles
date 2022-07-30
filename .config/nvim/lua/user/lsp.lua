@@ -1,6 +1,9 @@
-local lspconfig = require("lspconfig")
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
-local null_ls = require("null-ls")
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then return end
+local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if not ok then return end
+local ok, null_ls = pcall(require, "null-ls")
+if not ok then return end
 
 local o = vim.opt
 
