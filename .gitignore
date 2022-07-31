@@ -21,7 +21,7 @@
 !/.bashrc
 !/.bundle/config
 !/.config/file
-!/.config/nvim/.luarc.json
+!/.config/nvim/.stylua.toml
 !/.config/nvim/init.lua
 !/.config/nvim/init.lua
 !/.config/nvim/lua
