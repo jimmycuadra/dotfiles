@@ -62,8 +62,52 @@ packer.startup(function(use)
     },
   }
 
+  -- CoffeeScript
+  use {
+    "kchmck/vim-coffee-script",
+    ft = { "coffee", "litcoffee" },
+  }
+
+  -- Docker
+  use {
+    "ekalinin/Dockerfile.vim",
+    ft = { "Dockerfile" },
+  }
+
+  -- Elixir
+  use {
+    "elixir-lang/vim-elixir",
+    ft = { "elixir" },
+  }
+
+  -- Elm
+  use {
+    "ElmCast/elm-vim",
+    ft = { "elm" },
+    config = function()
+      -- let g:elm_format_autosave = 1
+
+      -- autocmd FileType elm set tabstop=4 softtabstop=4 shiftwidth=4
+    end,
+  }
+
   -- Git
   use "tpope/vim-fugitive"
+
+  use {
+    "fatih/vim-go",
+    { run = ":GoUpdateBinaries" },
+    ft = { "go" },
+    config = function()
+      -- autocmd FileType go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+    end,
+  }
+
+  -- TypeScript
+  use {
+    "HerringtonDarkholme/yats.vim",
+    ft = { "typescript,typescriptreact" }
+  }
 
   if PACKER_BOOTSTRAP then
     packer.sync()
