@@ -96,6 +96,7 @@ packer.startup(function(use)
   -- Git
   use("tpope/vim-fugitive")
 
+  -- Go
   use({
     "fatih/vim-go",
     { run = ":GoUpdateBinaries" },
@@ -103,6 +104,24 @@ packer.startup(function(use)
     config = function()
       -- autocmd FileType go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
     end,
+  })
+
+  -- Nginx
+  use({
+    "chr4/nginx.vim",
+    ft = { "nginx" },
+  })
+
+  -- Protocol Buffers
+  use({
+    "uarun/vim-protobuf",
+    ft = { "proto" },
+  })
+
+  -- Terraform
+  use({
+    "hashivim/vim-terraform",
+    ft = { "tf", "terraform", "hcl" },
   })
 
   -- TypeScript
