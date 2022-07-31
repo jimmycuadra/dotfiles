@@ -45,7 +45,7 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-if vim.fn.executable('rg') then
+if vim.fn.executable("rg") then
   vim.opt.grepprg = "rg --vimgrep"
 end
 
@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     local curpos = vim.api.nvim_win_get_cursor(0)
     vim.cmd([[keeppatterns %s/\s\+$//e]])
     vim.api.nvim_win_set_cursor(0, curpos)
-  end
+  end,
 })
 
 -- Each of two vertical splits have a minimum width (at least 100 columns
@@ -66,5 +66,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.opt.winwidth = 999
 vim.api.nvim_create_autocmd("VimEnter", {
   pattern = "*",
-  command = "let &winminwidth = min([(&columns / 2) - 1, 100])"
+  command = "let &winminwidth = min([(&columns / 2) - 1, 100])",
 })

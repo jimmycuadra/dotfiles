@@ -1,7 +1,11 @@
 local cmp_ok, cmp = pcall(require, "cmp")
-if not cmp_ok then return end
+if not cmp_ok then
+  return
+end
 local luasnip_ok, luasnip = pcall(require, "luasnip")
-if not luasnip_ok then return end
+if not luasnip_ok then
+  return
+end
 
 -- Nerd Font glyphs
 local kind_icons = {

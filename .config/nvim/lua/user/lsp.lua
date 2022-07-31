@@ -1,9 +1,15 @@
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_ok then return end
-local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if not cmp_nvim_lsp_ok then return end
+if not lspconfig_ok then
+  return
+end
+local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp_ok then
+  return
+end
 local null_ls_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_ok then return end
+if not null_ls_ok then
+  return
+end
 
 local o = vim.opt
 
@@ -28,9 +34,9 @@ local map = vim.keymap.set
 local opts = { silent = true }
 
 -- Navigate diagnostics
-map('n', '[g', vim.diagnostic.goto_prev, opts)
-map('n', ']g', vim.diagnostic.goto_next, opts)
-map('n', '<leader>q', vim.diagnostic.setloclist, opts)
+map("n", "[g", vim.diagnostic.goto_prev, opts)
+map("n", "]g", vim.diagnostic.goto_next, opts)
+map("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
   local buffer_opts = { silent = true, buffer = bufnr }
@@ -121,15 +127,15 @@ lspconfig.sumneko_lua.setup({
       },
       workspace = {
         library = {
-          vim.fn.expand('$VIMRUNTIME/lua'),
-          vim.fn.stdpath('config') .. '/lua',
+          vim.fn.expand("$VIMRUNTIME/lua"),
+          vim.fn.stdpath("config") .. "/lua",
         },
       },
       telemetry = {
         enable = false,
       },
     },
-  }
+  },
 })
 
 -- yarn global add typescript-language-server
