@@ -47,6 +47,9 @@ packer.startup(function(use)
   -- Add faint vertical lines to mark levels of indentation
   use("yggdroot/indentline")
 
+  -- Ignore casing for save and quit commands
+  use("takac/vim-commandcaps")
+
   -- Completion
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/cmp-buffer")
