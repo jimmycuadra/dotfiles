@@ -12,6 +12,8 @@ cmp.setup({
     { name = "path" },
   },
   mapping = cmp.mapping.preset.insert({
+    ["<up>"] = cmp.mapping.scroll_docs(-5),
+    ["<down>"] = cmp.mapping.scroll_docs(5),
     ["<cr>"] = cmp.mapping.confirm(),
     ["<tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
