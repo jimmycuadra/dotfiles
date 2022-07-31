@@ -49,6 +49,20 @@ if vim.fn.executable("rg") then
   vim.opt.grepprg = "rg --vimgrep"
 end
 
+-- Change identation for languages that use 4 spaces instead of 2
+local indentation_augroup = vim.api.nvim_create_augroup("identation", {
+  clear = true,
+})
+vim.api.nvim_create_autocmd("FileType", {
+  group = indentation_augroup,
+  pattern = "go,elm,haskell,python",
+  callback = function()
+    vim.opt.tabstop = 4
+    vim.opt.softtabstop = 4
+    vim.opt.shiftwidth = 4
+  end,
+})
+
 -- Strip trailing whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",

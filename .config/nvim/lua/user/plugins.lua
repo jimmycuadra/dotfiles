@@ -87,9 +87,7 @@ packer.startup(function(use)
     "ElmCast/elm-vim",
     ft = { "elm" },
     config = function()
-      -- let g:elm_format_autosave = 1
-
-      -- autocmd FileType elm set tabstop=4 softtabstop=4 shiftwidth=4
+      vim.api.nvim_set_var("elm_format_autosave", 1)
     end,
   })
 
@@ -101,9 +99,6 @@ packer.startup(function(use)
     "fatih/vim-go",
     { run = ":GoUpdateBinaries" },
     ft = { "go" },
-    config = function()
-      -- autocmd FileType go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-    end,
   })
 
   -- Nginx
