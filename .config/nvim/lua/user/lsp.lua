@@ -49,7 +49,9 @@ local on_attach = function(client, bufnr)
   map("n", "gi", vim.lsp.buf.implementation, buffer_opts)
 
   map("n", "<leader>F", vim.lsp.buf.formatting, buffer_opts)
+  map("x", "<leader>F", vim.lsp.buf.range_formatting, buffer_opts)
   map("n", "<leader>c", vim.lsp.buf.code_action, buffer_opts)
+  map("x", "<leader>c", vim.lsp.buf.range_code_action, buffer_opts)
 end
 
 local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
