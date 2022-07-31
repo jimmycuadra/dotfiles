@@ -24,6 +24,9 @@ local options = {
   wildmode = "longest:list",
   wildignore = ".git,*.pyc",
 
+  -- Show autocompletion for any number of options
+  completeopt = { "menu", "menuone" },
+
   -- Searching
   ignorecase = true,
   smartcase = true,
