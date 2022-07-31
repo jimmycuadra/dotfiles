@@ -10,6 +10,14 @@ map("n", "<leader><leader>", "<c-^>")
 -- Select everything in the buffer
 map("n", "<leader>a", ":keepjumps normal! ggVG<cr>")
 
+-- Cycle through buffers
+map("n", "[b", ":bp<cr>")
+map("n", "]b", ":bn<cr>")
+
+-- Cycle through tabs
+map("n", "[t", ":tabp<cr>")
+map("n", "]t", ":tabn<cr>")
+
 -- Copy full file path to clipboard
 map("n", "<leader>ffn", ":let @*=expand('%:p')<cr>")
 -- Copy relative file path to clipboard
