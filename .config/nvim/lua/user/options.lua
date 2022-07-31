@@ -47,20 +47,13 @@ if vim.fn.executable('rg') then
 end
 
 -- Strip trailing whitespace on save
-vim.cmd [[
-function StripTrailingWhitespace()
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  %s/\s\+$//e
-  let @/=_s
-  call cursor(l, c)
-endfunction
-autocmd BufWritePre * :call StripTrailingWhitespace()
-]]
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
-  callback = "g:StripTrailingWhitespace",
+  callback = function()
+    local curpos = vim.api.nvim_win_get_cursor(0)
+    vim.cmd([[keeppatterns %s/\s\+$//e]])
+    vim.api.nvim_win_set_cursor(0, curpos)
+  end
 })
 
 -- Each of two vertical splits have a minimum width (at least 100 columns
