@@ -94,6 +94,10 @@ lspconfig.sqls.setup({
   capabilities = capabilities,
 })
 
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
 -- brew install lua-language-server
 lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
@@ -102,6 +106,7 @@ lspconfig.sumneko_lua.setup({
     Lua = {
       runtime = {
         version = "LuaJIT",
+        path = runtime_path,
       },
       diagnostics = {
         globals = { "vim" },
@@ -113,7 +118,10 @@ lspconfig.sumneko_lua.setup({
         },
       },
       workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
+        library = {
+          vim.fn.expand('$VIMRUNTIME/lua'),
+          vim.fn.stdpath('config') .. '/lua',
+        },
       },
       telemetry = {
         enable = false,
