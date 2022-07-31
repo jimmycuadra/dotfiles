@@ -17,14 +17,7 @@ cmp.setup({
     ["<cr>"] = cmp.mapping.confirm(),
     ["<tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end),
-    ["<s-tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
+        cmp.confirm({ select = true })
       else
         fallback()
       end
