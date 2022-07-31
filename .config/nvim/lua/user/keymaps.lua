@@ -7,6 +7,9 @@ unmap("n", "Y")
 -- Swap to the last viewed buffer
 map("n", "<leader><leader>", "<c-^>")
 
+-- Select everything in the buffer
+map("n", "<leader>a", ":keepjumps normal! ggVG<cr>")
+
 -- Copy full file path to clipboard
 map("n", "<leader>ffn", ":let @*=expand('%:p')<cr>")
 -- Copy relative file path to clipboard
