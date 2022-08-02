@@ -55,6 +55,7 @@ local on_attach = function(client, bufnr)
   end
 
   map("n", "K", vim.lsp.buf.hover, buffer_opts)
+  map("n", "<m-k>", vim.lsp.buf.signature_help, buffer_opts)
 
   map("n", "gd", vim.lsp.buf.definition, buffer_opts)
   map("n", "gD", vim.lsp.buf.declaration, buffer_opts)
@@ -66,6 +67,7 @@ local on_attach = function(client, bufnr)
   map("x", "<leader>F", vim.lsp.buf.range_formatting, buffer_opts)
   map("n", "<leader>c", vim.lsp.buf.code_action, buffer_opts)
   map("x", "<leader>c", vim.lsp.buf.range_code_action, buffer_opts)
+  map("n", "<leader>rn", vim.lsp.buf.rename, buffer_opts)
 end
 
 local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
