@@ -99,8 +99,13 @@ lspconfig.rust_analyzer.setup({
 lspconfig.solargraph.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  init_options = {
+    formatting = false,
+  },
   settings = {
-    diagnostics = false,
+    solargraph = {
+      diagnostics = false,
+    },
   },
 })
 
@@ -168,6 +173,7 @@ null_ls.setup({
     formatting.black,
     formatting.eslint,
     formatting.prettier,
+    formatting.rubocop,
     formatting.stylua,
   },
 })
