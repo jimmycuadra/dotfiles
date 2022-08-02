@@ -14,6 +14,9 @@ local options = {
   colorcolumn = "101",
   cursorline = true,
 
+  -- Global status line
+  laststatus = 3,
+
   -- Wrap on word bouna
   linebreak = true,
 
