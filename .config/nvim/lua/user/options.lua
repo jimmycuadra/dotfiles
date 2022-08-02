@@ -113,3 +113,19 @@ vim.api.nvim_create_autocmd("VimEnter", {
   pattern = "*",
   command = "let &winminwidth = min([(&columns / 2) - 1, 100])",
 })
+
+vim.cmd([[
+function! TabMessage(cmd)
+  redir => message
+  silent execute a:cmd
+  redir END
+  if empty(message)
+    echoerr "no output"
+  else
+    tabnew
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+    silent put=message
+  endif
+endfunction
+command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+]])
