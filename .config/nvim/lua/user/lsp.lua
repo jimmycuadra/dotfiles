@@ -163,6 +163,31 @@ local builtins = null_ls.builtins
 local code_actions = builtins.code_actions
 local diagnostics = builtins.diagnostics
 local formatting = builtins.formatting
+local utils = require("null-ls.utils").make_conditional_utils()
+
+-- Check if RuboCop is in the project's Gemfile
+local has_rubocop = function()
+  local ret_code = nil
+  local jid = vim.fn.jobstart("rg rubocop Gemfile", {
+    on_exit = function(_, data)
+      ret_code = data
+    end,
+  })
+  vim.fn.jobwait({ jid }, 5000)
+  return ret_code == 0
+end
+
+-- Start RuboCop with `bundle exec` if there's a Gemfile and it includes RuboCop
+local conditional_rubocop = function(kind)
+  if utils.root_has_file("Gemfile") and has_rubocop() then
+    return null_ls.builtins[kind].rubocop.with({
+      command = "bundle",
+      args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins[kind].rubocop._opts.args),
+    })
+  else
+    return null_ls.builtins[kind].rubocop
+  end
+end
 
 null_ls.setup({
   -- brew install black eslint flake8 prettier stylua
@@ -171,11 +196,11 @@ null_ls.setup({
     code_actions.eslint,
     diagnostics.eslint,
     diagnostics.flake8,
-    diagnostics.rubocop,
+    conditional_rubocop("diagnostics"),
     formatting.black,
     formatting.eslint,
     formatting.prettier,
-    formatting.rubocop,
+    conditional_rubocop("formatting"),
     formatting.stylua,
   },
 })
