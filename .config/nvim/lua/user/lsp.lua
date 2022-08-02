@@ -72,6 +72,23 @@ end
 
 local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+-- Check if a gem is in the project's Gemfile
+local has_gem = function(gem)
+  if not vim.fn.executable("rg") then
+    vim.notify("Install ripgrep to use bundled gems for LSP")
+    return false
+  end
+
+  local ret_code = nil
+  local jid = vim.fn.jobstart(string.format("rg %s Gemfile", gem), {
+    on_exit = function(_, data)
+      ret_code = data
+    end,
+  })
+  vim.fn.jobwait({ jid }, 5000)
+  return ret_code == 0
+end
+
 -- yarn global add bash-language-server
 lspconfig.bashls.setup({
   on_attach = on_attach,
@@ -101,6 +118,13 @@ lspconfig.rust_analyzer.setup({
 lspconfig.solargraph.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  cmd = (function()
+    if has_gem("solargraph") then
+      return { "bundle", "exec", "solargraph", "stdio" }
+    else
+      return { "solargraph", "stdio" }
+    end
+  end)(),
   init_options = {
     formatting = false,
   },
@@ -163,23 +187,10 @@ local builtins = null_ls.builtins
 local code_actions = builtins.code_actions
 local diagnostics = builtins.diagnostics
 local formatting = builtins.formatting
-local utils = require("null-ls.utils").make_conditional_utils()
 
--- Check if RuboCop is in the project's Gemfile
-local has_rubocop = function()
-  local ret_code = nil
-  local jid = vim.fn.jobstart("rg rubocop Gemfile", {
-    on_exit = function(_, data)
-      ret_code = data
-    end,
-  })
-  vim.fn.jobwait({ jid }, 5000)
-  return ret_code == 0
-end
-
--- Start RuboCop with `bundle exec` if there's a Gemfile and it includes RuboCop
+-- Start RuboCop with `bundle exec` if the project bundles it
 local conditional_rubocop = function(kind)
-  if utils.root_has_file("Gemfile") and has_rubocop() then
+  if has_gem("rubocop") then
     return null_ls.builtins[kind].rubocop.with({
       command = "bundle",
       args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins[kind].rubocop._opts.args),
