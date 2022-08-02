@@ -17,7 +17,7 @@ local options = {
   -- Global status line
   laststatus = 3,
 
-  -- Wrap on word bouna
+  -- Wrap on word boundaries
   linebreak = true,
 
   -- Window splitting
