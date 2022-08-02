@@ -1,6 +1,32 @@
 -- Leader
 vim.g.mapleader = ","
 
+-- Disable built in plugins that aren't used
+local disabled_plugins = {
+  "2html_plugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "netrw",
+  "netrwFileHandlers",
+  "netrwPlugin",
+  "netrwSettings",
+  "rrhelper",
+  "spellfile_plugin",
+  "tar",
+  "tarPlugin",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+}
+
+for _, plugin in pairs(disabled_plugins) do
+  vim.g["loaded_" .. plugin] = 1
+end
+
+-- Set options
 local options = {
   -- Tab stops
   tabstop = 2,
