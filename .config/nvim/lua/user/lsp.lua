@@ -10,6 +10,7 @@ local null_ls_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_ok then
   return
 end
+local machine_ok, machine = pcall(require, "user.machine")
 
 local o = vim.opt
 
@@ -89,129 +90,165 @@ local has_gem = function(gem)
   return ret_code == 0
 end
 
+-- Decide whether or not to enable a particular LSP server based on
+-- machine-specific configuration that is not committed
+local use_server = function(server)
+  if not machine_ok then
+    return true
+  end
+
+  if not machine.disabled_lsp_servers then
+    return true
+  end
+
+  if vim.fn.index(machine.disabled_lsp_servers, server) >= 0 then
+    return false
+  end
+
+  return true
+end
+
 -- yarn global add bash-language-server
-lspconfig.bashls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
+if use_server("bashls") then
+  lspconfig.bashls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
 
 -- yarn global add dockerfile-language-server-nodejs
-lspconfig.dockerls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
+if use_server("dockerls") then
+  lspconfig.dockerls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
 
 -- brew install pyright
-lspconfig.pyright.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
+if use_server("pyright") then
+  lspconfig.pyright.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
 
 -- brew install rust-analyzer
 -- rustup component add rust-src
-lspconfig.rust_analyzer.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
-
--- gem install solargraph
-lspconfig.solargraph.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = (function()
-    if has_gem("solargraph") then
-      return { "bundle", "exec", "solargraph", "stdio" }
-    else
-      return { "solargraph", "stdio" }
-    end
-  end)(),
-  init_options = {
-    formatting = false,
-  },
-  settings = {
-    solargraph = {
-      diagnostics = false,
-    },
-  },
-})
-
--- brew install sqls
-lspconfig.sqls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
-
-local runtime_path = vim.split(package.path, ";")
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
--- brew install lua-language-server
-lspconfig.sumneko_lua.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-        path = runtime_path,
-      },
-      diagnostics = {
-        globals = { "vim" },
-        disable = {
-          -- The server isn't smart enough to know that if a module is
-          -- required with `pcall` and we return when it isn't successful,
-          -- then the module is not `nil` past that point.
-          "need-check-nil",
-        },
-      },
-      workspace = {
-        library = {
-          vim.fn.expand("$VIMRUNTIME/lua"),
-          vim.fn.stdpath("config") .. "/lua",
-        },
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-})
-
--- yarn global add typescript-language-server
-lspconfig.tsserver.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
-
-local builtins = null_ls.builtins
-local code_actions = builtins.code_actions
-local diagnostics = builtins.diagnostics
-local formatting = builtins.formatting
-
--- Start RuboCop with `bundle exec` if the project bundles it
-local conditional_rubocop = function(kind)
-  if has_gem("rubocop") then
-    return null_ls.builtins[kind].rubocop.with({
-      command = "bundle",
-      args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins[kind].rubocop._opts.args),
-    })
-  else
-    return null_ls.builtins[kind].rubocop
-  end
+if use_server("rust_analyzer") then
+  lspconfig.rust_analyzer.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
 end
 
-null_ls.setup({
-  -- brew install black eslint flake8 prettier stylua
-  -- gem install rubocop
-  sources = {
-    code_actions.eslint,
-    diagnostics.eslint,
-    diagnostics.flake8,
-    conditional_rubocop("diagnostics"),
-    formatting.black,
-    formatting.eslint,
-    formatting.prettier,
-    conditional_rubocop("formatting"),
-    formatting.stylua,
-  },
-})
+-- gem install solargraph
+if use_server("solargraph") then
+  lspconfig.solargraph.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = (function()
+      if has_gem("solargraph") then
+        return { "bundle", "exec", "solargraph", "stdio" }
+      else
+        return { "solargraph", "stdio" }
+      end
+    end)(),
+    init_options = {
+      formatting = false,
+    },
+    settings = {
+      solargraph = {
+        diagnostics = false,
+      },
+    },
+  })
+end
+
+-- brew install sqls
+if use_server("sqls") then
+  lspconfig.sqls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
+
+if use_server("sumneko_lua") then
+  local runtime_path = vim.split(package.path, ";")
+  table.insert(runtime_path, "lua/?.lua")
+  table.insert(runtime_path, "lua/?/init.lua")
+
+  -- brew install lua-language-server
+  lspconfig.sumneko_lua.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+      Lua = {
+        runtime = {
+          version = "LuaJIT",
+          path = runtime_path,
+        },
+        diagnostics = {
+          globals = { "vim" },
+          disable = {
+            -- The server isn't smart enough to know that if a module is
+            -- required with `pcall` and we return when it isn't successful,
+            -- then the module is not `nil` past that point.
+            "need-check-nil",
+          },
+        },
+        workspace = {
+          library = {
+            vim.fn.expand("$VIMRUNTIME/lua"),
+            vim.fn.stdpath("config") .. "/lua",
+          },
+        },
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
+  })
+end
+
+-- yarn global add typescript-language-server
+if use_server("tsserver") then
+  lspconfig.tsserver.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
+
+if use_server("null_ls") then
+  local builtins = null_ls.builtins
+  local code_actions = builtins.code_actions
+  local diagnostics = builtins.diagnostics
+  local formatting = builtins.formatting
+
+  -- Start RuboCop with `bundle exec` if the project bundles it
+  local conditional_rubocop = function(kind)
+    if has_gem("rubocop") then
+      return null_ls.builtins[kind].rubocop.with({
+        command = "bundle",
+        args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins[kind].rubocop._opts.args),
+      })
+    else
+      return null_ls.builtins[kind].rubocop
+    end
+  end
+
+  null_ls.setup({
+    -- brew install black eslint flake8 prettier stylua
+    -- gem install rubocop
+    sources = {
+      code_actions.eslint,
+      diagnostics.eslint,
+      diagnostics.flake8,
+      conditional_rubocop("diagnostics"),
+      formatting.black,
+      formatting.eslint,
+      formatting.prettier,
+      conditional_rubocop("formatting"),
+      formatting.stylua,
+    },
+  })
+end
