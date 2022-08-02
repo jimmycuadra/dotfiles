@@ -14,8 +14,10 @@ local options = {
   colorcolumn = "101",
   cursorline = true,
 
-  -- Global status line
+  -- Statusline
   laststatus = 3,
+  statusline = "%!v:lua.require'user.statusline'.statusline()",
+  showmode = false,
 
   -- Wrap on word boundaries
   linebreak = true,
