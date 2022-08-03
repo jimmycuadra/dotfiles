@@ -49,6 +49,7 @@ local options = {
   linebreak = true,
 
   -- Window splitting
+  splitbelow = true,
   splitright = true,
 
   -- Command line completion
