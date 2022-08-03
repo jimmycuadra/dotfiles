@@ -35,7 +35,14 @@ vim.diagnostic.config({
 local with_cmp_style_highlights = function(handler)
   return function(err, result, ctx, config)
     local _, winnr = handler(err, result, ctx, config)
-    vim.api.nvim_win_set_option(winnr, "winhighlight", "Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None")
+
+    if winnr then
+      vim.api.nvim_win_set_option(
+        winnr,
+        "winhighlight",
+        "Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None"
+      )
+    end
   end
 end
 
