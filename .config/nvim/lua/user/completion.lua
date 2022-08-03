@@ -72,6 +72,9 @@ cmp.setup({
       return vim_item
     end,
   },
+  window = {
+    documentation = cmp.config.window.bordered(),
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
