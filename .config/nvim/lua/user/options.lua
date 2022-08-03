@@ -115,6 +115,15 @@ vim.api.nvim_create_autocmd("VimEnter", {
   command = "let &winminwidth = min([(&columns / 2) - 1, 100])",
 })
 
+-- Always open help in a vertical split on the right
+vim.cmd([[
+  augroup vertical_help
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+  augroup END
+]])
+
+-- Run a command and put its output into a scratch buffer in a new tab
 vim.cmd([[
 function! TabMessage(cmd)
   redir => message
