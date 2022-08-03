@@ -128,7 +128,7 @@ packer.startup(function(use)
   -- TypeScript
   use({
     "HerringtonDarkholme/yats.vim",
-    ft = { "typescript,typescriptreact" },
+    ft = { "typescript", "typescriptreact" },
   })
 
   if PACKER_BOOTSTRAP then
