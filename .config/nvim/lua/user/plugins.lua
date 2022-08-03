@@ -50,6 +50,9 @@ packer.startup(function(use)
   -- Ignore casing for save and quit commands
   use("takac/vim-commandcaps")
 
+  -- Preview registers when pressing " in normal mode
+  use("tversteeg/registers.nvim")
+
   -- Completion
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/cmp-buffer")
