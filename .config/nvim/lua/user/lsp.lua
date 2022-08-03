@@ -30,13 +30,25 @@ vim.diagnostic.config({
   },
 })
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  width = 60,
-})
+-- Adds the 'winhighlight' options nvim-cmp uses for documentation floating windows to
+-- LSP floating windows created by the provided handler
+local with_cmp_style_highlights = function(handler)
+  return function(err, result, ctx, config)
+    local _, winnr = handler(err, result, ctx, config)
+    vim.api.nvim_win_set_option(winnr, "winhighlight", "Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None")
+  end
+end
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+vim.lsp.handlers["textDocument/hover"] = with_cmp_style_highlights(vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
   width = 60,
-})
+}))
+
+vim.lsp.handlers["textDocument/signatureHelp"] =
+  with_cmp_style_highlights(vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+    width = 60,
+  }))
 
 local map = vim.keymap.set
 
