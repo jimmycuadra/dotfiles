@@ -237,6 +237,14 @@ if use_server("tsserver") then
   })
 end
 
+-- yarn global add vscode-langservers-extracted
+if use_server("vscode-langservers-extracted") then
+  lspconfig.eslint.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
+
 if use_server("null_ls") then
   local builtins = null_ls.builtins
   local diagnostics = builtins.diagnostics
@@ -254,30 +262,18 @@ if use_server("null_ls") then
     end
   end
 
-  -- Prefer project-local versions of ESLint
-  local prefer_local_eslint = function(kind)
-    return null_ls.builtins[kind].eslint.with({
-      prefer_local = "node_modules/.bin",
-    })
-  end
-
   null_ls.setup({
-    -- brew install black eslint flake8 prettier stylua
+    -- brew install black flake8 prettier stylua
     -- gem install rubocop
     sources = {
-      -- Code actions
-      prefer_local_eslint("code_actions"),
-
       -- Diagnostics
       diagnostics.flake8,
-      prefer_local_eslint("diagnostics"),
       prefer_local_rubocop("diagnostics"),
 
       -- Formatting
       formatting.black,
       formatting.prettier,
       formatting.stylua,
-      prefer_local_eslint("formatting"),
       prefer_local_rubocop("formatting"),
     },
     on_attach = on_attach,
