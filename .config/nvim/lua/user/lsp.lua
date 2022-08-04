@@ -276,5 +276,6 @@ if use_server("null_ls") then
       conditional_rubocop("formatting"),
       formatting.stylua,
     },
+    on_attach = on_attach,
   })
 end
