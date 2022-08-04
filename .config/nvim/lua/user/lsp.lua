@@ -283,7 +283,9 @@ if use_server("null_ls") then
 
   -- Prefer project-local versions of RuboCop
   local prefer_local_rubocop = function(kind)
-    if has_gem("rubocop") then
+    if machine and machine.null_ls and machine.null_ls.rubocop then
+      return machine.null_ls.rubocop(kind)
+    elseif has_gem("rubocop") then
       return null_ls.builtins[kind].rubocop.with({
         command = "bundle",
         args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins[kind].rubocop._opts.args),
