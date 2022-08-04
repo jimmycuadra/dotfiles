@@ -135,6 +135,14 @@ if use_server("bashls") then
   })
 end
 
+-- yarn global add vscode-langservers-extracted
+if use_server("cssls") then
+  lspconfig.cssls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
+
 -- yarn global add dockerfile-language-server-nodejs
 if use_server("dockerls") then
   lspconfig.dockerls.setup({
