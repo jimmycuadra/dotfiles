@@ -283,7 +283,7 @@ if use_server("null_ls") then
 
   -- Prefer project-local versions of RuboCop
   local prefer_local_rubocop = function(kind)
-    if machine and machine.null_ls and machine.null_ls.rubocop then
+    if machine_ok and machine.null_ls and machine.null_ls.rubocop then
       return machine.null_ls.rubocop(kind)
     elseif has_gem("rubocop") then
       return null_ls.builtins[kind].rubocop.with({
