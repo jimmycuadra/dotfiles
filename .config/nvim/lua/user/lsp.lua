@@ -70,7 +70,12 @@ local on_attach = function(client, bufnr)
   local buffer_opts = { silent = true, buffer = bufnr }
 
   -- Prefer formatting from null-ls
-  if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "html" then
+  if vim.tbl_contains({
+    "tsserver",
+    "sumneko_lua",
+    "html",
+    "jsonls",
+  }, client.name) then
     client.resolved_capabilities.document_formatting = false
   end
 
@@ -154,6 +159,14 @@ end
 -- yarn global add vscode-langservers-extracted
 if use_server("html") then
   lspconfig.html.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
+
+-- yarn global add vscode-langservers-extracted
+if use_server("jsonls") then
+  lspconfig.jsonls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
   })
