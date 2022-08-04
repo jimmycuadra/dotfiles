@@ -243,8 +243,8 @@ if use_server("null_ls") then
   local diagnostics = builtins.diagnostics
   local formatting = builtins.formatting
 
-  -- Start RuboCop with `bundle exec` if the project bundles it
-  local conditional_rubocop = function(kind)
+  -- Prefer project-local versions of RuboCop
+  local prefer_local_rubocop = function(kind)
     if has_gem("rubocop") then
       return null_ls.builtins[kind].rubocop.with({
         command = "bundle",
@@ -269,11 +269,11 @@ if use_server("null_ls") then
       prefer_local_eslint("code_actions"),
       prefer_local_eslint("diagnostics"),
       diagnostics.flake8,
-      conditional_rubocop("diagnostics"),
+      prefer_local_rubocop("diagnostics"),
       formatting.black,
       prefer_local_eslint("formatting"),
       formatting.prettier,
-      conditional_rubocop("formatting"),
+      prefer_local_rubocop("formatting"),
       formatting.stylua,
     },
     on_attach = on_attach,
