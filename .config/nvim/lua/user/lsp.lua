@@ -70,7 +70,7 @@ local on_attach = function(client, bufnr)
   local buffer_opts = { silent = true, buffer = bufnr }
 
   -- Prefer formatting from null-ls
-  if client.name == "tsserver" or client.name == "sumneko_lua" then
+  if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "html" then
     client.resolved_capabilities.document_formatting = false
   end
 
@@ -138,6 +138,14 @@ end
 -- yarn global add dockerfile-language-server-nodejs
 if use_server("dockerls") then
   lspconfig.dockerls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
+
+-- yarn global add vscode-langservers-extracted
+if use_server("html") then
+  lspconfig.html.setup({
     on_attach = on_attach,
     capabilities = capabilities,
   })
