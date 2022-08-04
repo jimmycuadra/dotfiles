@@ -239,7 +239,6 @@ end
 
 if use_server("null_ls") then
   local builtins = null_ls.builtins
-  local code_actions = builtins.code_actions
   local diagnostics = builtins.diagnostics
   local formatting = builtins.formatting
 
@@ -266,15 +265,20 @@ if use_server("null_ls") then
     -- brew install black eslint flake8 prettier stylua
     -- gem install rubocop
     sources = {
+      -- Code actions
       prefer_local_eslint("code_actions"),
-      prefer_local_eslint("diagnostics"),
+
+      -- Diagnostics
       diagnostics.flake8,
+      prefer_local_eslint("diagnostics"),
       prefer_local_rubocop("diagnostics"),
+
+      -- Formatting
       formatting.black,
-      prefer_local_eslint("formatting"),
       formatting.prettier,
-      prefer_local_rubocop("formatting"),
       formatting.stylua,
+      prefer_local_eslint("formatting"),
+      prefer_local_rubocop("formatting"),
     },
     on_attach = on_attach,
   })
