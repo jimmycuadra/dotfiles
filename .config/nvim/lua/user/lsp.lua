@@ -238,7 +238,7 @@ if use_server("tsserver") then
 end
 
 -- yarn global add vscode-langservers-extracted
-if use_server("vscode-langservers-extracted") then
+if use_server("eslint") then
   lspconfig.eslint.setup({
     on_attach = on_attach,
     capabilities = capabilities,
