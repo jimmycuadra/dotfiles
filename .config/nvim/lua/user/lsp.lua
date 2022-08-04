@@ -191,12 +191,12 @@ if use_server("sqls") then
   })
 end
 
+-- brew install lua-language-server
 if use_server("sumneko_lua") then
   local runtime_path = vim.split(package.path, ";")
   table.insert(runtime_path, "lua/?.lua")
   table.insert(runtime_path, "lua/?/init.lua")
 
-  -- brew install lua-language-server
   lspconfig.sumneko_lua.setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -245,6 +245,8 @@ if use_server("vscode-langservers-extracted") then
   })
 end
 
+-- brew install black flake8 prettier stylua
+-- gem install rubocop
 if use_server("null_ls") then
   local builtins = null_ls.builtins
   local diagnostics = builtins.diagnostics
@@ -263,8 +265,6 @@ if use_server("null_ls") then
   end
 
   null_ls.setup({
-    -- brew install black flake8 prettier stylua
-    -- gem install rubocop
     sources = {
       -- Diagnostics
       diagnostics.flake8,
