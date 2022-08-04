@@ -255,16 +255,23 @@ if use_server("null_ls") then
     end
   end
 
+  -- Prefer project-local versions of ESLint
+  local prefer_local_eslint = function(kind)
+    return null_ls.builtins[kind].eslint.with({
+      prefer_local = "node_modules/.bin",
+    })
+  end
+
   null_ls.setup({
     -- brew install black eslint flake8 prettier stylua
     -- gem install rubocop
     sources = {
-      code_actions.eslint,
-      diagnostics.eslint,
+      prefer_local_eslint("code_actions"),
+      prefer_local_eslint("diagnostics"),
       diagnostics.flake8,
       conditional_rubocop("diagnostics"),
       formatting.black,
-      formatting.eslint,
+      prefer_local_eslint("formatting"),
       formatting.prettier,
       conditional_rubocop("formatting"),
       formatting.stylua,
