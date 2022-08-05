@@ -117,16 +117,8 @@ end
 -- Decide whether or not to enable a particular LSP server based on
 -- machine-specific configuration that is not committed
 local use_server = function(server)
-  if not machine_ok then
-    return true
-  end
-
-  if not machine.disabled_lsp_servers then
-    return true
-  end
-
-  if vim.fn.index(machine.disabled_lsp_servers, server) >= 0 then
-    return false
+  if machine_ok and machine.enable_lsp_server and machine.enable_lsp_server[server] then
+    return machine.enable_lsp_server[server]()
   end
 
   return true
