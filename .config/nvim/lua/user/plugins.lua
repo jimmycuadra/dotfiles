@@ -42,7 +42,12 @@ packer.startup(function(use)
   use("tpope/vim-repeat")
 
   -- Add, remove, and change things like braces and brackets around objects
-  use("tpope/vim-surround")
+  use({
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup({})
+    end,
+  })
 
   -- Add faint vertical lines to mark levels of indentation
   use("yggdroot/indentline")
