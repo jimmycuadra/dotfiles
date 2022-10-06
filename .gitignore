@@ -21,6 +21,7 @@
 !/.bashrc
 !/.bundle/config
 !/.config/file
+!/.config/bat
 !/.config/nvim/.stylua.toml
 !/.config/nvim/init.lua
 !/.config/nvim/init.lua
