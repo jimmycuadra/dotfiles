@@ -88,7 +88,7 @@ local on_attach = function(client, bufnr)
   map("n", "gy", vim.lsp.buf.type_definition, buffer_opts)
   map("n", "gi", vim.lsp.buf.implementation, buffer_opts)
 
-  map("n", "<leader>F", vim.lsp.buf.formatting, buffer_opts)
+  map("n", "<leader>F", vim.lsp.buf.format, buffer_opts)
   map("x", "<leader>F", vim.lsp.buf.range_formatting, buffer_opts)
   map("n", "<leader>c", vim.lsp.buf.code_action, buffer_opts)
   map("x", "<leader>c", vim.lsp.buf.range_code_action, buffer_opts)
