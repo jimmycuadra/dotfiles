@@ -33,3 +33,5 @@
   path = .gitconfig.local
 [init]
   defaultBranch = main
+[rebase]
+  updateRefs = true
