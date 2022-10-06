@@ -76,7 +76,7 @@ local on_attach = function(client, bufnr)
     "html",
     "jsonls",
   }, client.name) then
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
   end
 
   map("n", "K", vim.lsp.buf.hover, buffer_opts)
