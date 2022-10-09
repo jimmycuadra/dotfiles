@@ -124,6 +124,12 @@ packer.startup(function(use)
     ft = { "proto" },
   })
 
+  -- RBS
+  use({
+    "jlcrochet/vim-rbs",
+    ft = { "rbs" },
+  })
+
   -- Terraform
   use({
     "hashivim/vim-terraform",
