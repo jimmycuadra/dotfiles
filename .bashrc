@@ -23,6 +23,8 @@ export HISTCONTROL="ignoreboth"
 # Paths
 if [ "$(uname)" = "Darwin" ]; then
   export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # Homebrew
+  export PNPM_HOME="$HOME/Library/pnpm" # pnpm
+  export PATH="$PNPM_HOME:$PATH" # pnpm
 fi
 export PATH="$HOME/Code/go/bin:$PATH" # go
 export PATH="$HOME/.cargo/bin:$PATH" # rustup
