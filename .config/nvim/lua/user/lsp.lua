@@ -27,6 +27,14 @@ vim.diagnostic.config({
   float = {
     -- Show which LSP source produced the diagnostic
     source = true,
+    -- Show the names of ESLint rules along with their messages
+    format = function(diagnostic)
+      if diagnostic.source == "eslint" then
+        return string.format("%s [%s]", diagnostic.message, diagnostic.user_data.lsp.code)
+      else
+        return diagnostic.message
+      end
+    end,
   },
 })
 
