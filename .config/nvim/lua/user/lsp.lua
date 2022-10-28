@@ -103,7 +103,7 @@ local on_attach = function(client, bufnr)
   map("n", "<leader>rn", vim.lsp.buf.rename, buffer_opts)
 end
 
-local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Check if a gem is in the project's Gemfile
 local has_gem = function(gem)
