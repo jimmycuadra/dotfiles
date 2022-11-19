@@ -131,10 +131,7 @@ packer.startup(function(use)
   })
 
   -- Terraform
-  use({
-    "hashivim/vim-terraform",
-    ft = { "tf", "terraform", "hcl" },
-  })
+  use("hashivim/vim-terraform")
 
   -- TypeScript
   use({
