@@ -9,6 +9,7 @@ require("user.plugins")
 require("user.colors")
 require("user.completion")
 require("user.lsp")
+require("user.treesitter")
 
 -- Language and tool specifics
 require("user.fzf")

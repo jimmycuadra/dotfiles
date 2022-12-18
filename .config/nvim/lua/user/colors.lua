@@ -1,7 +1,7 @@
 -- Color scheme
 vim.cmd([[
 try
-  colorscheme railscasts
+  colorscheme catppuccin
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   set background=dark

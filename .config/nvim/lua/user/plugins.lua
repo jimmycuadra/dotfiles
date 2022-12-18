@@ -26,8 +26,9 @@ packer.startup(function(use)
   use("/usr/local/opt/fzf")
   use("junegunn/fzf.vim")
 
-  -- Railscasts color scheme
+  -- Colorschemes
   use("jimmycuadra/vim-railscasts")
+  use({ "catppuccin/nvim", as = "catppuccin" })
 
   -- Multiple cursors
   use("mg979/vim-visual-multi")
@@ -73,6 +74,12 @@ packer.startup(function(use)
     requires = {
       "nvim-lua/plenary.nvim",
     },
+  })
+
+  -- tree-sitter
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
   })
 
   -- Lua + Neovim
