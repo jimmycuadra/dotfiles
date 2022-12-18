@@ -82,7 +82,7 @@ if vim.fn.executable("rg") then
 end
 
 -- Change identation for languages that use 4 spaces instead of 2
-local indentation_augroup = vim.api.nvim_create_augroup("identation", {
+local indentation_augroup = vim.api.nvim_create_augroup("indentation", {
   clear = true,
 })
 vim.api.nvim_create_autocmd("FileType", {
