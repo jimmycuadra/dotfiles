@@ -48,3 +48,6 @@ map("n", "<c-d>", "<c-d>zz")
 map("n", "<c-u>", "<c-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
+
+-- Replace with yanked text without yanking the text being replaced
+map("x", "<leader>p", '"_dP')
