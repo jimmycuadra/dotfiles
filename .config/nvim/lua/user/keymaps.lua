@@ -38,3 +38,7 @@ map("c", "<c-f>", "<right>")
 map("c", "<c-b>", "<left>")
 map("c", "<esc>b", "<s-left>")
 map("c", "<esc>f", "<s-right>")
+
+-- Move visual selection up and down
+map("v", "J", ":m '>+1<cr>gv=gv")
+map("v", "K", ":m '<-2<cr>gv=gv")
