@@ -42,3 +42,9 @@ map("c", "<esc>f", "<s-right>")
 -- Move visual selection up and down
 map("v", "J", ":m '>+1<cr>gv=gv")
 map("v", "K", ":m '<-2<cr>gv=gv")
+
+-- Keep cursor in the middle when paging or moving between search matches
+map("n", "<c-d>", "<c-d>zz")
+map("n", "<c-u>", "<c-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
