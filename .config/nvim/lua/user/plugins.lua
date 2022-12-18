@@ -75,6 +75,9 @@ packer.startup(function(use)
     },
   })
 
+  -- Lua + Neovim
+  use("folke/neodev.nvim")
+
   -- CoffeeScript
   use({
     "kchmck/vim-coffee-script",
