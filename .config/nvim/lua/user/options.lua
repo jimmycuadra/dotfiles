@@ -62,6 +62,7 @@ local options = {
   -- Searching
   ignorecase = true,
   smartcase = true,
+  hlsearch = false,
 
   -- Don't beep
   visualbell = true,
