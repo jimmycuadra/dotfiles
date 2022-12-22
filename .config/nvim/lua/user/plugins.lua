@@ -1,155 +1,188 @@
-local fn = vim.fn
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
+    "--filter=blob:none",
+    "--single-branch",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
   })
-  vim.cmd([[packadd packer.nvim]])
 end
 
-local ok, packer = pcall(require, "packer")
-if not ok then
-  return
-end
+vim.opt.runtimepath:prepend(lazypath)
 
-packer.startup(function(use)
-  use("wbthomason/packer.nvim")
+require("lazy").setup({
+  -- Colorschemes
+  "jimmycuadra/vim-railscasts",
+  { "catppuccin/nvim", name = "catppuccin" },
 
   -- Install with `brew install fzf`
-  use("/usr/local/opt/fzf")
-  use("junegunn/fzf.vim")
-
-  -- Colorschemes
-  use("jimmycuadra/vim-railscasts")
-  use({ "catppuccin/nvim", as = "catppuccin" })
+  { dir = "/usr/local/opt/fzf" },
+  {
+    "junegunn/fzf.vim",
+    config = function()
+      require("user.fzf")
+    end,
+  },
 
   -- Multiple cursors
-  use("mg979/vim-visual-multi")
+  "mg979/vim-visual-multi",
 
   -- Comment/uncomment selections
-  use("tpope/vim-commentary")
+  "tpope/vim-commentary",
 
   -- Mappings for navigation
-  use("tpope/vim-ragtag")
+  "tpope/vim-ragtag",
 
   -- Repeat things with . that you normally can't
-  use("tpope/vim-repeat")
+  "tpope/vim-repeat",
 
   -- Add, remove, and change things like braces and brackets around objects
-  use({
+  {
     "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup({})
     end,
-  })
+  },
 
   -- Add faint vertical lines to mark levels of indentation
-  use("yggdroot/indentline")
+  "yggdroot/indentline",
 
   -- Ignore casing for save and quit commands
-  use("takac/vim-commandcaps")
+  "takac/vim-commandcaps",
 
   -- Preview registers when pressing " in normal mode
-  use("tversteeg/registers.nvim")
+  "tversteeg/registers.nvim",
 
   -- Completion
-  use("hrsh7th/nvim-cmp")
-  use("hrsh7th/cmp-buffer")
-  use("hrsh7th/cmp-path")
-  use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-nvim-lua")
-  use("L3MON4D3/LuaSnip")
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      "L3MON4D3/LuaSnip",
+    },
+    config = function()
+      require("user.completion")
+    end,
+  },
 
   -- LSP
-  use("neovim/nvim-lspconfig")
-  use({
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("user.lsp")
+    end,
+  },
+  {
     "jose-elias-alvarez/null-ls.nvim",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
     },
-  })
+  },
 
   -- tree-sitter
-  use({
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  })
+    build = ":TSUpdate",
+    config = function()
+      require("user.treesitter")
+    end,
+  },
 
   -- Lua + Neovim
-  use("folke/neodev.nvim")
+  "folke/neodev.nvim",
 
   -- CoffeeScript
-  use({
+  {
     "kchmck/vim-coffee-script",
     ft = { "coffee", "litcoffee" },
-  })
+  },
 
   -- Docker
-  use({
+  {
     "ekalinin/Dockerfile.vim",
     ft = { "Dockerfile" },
-  })
+  },
 
   -- Elixir
-  use({
+  {
     "elixir-lang/vim-elixir",
     ft = { "elixir" },
-  })
+  },
 
   -- Elm
-  use({
+  {
     "ElmCast/elm-vim",
     ft = { "elm" },
     config = function()
       vim.api.nvim_set_var("elm_format_autosave", 1)
     end,
-  })
+  },
 
   -- Git
-  use("tpope/vim-fugitive")
+  "tpope/vim-fugitive",
 
   -- Go
-  use({
+  {
     "fatih/vim-go",
-    { run = ":GoUpdateBinaries" },
+    build = ":GoUpdateBinaries",
     ft = { "go" },
-  })
+  },
 
   -- Nginx
-  use({
+  {
     "chr4/nginx.vim",
     ft = { "nginx" },
-  })
+  },
 
   -- Protocol Buffers
-  use({
+  {
     "uarun/vim-protobuf",
     ft = { "proto" },
-  })
+  },
 
   -- RBS
-  use({
+  {
     "jlcrochet/vim-rbs",
     ft = { "rbs" },
-  })
+  },
 
   -- Terraform
-  use("hashivim/vim-terraform")
+  "hashivim/vim-terraform",
 
   -- TypeScript
-  use({
+  {
     "HerringtonDarkholme/yats.vim",
     ft = { "typescript", "typescriptreact" },
-  })
-
-  if PACKER_BOOTSTRAP then
-    packer.sync()
-  end
-end)
+  },
+}, {
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "2html_plugin",
+        "getscript",
+        "getscriptPlugin",
+        "gzip",
+        "logipat",
+        "netrw",
+        "netrwFileHandlers",
+        "netrwPlugin",
+        "netrwSettings",
+        "rrhelper",
+        "spellfile_plugin",
+        "tar",
+        "tarPlugin",
+        "vimball",
+        "vimballPlugin",
+        "zip",
+        "zipPlugin",
+      },
+    },
+  },
+})
