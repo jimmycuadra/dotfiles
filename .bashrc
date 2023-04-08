@@ -20,9 +20,14 @@ export GEMEDITOR=vim
 export CLICOLOR=1
 export HISTCONTROL="ignoreboth"
 
+if [ -f /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+elif [ -f /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Paths
 if [ "$(uname)" = "Darwin" ]; then
-  export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # Homebrew
   export PNPM_HOME="$HOME/Library/pnpm" # pnpm
   export PATH="$PNPM_HOME:$PATH" # pnpm
 fi
@@ -65,7 +70,7 @@ alias file="file -m ~/.config/file/magic"
 c() { cd ~/Code/$1; }
 
 # Completions
-[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
+[ -f "$HOMEBREW_PREFIX/etc/bash_completion" ] && source "$HOMEBREW_PREFIX/etc/bash_completion"
 for completion_file in \
   brew \
   exa \
@@ -77,7 +82,7 @@ for completion_file in \
   sd.bash
 do
   if [ "$(uname)" = "Darwin" ]; then
-    full_completion_file="/usr/local/etc/bash_completion.d/$completion_file"
+    full_completion_file="$HOMEBREW_PREFIX/etc/bash_completion.d/$completion_file"
   else
     full_completion_file="/usr/share/bash-completion/completions/$completion_file"
   fi
@@ -91,7 +96,7 @@ if which rustc >/dev/null; then
   [ -f "$cargo_completion" ] && source $cargo_completion
 fi
 
-fzf_base_path="/usr/local/opt/fzf/shell"
+fzf_base_path="$HOMEBREW_PREFIX/opt/fzf/shell"
 for completion_file in \
   completion.bash \
   key-bindings.bash
