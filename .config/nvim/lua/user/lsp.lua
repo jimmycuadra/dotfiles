@@ -80,7 +80,7 @@ local on_attach = function(client, bufnr)
   -- Prefer formatting from null-ls
   if vim.tbl_contains({
     "tsserver",
-    "sumneko_lua",
+    "lua_ls",
     "html",
     "jsonls",
   }, client.name) then
@@ -97,9 +97,9 @@ local on_attach = function(client, bufnr)
   map("n", "gi", vim.lsp.buf.implementation, buffer_opts)
 
   map("n", "<leader>F", vim.lsp.buf.format, buffer_opts)
-  map("x", "<leader>F", vim.lsp.buf.range_formatting, buffer_opts)
+  map("x", "<leader>F", vim.lsp.buf.format, buffer_opts)
   map("n", "<leader>c", vim.lsp.buf.code_action, buffer_opts)
-  map("x", "<leader>c", vim.lsp.buf.range_code_action, buffer_opts)
+  map("x", "<leader>c", vim.lsp.buf.code_action, buffer_opts)
   map("n", "<leader>rn", vim.lsp.buf.rename, buffer_opts)
 end
 
@@ -212,21 +212,21 @@ if use_server("solargraph") then
   })
 end
 
--- brew install sqls
-if use_server("sqls") then
-  lspconfig.sqls.setup({
+-- brew install sql-language-server
+if use_server("sqlls") then
+  lspconfig.sqlls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
   })
 end
 
 -- brew install lua-language-server
-if use_server("sumneko_lua") then
+if use_server("lua_ls") then
   local runtime_path = vim.split(package.path, ";")
   table.insert(runtime_path, "lua/?.lua")
   table.insert(runtime_path, "lua/?/init.lua")
 
-  lspconfig.sumneko_lua.setup({
+  lspconfig.lua_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
