@@ -132,7 +132,7 @@ local use_server = function(server)
   return true
 end
 
--- yarn global add bash-language-server
+-- pnpm -g install bash-language-server
 if use_server("bashls") then
   lspconfig.bashls.setup({
     on_attach = on_attach,
@@ -140,7 +140,7 @@ if use_server("bashls") then
   })
 end
 
--- yarn global add vscode-langservers-extracted
+-- pnpm -g install vscode-langservers-extracted
 if use_server("cssls") then
   lspconfig.cssls.setup({
     on_attach = on_attach,
@@ -148,7 +148,7 @@ if use_server("cssls") then
   })
 end
 
--- yarn global add dockerfile-language-server-nodejs
+-- pnpm -g install dockerfile-language-server-nodejs
 if use_server("dockerls") then
   lspconfig.dockerls.setup({
     on_attach = on_attach,
@@ -156,7 +156,7 @@ if use_server("dockerls") then
   })
 end
 
--- yarn global add vscode-langservers-extracted
+-- pnpm -g install vscode-langservers-extracted
 if use_server("html") then
   lspconfig.html.setup({
     on_attach = on_attach,
@@ -164,7 +164,7 @@ if use_server("html") then
   })
 end
 
--- yarn global add vscode-langservers-extracted
+-- pnpm -g install vscode-langservers-extracted
 if use_server("jsonls") then
   lspconfig.jsonls.setup({
     on_attach = on_attach,
@@ -258,7 +258,7 @@ if use_server("lua_ls") then
   })
 end
 
--- yarn global add typescript-language-server
+-- pnpm -g install typescript-language-server
 if use_server("tsserver") then
   lspconfig.tsserver.setup({
     on_attach = on_attach,
@@ -266,7 +266,7 @@ if use_server("tsserver") then
   })
 end
 
--- yarn global add vscode-langservers-extracted
+-- pnpm -g install vscode-langservers-extracted
 if use_server("eslint") then
   lspconfig.eslint.setup({
     on_attach = on_attach,
