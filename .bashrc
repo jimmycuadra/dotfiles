@@ -72,12 +72,12 @@ c() { cd ~/Code/$1; }
 # Completions
 [ -f "$HOMEBREW_PREFIX/etc/bash_completion" ] && source "$HOMEBREW_PREFIX/etc/bash_completion"
 for completion_file in \
+  bat \
   brew \
-  exa \
   fd.bash \
-  git \
   git-completion.bash \
   kubectl \
+  npm \
   rg.bash \
   sd.bash
 do
