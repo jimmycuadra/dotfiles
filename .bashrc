@@ -70,7 +70,7 @@ alias file="file -m ~/.config/file/magic"
 c() { cd ~/Code/$1; }
 
 # Completions
-[ -f "$HOMEBREW_PREFIX/etc/bash_completion" ] && source "$HOMEBREW_PREFIX/etc/bash_completion"
+[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 for completion_file in \
   bat \
   brew \
@@ -86,7 +86,7 @@ do
   else
     full_completion_file="/usr/share/bash-completion/completions/$completion_file"
   fi
-  if [ -f $full_completion_file ]; then
+  if [ -r $full_completion_file ]; then
     source $full_completion_file
   fi
 done
