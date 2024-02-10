@@ -1,7 +1,7 @@
 -- Syntax for Helm templates (Go templates inside YAML)
 local augroup = vim.api.nvim_create_augroup("helm_syntax", { clear = true })
 
-vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = augroup,
   pattern = "*/templates/*.yaml,*/templates/*.tpl",
   callback = function()
