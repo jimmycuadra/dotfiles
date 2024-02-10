@@ -25,6 +25,7 @@
 !/.config/nvim/.stylua.toml
 !/.config/nvim/init.lua
 !/.config/nvim/init.lua
+!/.config/nvim/lazy-lock.json
 !/.config/nvim/lua
 !/.gemrc
 !/.gitconfig
