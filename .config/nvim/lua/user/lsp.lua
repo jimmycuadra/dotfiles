@@ -6,10 +6,6 @@ local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_ok then
   return
 end
-local null_ls_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_ok then
-  return
-end
 local machine_ok, machine = pcall(require, "user.machine")
 
 local o = vim.opt
@@ -77,7 +73,7 @@ map("n", "<leader>q", vim.diagnostic.setloclist, opts)
 local on_attach = function(client, bufnr)
   local buffer_opts = { silent = true, buffer = bufnr }
 
-  -- Prefer formatting from null-ls
+  -- Prefer formatting from conform.nvim
   if vim.tbl_contains({
     "tsserver",
     "lua_ls",
@@ -96,8 +92,6 @@ local on_attach = function(client, bufnr)
   map("n", "gy", vim.lsp.buf.type_definition, buffer_opts)
   map("n", "gi", vim.lsp.buf.implementation, buffer_opts)
 
-  map("n", "<leader>F", vim.lsp.buf.format, buffer_opts)
-  map("x", "<leader>F", vim.lsp.buf.format, buffer_opts)
   map("n", "<leader>c", vim.lsp.buf.code_action, buffer_opts)
   map("x", "<leader>c", vim.lsp.buf.code_action, buffer_opts)
   map("n", "<leader>rn", vim.lsp.buf.rename, buffer_opts)
@@ -271,42 +265,5 @@ if use_server("eslint") then
   lspconfig.eslint.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-  })
-end
-
--- brew install black flake8 prettier stylua
--- gem install rubocop
-if use_server("null_ls") then
-  local builtins = null_ls.builtins
-  local diagnostics = builtins.diagnostics
-  local formatting = builtins.formatting
-
-  -- Prefer project-local versions of RuboCop
-  local prefer_local_rubocop = function(kind)
-    if machine_ok and machine.null_ls and machine.null_ls.rubocop then
-      return machine.null_ls.rubocop(kind)
-    elseif has_gem("rubocop") then
-      return null_ls.builtins[kind].rubocop.with({
-        command = "bundle",
-        args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins[kind].rubocop._opts.args),
-      })
-    else
-      return null_ls.builtins[kind].rubocop
-    end
-  end
-
-  null_ls.setup({
-    sources = {
-      -- Diagnostics
-      diagnostics.flake8,
-      prefer_local_rubocop("diagnostics"),
-
-      -- Formatting
-      formatting.black,
-      formatting.prettier,
-      formatting.stylua,
-      prefer_local_rubocop("formatting"),
-    },
-    on_attach = on_attach,
   })
 end

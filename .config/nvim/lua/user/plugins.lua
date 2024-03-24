@@ -80,6 +80,21 @@ require("lazy").setup({
     end,
   },
   {
+    -- brew install black prettier stylua
+    "stevearc/conform.nvim",
+    config = function()
+      require("user.formatting")
+    end,
+  },
+  {
+    -- brew install flake8
+    -- gem install rubocop
+    "mfussenegger/nvim-lint",
+    config = function()
+      require("user.lint")
+    end,
+  },
+  {
     "jose-elias-alvarez/null-ls.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
