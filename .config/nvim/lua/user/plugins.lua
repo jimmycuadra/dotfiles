@@ -19,7 +19,7 @@ require("lazy").setup({
   { "catppuccin/nvim", name = "catppuccin" },
 
   -- Install with `brew install fzf`
-  { dir = "/usr/local/opt/fzf" },
+  { dir = "/opt/homebrew/opt/fzf" },
   {
     "junegunn/fzf.vim",
     config = function()
