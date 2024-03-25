@@ -92,8 +92,9 @@ do
 done
 
 if which rustc >/dev/null; then
-  cargo_completion=$(rustc --print sysroot)/etc/bash_completion.d/cargo
-  [ -f "$cargo_completion" ] && source $cargo_completion
+  rust_completion="$(rustc --print sysroot)/etc/bash_completion.d"
+  [ -f "$rust_completion/cargo" ] && source "$rust_completion/cargo"
+  [ -f "$rust_completion/rustup" ] && source "$rust_completion/rustup"
 fi
 
 fzf_base_path="$HOMEBREW_PREFIX/opt/fzf/shell"
