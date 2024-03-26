@@ -47,6 +47,9 @@ local options = {
 
   -- Don't redraw the screen during macro execution
   lazyredraw = true,
+
+  -- Time to wait after last input before CursorHold event fires
+  updatetime = 1000,
 }
 
 for k, v in pairs(options) do
