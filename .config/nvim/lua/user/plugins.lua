@@ -94,12 +94,6 @@ require("lazy").setup({
       require("user.lint")
     end,
   },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
 
   -- tree-sitter
   {
