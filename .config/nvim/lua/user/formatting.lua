@@ -15,7 +15,8 @@ conform.setup({
 -- Run Rubocop with `bundle exec` if we're in a Bundler project that uses RuboCop.
 if require("user.ruby").has_gem("rubocop") then
   conform.formatters.rubocop = {
-    prepend_args = { "bundle", "exec" },
+    command = "bundle",
+    prepend_args = { "exec", "rubocop" },
   }
 end
 
