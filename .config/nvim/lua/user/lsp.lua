@@ -99,23 +99,6 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
--- Check if a gem is in the project's Gemfile
-local has_gem = function(gem)
-  if not vim.fn.executable("rg") then
-    vim.notify("Install ripgrep to use bundled gems for LSP")
-    return false
-  end
-
-  local ret_code = nil
-  local jid = vim.fn.jobstart(string.format("rg %s Gemfile", gem), {
-    on_exit = function(_, data)
-      ret_code = data
-    end,
-  })
-  vim.fn.jobwait({ jid }, 5000)
-  return ret_code == 0
-end
-
 -- Decide whether or not to enable a particular LSP server based on
 -- machine-specific configuration that is not committed
 local use_server = function(server)
@@ -189,7 +172,7 @@ if use_server("solargraph") then
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = (function()
-      if has_gem("solargraph") then
+      if require("user.ruby").has_gem("solargraph") then
         return { "bundle", "exec", "solargraph", "stdio" }
       else
         return { "solargraph", "stdio" }
