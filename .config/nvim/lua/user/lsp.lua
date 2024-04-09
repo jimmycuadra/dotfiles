@@ -34,6 +34,9 @@ vim.diagnostic.config({
   },
 })
 
+-- Comment this out if/when LSP debug logs are needed.
+vim.lsp.set_log_level("off")
+
 -- Adds the 'winhighlight' options nvim-cmp uses for documentation floating windows to
 -- LSP floating windows created by the provided handler
 local with_cmp_style_highlights = function(handler)
