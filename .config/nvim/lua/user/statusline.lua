@@ -68,35 +68,6 @@ local function get_mode_color(mode)
   return mode_colors[mode] or "%#PMenu#"
 end
 
-local function lsp_status()
-  local messages = vim.lsp.util.get_progress_messages()
-
-  if vim.tbl_isempty(messages) then
-    return ""
-  end
-
-  local percentage
-  local result = {}
-
-  for _, msg in pairs(messages) do
-    if msg.message then
-      table.insert(result, msg.title .. ": " .. msg.message)
-    else
-      table.insert(result, msg.title)
-    end
-
-    if msg.percentage then
-      percentage = math.max(percentage or 0, msg.percentage)
-    end
-  end
-
-  if percentage then
-    return string.format("[ %d%%%%: %s ]", percentage, table.concat(result, " | "))
-  else
-    return string.format("[ %s ]", table.concat(result, " | "))
-  end
-end
-
 local function progress()
   local cur = vim.fn.line(".")
   local total = vim.fn.line("$")
@@ -141,7 +112,7 @@ function M.statusline()
     " #%n ",
     "%f %h%m%r%=",
     "%#Visual#",
-    lsp_status(),
+    vim.lsp.status(),
     "%#CursorLineNr# ",
   }
 
@@ -156,11 +127,11 @@ function M.statusline()
     progress() .. " ",
   })
 
-  local git_head = vim.api.nvim_exec("echo FugitiveHead(7)", true)
+  local git_head = vim.api.nvim_exec2("echo FugitiveHead(7)", { output = true })
 
-  if git_head ~= "" then
+  if git_head.output ~= "" then
     vim.list_extend(parts, {
-      "%#PmenuSel# " .. git_head .. " ",
+      "%#PmenuSel# " .. git_head.output .. " ",
     })
   end
 
