@@ -44,10 +44,10 @@ local with_cmp_style_highlights = function(handler)
     local _, winnr = handler(err, result, ctx, config)
 
     if winnr then
-      vim.api.nvim_win_set_option(
-        winnr,
+      vim.api.nvim_set_option_value(
         "winhighlight",
-        "Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None"
+        "Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None",
+        { win = winnr }
       )
     end
   end
