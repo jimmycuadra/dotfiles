@@ -69,8 +69,12 @@ local map = vim.keymap.set
 local opts = { silent = true }
 
 -- Navigate diagnostics
-map("n", "[g", vim.diagnostic.goto_prev, opts)
-map("n", "]g", vim.diagnostic.goto_next, opts)
+map("n", "[g", function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, opts)
+map("n", "]g", function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, opts)
 map("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
