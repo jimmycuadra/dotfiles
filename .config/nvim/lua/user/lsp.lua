@@ -53,16 +53,25 @@ local with_cmp_style_highlights = function(handler)
   end
 end
 
-vim.lsp.handlers["textDocument/hover"] = with_cmp_style_highlights(vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-  width = 60,
-}))
-
-vim.lsp.handlers["textDocument/signatureHelp"] =
-  with_cmp_style_highlights(vim.lsp.with(vim.lsp.handlers.signature_help, {
+-- Use nvim-cmp style windows for LSP hover windows.
+local hover = vim.lsp.buf.hover
+---@diagnostic disable-next-line: duplicate-set-field
+vim.lsp.buf.hover = function()
+  return with_cmp_style_highlights(hover({
     border = "rounded",
     width = 60,
   }))
+end
+
+-- Use nvim-cmp style windows for LSP signature help windows.
+local signature_help = vim.lsp.buf.signature_help
+---@diagnostic disable-next-line: duplicate-set-field
+vim.lsp.buf.signature_help = function()
+  return with_cmp_style_highlights(signature_help({
+    border = "rounded",
+    width = 60,
+  }))
+end
 
 local map = vim.keymap.set
 
