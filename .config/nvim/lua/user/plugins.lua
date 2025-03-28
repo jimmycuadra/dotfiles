@@ -124,6 +124,12 @@ require("lazy").setup({
       require("user.lint")
     end,
   },
+  {
+    "andymass/vim-matchup",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
 
   -- tree-sitter
   {
