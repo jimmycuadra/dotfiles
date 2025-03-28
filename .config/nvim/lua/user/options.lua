@@ -50,6 +50,9 @@ local options = {
 
   -- Time to wait after last input before CursorHold event fires
   updatetime = 1000,
+
+  -- Use a rounded border on all floating windows.
+  winborder = "rounded",
 }
 
 for k, v in pairs(options) do
