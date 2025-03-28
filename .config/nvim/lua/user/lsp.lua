@@ -78,7 +78,7 @@ local on_attach = function(client, bufnr)
 
   -- Prefer formatting from conform.nvim
   if vim.tbl_contains({
-    "tsserver",
+    "ts_ls",
     "lua_ls",
     "html",
     "jsonls",
@@ -239,8 +239,8 @@ if use_server("lua_ls") then
 end
 
 -- pnpm -g install typescript-language-server
-if use_server("tsserver") then
-  lspconfig.tsserver.setup({
+if use_server("ts_ls") then
+  lspconfig.ts_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
   })
