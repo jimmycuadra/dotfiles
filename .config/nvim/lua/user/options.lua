@@ -53,6 +53,13 @@ local options = {
 
   -- Use a rounded border on all floating windows.
   winborder = "rounded",
+
+  -- Use treesitter for folding.
+  foldenable = true,
+  foldlevelstart = 99,
+  foldmethod = "expr",
+  foldexpr = "v:lua.vim.treesitter.foldexpr()",
+  foldcolumn = "auto",
 }
 
 for k, v in pairs(options) do
