@@ -59,7 +59,6 @@ local options = {
   foldlevelstart = 99,
   foldmethod = "expr",
   foldexpr = "v:lua.vim.treesitter.foldexpr()",
-  foldcolumn = "auto",
 }
 
 for k, v in pairs(options) do
