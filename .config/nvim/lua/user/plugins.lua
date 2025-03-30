@@ -14,13 +14,19 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
+local fzf_path = "/opt/homebrew/opt/fzf"
+
+if not vim.uv.fs_stat(fzf_path) then
+  fzf_path = "/usr/local/opt/fzf"
+end
+
 require("lazy").setup({
   -- Colorschemes
   "jimmycuadra/vim-railscasts",
   { "catppuccin/nvim", name = "catppuccin" },
 
   -- Install with `brew install fzf`
-  { dir = "/opt/homebrew/opt/fzf" },
+  { dir = fzf_path },
   {
     "junegunn/fzf.vim",
     config = function()
