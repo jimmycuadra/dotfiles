@@ -23,7 +23,6 @@
   "vim-matchup": { "branch": "master", "commit": "ea2ff43e09e68b63fc6d9268fc5d82d82d433cb3" },
   "vim-protobuf": { "branch": "master", "commit": "0d0f4e4b4087e0e608066aa2ba295e396d039931" },
   "vim-ragtag": { "branch": "master", "commit": "51b313e8a2e3a44f37b9d625bc0d461e9066b7e9" },
-  "vim-railscasts": { "branch": "main", "commit": "bb8090bfe3f065fc45127129683ba7baaf59bfd9" },
   "vim-rbs": { "branch": "main", "commit": "9a151b1eeb712021c824788c54a5c1e67df8c669" },
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
   "vim-terraform": { "branch": "master", "commit": "8912ca1be3025a1c9fab193618f3b99517e01973" },

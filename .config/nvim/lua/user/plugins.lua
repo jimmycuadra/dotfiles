@@ -22,7 +22,6 @@ end
 
 require("lazy").setup({
   -- Colorschemes
-  "jimmycuadra/vim-railscasts",
   { "catppuccin/nvim", name = "catppuccin" },
 
   -- Install with `brew install fzf`
