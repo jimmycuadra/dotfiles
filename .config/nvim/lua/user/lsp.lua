@@ -2,8 +2,8 @@ local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_ok then
   return
 end
-local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not cmp_nvim_lsp_ok then
+local blink_cmp_ok, blink_cmp = pcall(require, "blink.cmp")
+if not blink_cmp_ok then
   return
 end
 local machine_ok, machine = pcall(require, "user.machine")
@@ -113,7 +113,7 @@ local on_attach = function(client, bufnr)
   map("n", "<leader>rn", vim.lsp.buf.rename, buffer_opts)
 end
 
-local capabilities = cmp_nvim_lsp.default_capabilities()
+local capabilities = blink_cmp.get_lsp_capabilities()
 
 -- Decide whether or not to enable a particular LSP server based on
 -- machine-specific configuration that is not committed

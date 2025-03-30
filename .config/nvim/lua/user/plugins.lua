@@ -94,23 +94,43 @@ require("lazy").setup({
 
   -- Completion
   {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-      "L3MON4D3/LuaSnip",
+    "saghen/blink.cmp",
+    version = "1.*",
+    opts = {
+      cmdline = {
+        enabled = false,
+      },
+      completion = {
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 500,
+        },
+        menu = {
+          draw = {
+            columns = {
+              { "kind_icon", "label", "source_name", gap = 1 },
+            },
+          },
+        },
+      },
+      keymap = {
+        preset = "super-tab",
+        ["<c-k>"] = { "scroll_documentation_up", "fallback" },
+        ["<c-j>"] = { "scroll_documentation_down", "fallback" },
+        ["<cr>"] = { "accept", "fallback" },
+        -- Disable default documentation scroll mappings
+        ["<c-b>"] = {},
+        ["<c-f>"] = {},
+      },
     },
-    config = function()
-      require("user.completion")
-    end,
   },
 
   -- LSP
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "saghen/blink.cmp",
+    },
     config = function()
       require("user.lsp")
     end,
