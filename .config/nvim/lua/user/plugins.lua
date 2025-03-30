@@ -39,9 +39,6 @@ require("lazy").setup({
   -- Comment/uncomment selections
   "tpope/vim-commentary",
 
-  -- Mappings for navigation
-  "tpope/vim-ragtag",
-
   -- Repeat things with . that you normally can't
   "tpope/vim-repeat",
 
