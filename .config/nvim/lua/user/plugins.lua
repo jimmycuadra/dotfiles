@@ -24,15 +24,6 @@ require("lazy").setup({
   -- Colorschemes
   { "catppuccin/nvim", name = "catppuccin" },
 
-  -- Install with `brew install fzf`
-  { dir = fzf_path },
-  {
-    "junegunn/fzf.vim",
-    config = function()
-      require("user.fzf")
-    end,
-  },
-
   -- Multiple cursors
   "mg979/vim-visual-multi",
 
@@ -42,12 +33,33 @@ require("lazy").setup({
   -- Repeat things with . that you normally can't
   "tpope/vim-repeat",
 
+  -- Ignore casing for save and quit commands
+  "takac/vim-commandcaps",
+
+  -- Preview registers when pressing " in normal mode
+  "tversteeg/registers.nvim",
+
+  -- Install with `brew install fzf`
+  { dir = fzf_path },
+  {
+    "junegunn/fzf.vim",
+    config = function()
+      require("user.fzf")
+    end,
+  },
+
   -- Add, remove, and change things like braces and brackets around objects
   {
     "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup({})
-    end,
+    opts = {},
+  },
+
+  -- Tree-sitter-aware '%' mapping
+  {
+    "andymass/vim-matchup",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
   },
 
   -- Add vertical lines to mark levels of indentation
@@ -81,12 +93,6 @@ require("lazy").setup({
       })
     end,
   },
-
-  -- Ignore casing for save and quit commands
-  "takac/vim-commandcaps",
-
-  -- Preview registers when pressing " in normal mode
-  "tversteeg/registers.nvim",
 
   -- Completion
   {
@@ -146,20 +152,24 @@ require("lazy").setup({
       require("user.lint")
     end,
   },
-  {
-    "andymass/vim-matchup",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
 
   -- tree-sitter
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function()
-      require("user.treesitter")
-    end,
+    main = "nvim-treesitter.configs",
+    opts = {
+      ensure_installed = "all",
+      sync_install = false,
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+      matchup = {
+        enable = true,
+      },
+    },
   },
 
   -- Lua + Neovim
