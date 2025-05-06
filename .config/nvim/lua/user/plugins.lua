@@ -119,7 +119,6 @@ require("lazy").setup({
         preset = "super-tab",
         ["<c-k>"] = { "scroll_documentation_up", "fallback" },
         ["<c-j>"] = { "scroll_documentation_down", "fallback" },
-        ["<cr>"] = { "accept", "fallback" },
         -- Disable default documentation scroll mappings
         ["<c-b>"] = {},
         ["<c-f>"] = {},
