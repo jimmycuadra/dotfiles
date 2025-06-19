@@ -179,6 +179,20 @@ if use_server("rust_analyzer") then
   lspconfig.rust_analyzer.setup({
     on_attach = on_attach,
     capabilities = capabilities,
+    settings = {
+      ["rust-analyzer"] = {
+        check = {
+          extraArgs = {
+            "--target-dir=target/analyzer",
+          },
+        },
+        server = {
+          extraEnv = {
+            ["CARGO_TARGET_DIR"] = "target/analyzer",
+          },
+        },
+      },
+    },
   })
 end
 
