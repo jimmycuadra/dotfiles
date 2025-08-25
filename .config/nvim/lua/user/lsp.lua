@@ -186,6 +186,11 @@ if use_server("rust_analyzer") then
             "--target-dir=target/analyzer",
           },
         },
+        diagnostics = {
+          disabled = {
+            "inactive-code",
+          },
+        },
         server = {
           extraEnv = {
             ["CARGO_TARGET_DIR"] = "target/analyzer",
