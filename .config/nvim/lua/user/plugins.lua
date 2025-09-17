@@ -37,7 +37,15 @@ require("lazy").setup({
   "takac/vim-commandcaps",
 
   -- Preview registers when pressing " in normal mode
-  "tversteeg/registers.nvim",
+  {
+    "tversteeg/registers.nvim",
+    cmd = "Registers",
+    config = true,
+    keys = {
+      { '"', mode = { "n", "v" } },
+      { "<c-r>", mode = { "i" } },
+    },
+  },
 
   -- Install with `brew install fzf`
   { dir = fzf_path },
