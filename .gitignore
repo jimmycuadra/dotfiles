@@ -20,13 +20,14 @@
 !/.bash_profile
 !/.bashrc
 !/.bundle/config
-!/.config/file
 !/.config/bat
+!/.config/file
 !/.config/nvim/.stylua.toml
 !/.config/nvim/init.lua
 !/.config/nvim/init.lua
 !/.config/nvim/lazy-lock.json
 !/.config/nvim/lua
+!/.config/pnpm
 !/.gemrc
 !/.gitconfig
 !/.gitignore
