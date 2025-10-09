@@ -9,6 +9,14 @@ conform.setup({
     lua = { "stylua" },
     python = { "black" },
     ruby = { "rubocop" },
+    rust = { "rustfmt" },
+  },
+  formatters = {
+    rustfmt = {
+      env = {
+        RUSTUP_TOOLCHAIN = "nightly",
+      },
+    },
   },
 })
 
