@@ -51,3 +51,25 @@ map("n", "N", "Nzzzv")
 
 -- Replace with yanked text without yanking the text being replaced
 map("x", "<leader>p", '"_dP')
+
+-- Add a text object for selecting text between vertical bars
+map({ "x", "o" }, "i|", function()
+  local start_row, start_column = unpack(vim.fn.searchpos("|", "bn"))
+  local end_row, end_column = unpack(vim.fn.searchpos("|", "n"))
+  if not start_column or not end_column then
+    return
+  end
+  vim.fn.setpos("'<", { 0, start_row, start_column + 1, 0 })
+  vim.fn.setpos("'>", { 0, end_row, end_column - 1, 0 })
+  vim.cmd.normal("gv")
+end)
+map({ "x", "o" }, "a|", function()
+  local start_row, start_column = unpack(vim.fn.searchpos("|", "bn"))
+  local end_row, end_column = unpack(vim.fn.searchpos("|", "n"))
+  if not start_column or not end_column then
+    return
+  end
+  vim.fn.setpos("'<", { 0, start_row, start_column, 0 })
+  vim.fn.setpos("'>", { 0, end_row, end_column, 0 })
+  vim.cmd.normal("gv")
+end)
