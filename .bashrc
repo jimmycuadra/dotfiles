@@ -145,6 +145,14 @@ railsapp() {
 # C
 alias marvin="gcc -Wall -Wextra -ansi -pedantic"
 
+# Rust
+alias cch="cargo check"
+alias ccl="cargo clippy"
+alias cf="cargo +nightly fmt"
+alias cr="cargo run"
+alias crq="cargo run --quiet"
+alias ct="cargo test"
+
 # Colored man pages
 if which bat >/dev/null; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
