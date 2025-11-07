@@ -6,14 +6,19 @@
 # Allow specific paths under .config to be included.
 /.config/*
 
-# Ignore paths under .config/nvim by default.
-!/.config/nvim
 # Allow specific paths under .config/nvim to be included.
+!/.config/nvim
+# Ignore paths under .config/nvim by default.
 /.config/nvim/*
 
-# Ignore paths under .vim by default.
-!/.vim
+# Allow specific paths under .config/rubocop to be included.
+!/.config/rubocop
+# Ignore paths under .config/rubocop by default.
+/.config/rubocop/*
+
 # Allow specific paths under .vim to be included.
+!/.vim
+# Ignore paths under .vim by default.
 /.vim/*
 
 # Allow specific paths.
@@ -28,6 +33,7 @@
 !/.config/nvim/lazy-lock.json
 !/.config/nvim/lua
 !/.config/pnpm
+!/.config/rubocop/config.yml
 !/.gemrc
 !/.gitconfig
 !/.gitignore

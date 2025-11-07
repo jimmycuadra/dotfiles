@@ -1,0 +1,8 @@
+AllCops:
+  DisabledByDefault: true
+  ParserEngine: "parser_prism"
+  TargetRubyVersion: 3.4
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: "double_quotes"
