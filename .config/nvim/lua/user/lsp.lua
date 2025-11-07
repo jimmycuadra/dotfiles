@@ -182,7 +182,6 @@ if use_server("rust_analyzer") then
     settings = {
       ["rust-analyzer"] = {
         check = {
-          command = "clippy",
           extraArgs = {
             "--target-dir=target/analyzer",
           },
