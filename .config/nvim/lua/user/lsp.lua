@@ -201,27 +201,9 @@ if use_server("rust_analyzer") then
   })
 end
 
--- gem install solargraph
-if use_server("solargraph") then
-  lspconfig.solargraph.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = (function()
-      if require("user.ruby").has_gem("solargraph") then
-        return { "bundle", "exec", "solargraph", "stdio" }
-      else
-        return { "solargraph", "stdio" }
-      end
-    end)(),
-    init_options = {
-      formatting = false,
-    },
-    settings = {
-      solargraph = {
-        diagnostics = false,
-      },
-    },
-  })
+-- gem install ruby-lsp
+if use_server("ruby_lsp") then
+  lspconfig.ruby_lsp.setup({})
 end
 
 -- brew install sql-language-server
