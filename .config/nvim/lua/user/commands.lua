@@ -1,10 +1,17 @@
+-- Register a filetype for Oxiby
+vim.filetype.add({
+  extension = {
+    ob = "oxiby",
+  },
+})
+
 -- Change identation for languages that use 4 spaces instead of 2
 local indentation_augroup = vim.api.nvim_create_augroup("indentation", {
   clear = true,
 })
 vim.api.nvim_create_autocmd("FileType", {
   group = indentation_augroup,
-  pattern = "go,elm,haskell,python",
+  pattern = "go,elm,haskell,python,oxiby",
   callback = function()
     vim.opt.tabstop = 4
     vim.opt.softtabstop = 4
