@@ -170,9 +170,8 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    main = "nvim-treesitter.configs",
+    main = "nvim-treesitter",
     opts = {
-      ensure_installed = "all",
       sync_install = false,
       auto_install = true,
       highlight = {
@@ -183,17 +182,26 @@ require("lazy").setup({
         enable = true,
       },
     },
-    config = function(_, opts)
-      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_config.oxiby = {
-        install_info = {
-          url = "~/Code/tree-sitter-oxiby",
-          files = { "src/parser.c" },
-        },
-        filetype = "ob",
-      }
-      require("nvim-treesitter.configs").setup(opts)
+    init = function()
+      -- Enable highlighting and indentation
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
     end,
+    -- config = function(_, opts)
+    --   local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+    --   parser_config.oxiby = {
+    --     install_info = {
+    --       url = "~/Code/tree-sitter-oxiby",
+    --       files = { "src/parser.c" },
+    --     },
+    --     filetype = "ob",
+    --   }
+    --   require("nvim-treesitter.configs").setup(opts)
+    -- end,
   },
 
   -- Lua + Neovim

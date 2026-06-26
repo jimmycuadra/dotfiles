@@ -1,7 +1,3 @@
-local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_ok then
-  return
-end
 local blink_cmp_ok, blink_cmp = pcall(require, "blink.cmp")
 if not blink_cmp_ok then
   return
@@ -35,7 +31,7 @@ vim.diagnostic.config({
 })
 
 -- Comment this out if/when LSP debug logs are needed.
-vim.lsp.set_log_level("off")
+vim.lsp.log.set_level(vim.log.levels.OFF)
 
 -- Adds the 'winhighlight' options nvim-cmp uses for documentation floating windows to
 -- LSP floating windows created by the provided handler
@@ -127,56 +123,68 @@ end
 
 -- pnpm -g install bash-language-server
 if use_server("bashls") then
-  lspconfig.bashls.setup({
+  vim.lsp.config("bashls", {
     on_attach = on_attach,
     capabilities = capabilities,
   })
+
+  vim.lsp.enable("bashls")
 end
 
 -- pnpm -g install vscode-langservers-extracted
 if use_server("cssls") then
-  lspconfig.cssls.setup({
+  vim.lsp.config("cssls", {
     on_attach = on_attach,
     capabilities = capabilities,
   })
+
+  vim.lsp.enable("cssls")
 end
 
 -- pnpm -g install dockerfile-language-server-nodejs
 if use_server("dockerls") then
-  lspconfig.dockerls.setup({
+  vim.lsp.config("dockerls", {
     on_attach = on_attach,
     capabilities = capabilities,
   })
+
+  vim.lsp.enable("dockerls")
 end
 
 -- pnpm -g install vscode-langservers-extracted
 if use_server("html") then
-  lspconfig.html.setup({
+  vim.lsp.config("html", {
     on_attach = on_attach,
     capabilities = capabilities,
   })
+
+  vim.lsp.enable("html")
 end
 
 -- pnpm -g install vscode-langservers-extracted
 if use_server("jsonls") then
-  lspconfig.jsonls.setup({
+  vim.lsp.config("jsonls", {
     on_attach = on_attach,
     capabilities = capabilities,
   })
+
+  vim.lsp.enable("jsonls")
 end
 
 -- brew install pyright
 if use_server("pyright") then
-  lspconfig.pyright.setup({
+  vim.lsp.config("pyright", {
     on_attach = on_attach,
     capabilities = capabilities,
   })
+
+  vim.lsp.enable("pyright")
 end
 
 -- brew install rust-analyzer
 -- rustup component add rust-src
 if use_server("rust_analyzer") then
-  lspconfig.rust_analyzer.setup({
+  vim.lsp.config("rust_analyzer", {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -199,19 +207,23 @@ if use_server("rust_analyzer") then
       },
     },
   })
+
+  vim.lsp.enable("rust_analyzer")
 end
 
 -- gem install ruby-lsp
 if use_server("ruby_lsp") then
-  lspconfig.ruby_lsp.setup({})
+  vim.lsp.enable("ruby_lsp")
 end
 
 -- brew install sql-language-server
 if use_server("sqlls") then
-  lspconfig.sqlls.setup({
+  vim.lsp.config("sqlls", {
     on_attach = on_attach,
     capabilities = capabilities,
   })
+
+  vim.lsp.enable("sqlls")
 end
 
 -- brew install lua-language-server
@@ -220,7 +232,7 @@ if use_server("lua_ls") then
   table.insert(runtime_path, "lua/?.lua")
   table.insert(runtime_path, "lua/?/init.lua")
 
-  lspconfig.lua_ls.setup({
+  vim.lsp.config("lua_ls", {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -250,20 +262,26 @@ if use_server("lua_ls") then
       },
     },
   })
+
+  vim.lsp.enable("lua_ls")
 end
 
 -- pnpm -g install typescript-language-server
 if use_server("ts_ls") then
-  lspconfig.ts_ls.setup({
+  vim.lsp.config("ts_ls", {
     on_attach = on_attach,
     capabilities = capabilities,
   })
+
+  vim.lsp.enable("ts_ls")
 end
 
 -- pnpm -g install vscode-langservers-extracted
 if use_server("eslint") then
-  lspconfig.eslint.setup({
+  vim.lsp.config("eslint", {
     on_attach = on_attach,
     capabilities = capabilities,
   })
+
+  vim.lsp.enable("eslint")
 end
