@@ -29,7 +29,7 @@ fi
 # Paths
 if [ "$(uname)" = "Darwin" ]; then
   export PNPM_HOME="$HOME/Library/pnpm" # pnpm
-  export PATH="$PNPM_HOME:$PATH" # pnpm
+  export PATH="$PNPM_HOME/bin:$PATH" # pnpm
 fi
 export PATH="$HOME/Code/go/bin:$PATH" # go
 export PATH="$HOME/.cargo/bin:$PATH" # rustup
