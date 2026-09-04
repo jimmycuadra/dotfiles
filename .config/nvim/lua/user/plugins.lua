@@ -38,7 +38,7 @@ require("lazy").setup({
 
   -- Preview registers when pressing " in normal mode
   {
-    "tversteeg/registers.nvim",
+    "https://codeberg.org/fosk/registers.nvim",
     cmd = "Registers",
     config = true,
     keys = {
