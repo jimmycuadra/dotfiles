@@ -131,6 +131,16 @@ if use_server("bashls") then
   vim.lsp.enable("bashls")
 end
 
+-- clangd should be present on macOS already, but `brew install llvm` will install it if not.
+if use_server("clangd") then
+  vim.lsp.config("clangd", {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+
+  vim.lsp.enable("clangd")
+end
+
 -- pnpm -g install vscode-langservers-extracted
 if use_server("cssls") then
   vim.lsp.config("cssls", {
