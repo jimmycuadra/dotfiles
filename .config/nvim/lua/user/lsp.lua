@@ -139,9 +139,8 @@ if use_server("clangd") then
     cmd = {
       "clangd",
       "--background-index",
-      -- Fixes clangd not finding things in C++17 like `std::clamp`. This is obviously not portable
-      -- across projects, but I'm only using C++ for Alchemy Lab right now.
-      "--query-driver=/opt/homebrew/bin/arm-none-eabi-g++",
+      -- Allow clangd to use any C++ toolchain installed via Homebrew.
+      "--query-driver=/opt/homebrew/bin/*",
     },
   })
 
