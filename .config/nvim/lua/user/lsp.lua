@@ -136,6 +136,13 @@ if use_server("clangd") then
   vim.lsp.config("clangd", {
     on_attach = on_attach,
     capabilities = capabilities,
+    cmd = {
+      "clangd",
+      "--background-index",
+      -- Fixes clangd not finding things in C++17 like `std::clamp`. This is obviously not portable
+      -- across projects, but I'm only using C++ for Alchemy Lab right now.
+      "--query-driver=/opt/homebrew/bin/arm-none-eabi-g++",
+    },
   })
 
   vim.lsp.enable("clangd")
