@@ -5,6 +5,8 @@ end
 
 conform.setup({
   formatters_by_ft = {
+    -- brew install clang-format
+    cpp = { "clang-format" },
     javascript = { "prettier" },
     lua = { "stylua" },
     python = { "black" },
