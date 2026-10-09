@@ -205,6 +205,9 @@ if use_server("rust_analyzer") then
     capabilities = capabilities,
     settings = {
       ["rust-analyzer"] = {
+        cargo = {
+          allTargets = false,
+        },
         check = {
           extraArgs = {
             "--target-dir=target/analyzer",
