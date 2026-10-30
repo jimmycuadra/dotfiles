@@ -207,6 +207,7 @@ if use_server("rust_analyzer") then
       ["rust-analyzer"] = {
         cargo = {
           allTargets = false,
+          allFeatures = true,
         },
         check = {
           extraArgs = {
